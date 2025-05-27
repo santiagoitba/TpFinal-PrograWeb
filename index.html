@@ -3,47 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guita Fácil Academy</title>
+  <title>Guita Fácil Academy - Agenda tu turno</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
     <h1>Guita Fácil Academy</h1>
-    <p class="subtitulo">Aprendé a generar ingresos desde tu casa</p>
+    <p class="subtitulo">Reservá tu turno para Trading o Diseño Digital</p>
     <nav>
-      <a href="#cursos">Cursos</a>
-      <a href="#contacto">Contacto</a>
+      <a href="#agenda" class="nav-link">Agendar Turno</a>
+      <a href="#trading" class="nav-link">Trading</a>
+      <a href="#disenio" class="nav-link">Diseño Digital</a>
+      <a href="#contacto" class="nav-link">Contacto</a>
     </nav>
   </header>
 
   <main>
-    <section id="intro">
-      <h2>¿Qué podés aprender?</h2>
-      <ul>
-        <li>💹 Trading para principiantes</li>
-        <li>🎮 Cómo ganar plata jugando</li>
-        <li>🎨 Diseño digital y freelancing</li>
-        <li>🪙 Cripto sin humo</li>
-      </ul>
+    <section id="agenda" class="agenda-section">
+      <h2>Agendá tu turno</h2>
+      <form id="form-turno">
+        <label>
+          Nombre:
+          <input type="text" id="nombre" required />
+        </label>
+        <label>
+          Email:
+          <input type="email" id="email" required />
+        </label>
+        <label>
+          Curso:
+          <select id="curso" required>
+            <option value="">Seleccioná un curso</option>
+            <option value="Trading Básico">Trading Básico</option>
+            <option value="Diseño Digital">Diseño Digital</option>
+          </select>
+        </label>
+        <label>
+          Fecha:
+          <input type="date" id="fecha" required />
+        </label>
+        <button type="submit">Agendar</button>
+      </form>
+      <div id="turnos-agendados">
+        <h3>Turnos agendados</h3>
+        <ul id="lista-turnos"></ul>
+      </div>
     </section>
 
-    <section id="cursos">
-      <h2>Cursos destacados</h2>
-      <div class="curso">
-        <h3>Trading Básico</h3>
-        <p>Entendé el mercado y empezá a invertir sin volverte loco.</p>
-        <button onclick="agregarAlCarrito('Trading Básico')">Agregar al carrito</button>
-      </div>
-      <div class="curso">
-        <h3>Gaming Pro</h3>
-        <p>Monetizá tus partidas y armá tu canal de Twitch o YouTube.</p>
-        <button onclick="agregarAlCarrito('Gaming Pro')">Agregar al carrito</button>
-      </div>
+    <section id="trading" class="curso-section">
+      <h2>Trading Básico</h2>
+      <p>Aprendé a invertir y analizá el mercado cripto y financiero con expertos. Clases prácticas y acceso a comunidad exclusiva.</p>
+      <button class="agendar-btn" data-curso="Trading Básico">Agendar turno para Trading</button>
     </section>
 
-    <section id="carrito">
-      <h2>Tu carrito</h2>
-      <ul id="lista-carrito"></ul>
+    <section id="disenio" class="curso-section">
+      <h2>Diseño Digital</h2>
+      <p>Dominá herramientas creativas y lanzá tu carrera freelance en diseño gráfico y digital. ¡Incluye portfolio y mentoría!</p>
+      <button class="agendar-btn" data-curso="Diseño Digital">Agendar turno para Diseño</button>
     </section>
 
     <section id="contacto">
@@ -61,7 +77,6 @@
     <p>&copy; 2025 Guita Fácil. Todos los derechos reservados.</p>
   </footer>
 
-  <script src="main.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
-
