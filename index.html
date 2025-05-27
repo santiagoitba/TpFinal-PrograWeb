@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guita Fácil</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>💸 Guita Fácil</h1>
+    <nav>
+      <ul>
+        <li><a href="#trading">Trading</a></li>
+        <li><a href="#gaming">Gaming</a></li>
+        <li><a href="#diseño">Diseño</a></li>
+        <li><a href="#cripto">Cripto</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="intro">
+      <h2>Aprendé a ganar plata desde casa</h2>
+      <p>Ofrecemos cursos simples y prácticos para arrancar hoy mismo.</p>
+    </section>
+
+    <section id="trading" class="categoria">
+      <h3>📈 Trading</h3>
+      <div class="curso">
+        <h4>Curso de Trading para Principiantes</h4>
+        <p>Aprendé análisis técnico y estrategias básicas.</p>
+        <button onclick="agregarAlCarrito('Trading')">Agregar al carrito</button>
+      </div>
+    </section>
+
+    <section id="gaming" class="categoria">
+      <h3>🎮 Gaming</h3>
+      <div class="curso">
+        <h4>Cómo ganar plata jugando</h4>
+        <p>Descubrí juegos con recompensas reales.</p>
+        <button onclick="agregarAlCarrito('Gaming')">Agregar al carrito</button>
+      </div>
+    </section>
+
+    <section id="diseño" class="categoria">
+      <h3>🎨 Diseño</h3>
+      <div class="curso">
+        <h4>Diseño gráfico desde cero</h4>
+        <p>Usá Canva y herramientas gratuitas para emprender.</p>
+        <button onclick="agregarAlCarrito('Diseño')">Agregar al carrito</button>
+      </div>
+    </section>
+
+    <section id="cripto" class="categoria">
+      <h3>🪙 Cripto</h3>
+      <div class="curso">
+        <h4>Inversión en Criptomonedas</h4>
+        <p>Todo lo que tenés que saber para empezar seguro.</p>
+        <button onclick="agregarAlCarrito('Cripto')">Agregar al carrito</button>
+      </div>
+    </section>
+
+    <section id="carrito">
+      <h3>🛒 Carrito</h3>
+      <ul id="lista-carrito"></ul>
+      <p>Total: $<span id="total">0</span></p>
+    </section>
+
+    <section id="contacto">
+      <h3>📬 Contactanos</h3>
+      <form id="formulario-contacto">
+        <input type="text" id="nombre" placeholder="Tu nombre" required />
+        <input type="email" id="email" placeholder="Tu email" required />
+        <textarea id="mensaje" placeholder="Tu mensaje" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+      <p id="mensaje-confirmacion"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Guita Fácil — Todos los derechos reservados</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
