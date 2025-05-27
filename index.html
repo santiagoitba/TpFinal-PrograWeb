@@ -79,4 +79,96 @@
 
   <script src="script.js"></script>
 </body>
+
+<!-- Cambios principales para index.html -->
+<!-- ...existing code... -->
+<body>
+  <header>
+    <h1>Guita Fácil Academy</h1>
+    <p class="subtitulo">Reservá tu turno para Trading, Diseño Digital, Cripto o Marketing Digital</p>
+    <nav>
+      <a href="#agenda" class="nav-link">Agendar Turno</a>
+      <a href="#trading" class="nav-link">Trading</a>
+      <a href="#disenio" class="nav-link">Diseño Digital</a>
+      <a href="#cripto" class="nav-link">Cripto</a>
+      <a href="#marketing" class="nav-link">Marketing Digital</a>
+      <a href="#contacto" class="nav-link">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="contador-global" class="contador-global">
+      <h2>Dinero generado por nuestros usuarios:</h2>
+      <div id="total-generado" class="total-generado">$0</div>
+    </section>
+
+    <section id="agenda" class="agenda-section">
+      <h2>Agendá tu turno</h2>
+      <form id="form-turno">
+        <label>
+          Nombre:
+          <input type="text" id="nombre" required />
+        </label>
+        <label>
+          Email:
+          <input type="email" id="email" required />
+        </label>
+        <label>
+          Curso:
+          <select id="curso" required>
+            <option value="">Seleccioná un curso</option>
+            <option value="Trading Básico">Trading Básico</option>
+            <option value="Diseño Digital">Diseño Digital</option>
+            <option value="Cripto">Cripto</option>
+            <option value="Marketing Digital">Marketing Digital</option>
+          </select>
+        </label>
+        <label>
+          Fecha:
+          <input type="date" id="fecha" required />
+        </label>
+        <label>
+          Dinero generado en este turno ($):
+          <input type="number" id="dinero" min="0" value="0" required />
+        </label>
+        <button type="submit">Agendar</button>
+      </form>
+      <div id="turnos-agendados">
+        <h3>Turnos agendados</h3>
+        <ul id="lista-turnos"></ul>
+      </div>
+      <div id="monedero">
+        <h3>Tu monedero</h3>
+        <div id="total-monedero">$0</div>
+      </div>
+    </section>
+
+    <section id="trading" class="curso-section">
+      <h2>Trading Básico</h2>
+      <p>Aprendé a invertir y analizá el mercado cripto y financiero con expertos. Clases prácticas y acceso a comunidad exclusiva.</p>
+      <button class="agendar-btn" data-curso="Trading Básico">Agendar turno para Trading</button>
+    </section>
+
+    <section id="disenio" class="curso-section">
+      <h2>Diseño Digital</h2>
+      <p>Dominá herramientas creativas y lanzá tu carrera freelance en diseño gráfico y digital. ¡Incluye portfolio y mentoría!</p>
+      <button class="agendar-btn" data-curso="Diseño Digital">Agendar turno para Diseño</button>
+    </section>
+
+    <section id="cripto" class="curso-section">
+      <h2>Cripto</h2>
+      <p>Descubrí el mundo de las criptomonedas, trading y blockchain. Clases prácticas y estrategias de inversión.</p>
+      <button class="agendar-btn" data-curso="Cripto">Agendar turno para Cripto</button>
+    </section>
+
+    <section id="marketing" class="curso-section">
+      <h2>Marketing Digital</h2>
+      <p>Aprendé a posicionar marcas y productos en el mundo digital. Estrategias de redes sociales, anuncios y más.</p>
+      <button class="agendar-btn" data-curso="Marketing Digital">Agendar turno para Marketing</button>
+    </section>
+
+    <!-- ...contacto y footer igual... -->
+<!-- ...existing code... -->
+
 </html>
+
