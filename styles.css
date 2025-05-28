@@ -103,13 +103,12 @@ footer {
   border-radius: 0 0 16px 16px;
 }
 
-/* Agrega esto a tu styles.css */
 .contador-global {
   background: #fffbe6;
   border: 2px solid #ffd700;
   border-radius: 12px;
   text-align: center;
-  margin: 2rem auto 2rem auto;
+  margin: 2rem auto;
   padding: 1.5rem;
   max-width: 500px;
   box-shadow: 0 2px 8px #ffd70033;
