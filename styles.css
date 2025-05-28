@@ -10,7 +10,15 @@ header {
   color: #fff;
   padding: 2rem 0 1rem 0;
   text-align: center;
-  box-shadow: 0 2px 8px #0002;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  margin: 0 0 0.5rem 0;
+  font-weight: 900;
+  font-size: 2.5rem;
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
 }
 
 nav a {
@@ -18,15 +26,10 @@ nav a {
   margin: 0 1rem;
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.2s;
-}
-nav a:hover {
-  color: #ffd700;
+  transition: color 0.2s ease-in-out;
 }
 
-.subtitulo {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
+nav a:hover {
   color: #ffd700;
 }
 
@@ -36,27 +39,99 @@ main {
   padding: 2rem;
   background: #fff;
   border-radius: 16px;
-  box-shadow: 0 4px 24px #0001;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
 }
 
+/* Cursos Intro */
+.cursos-intro {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.cursos-intro h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #1e3c72;
+  font-weight: 700;
+}
+
+.cursos-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.curso {
+  background: #f0f4ff;
+  border-left: 6px solid #1e3c72;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(30, 60, 114, 0.14);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.curso h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: #1e3c72;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.curso p {
+  flex-grow: 1;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.btn-vermas {
+  text-decoration: none;
+  background: #1e3c72;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.2s ease-in-out;
+  align-self: flex-start;
+}
+
+.btn-vermas:hover {
+  background: #ffd700;
+  color: #1e3c72;
+}
+
+/* Agenda sección */
 .agenda-section {
   background: #e0e7ff;
   padding: 2rem;
   border-radius: 12px;
-  margin-bottom: 2rem;
-  box-shadow: 0 2px 8px #1e3c7222;
+  box-shadow: 0 2px 8px rgba(30, 60, 114, 0.14);
+}
+
+.agenda-section h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #1e3c72;
+  font-weight: 700;
 }
 
 form label {
   display: block;
-  margin-bottom: 1rem;
-  font-weight: 500;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  color: #1e3c72;
 }
 
-input, select, textarea, button {
+input,
+select,
+button {
   display: block;
   width: 100%;
-  margin-top: 0.5rem;
+  margin-bottom: 1rem;
   padding: 0.7rem;
   border-radius: 8px;
   border: 1px solid #ccc;
@@ -70,28 +145,94 @@ button {
   border: none;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 1rem;
-  transition: background 0.2s;
+  margin-top: 0.5rem;
+  transition: background 0.2s ease-in-out;
 }
+
 button:hover {
   background: #ffd700;
   color: #1e3c72;
 }
 
-.curso {
-  background: #f0f4ff;
-  border-left: 6px solid #1e3c72;
-  margin-bottom: 1.5rem;
-  padding: 1rem 1.5rem;
+/* Monedero */
+#monedero {
+  background: #e0ffe6;
+  padding: 1rem;
   border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 179, 0, 0.2);
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
+#total-monedero {
+  font-size: 1.5rem;
+  color: #008000;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+/* Contador global */
+.contador-global {
+  background: #fffbe6;
+  border: 2px solid #ffd700;
+  border-radius: 12px;
+  text-align: center;
+  margin: 2rem auto 2rem auto;
+  padding: 1.5rem;
+  max-width: 500px;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.2);
+}
+
+.total-generado {
+  font-size: 2.5rem;
+  color: #1e3c72;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+/* Turnos agendados */
 #turnos-agendados {
   margin-top: 2rem;
   background: #fffbe6;
   padding: 1rem;
   border-radius: 8px;
-  box-shadow: 0 2px 8px #ffd70033;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.2);
+}
+
+#turnos-agendados h3 {
+  margin-top: 0;
+  color: #1e3c72;
+  font-weight: 700;
+}
+
+#turnos-agendados ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#turnos-agendados li {
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.33);
+  font-size: 1rem;
+  color: #333;
+}
+
+#turnos-agendados button.borrar-turno {
+  background: #ffd700;
+  border: none;
+  border-radius: 6px;
+  padding: 0.3rem 0.6rem;
+  color: #1e3c72;
+  cursor: pointer;
+  font-weight: 600;
+  margin-left: 1rem;
+  transition: background 0.2s ease-in-out;
+}
+
+#turnos-agendados button.borrar-turno:hover {
+  background: #1e3c72;
+  color: #ffd700;
 }
 
 footer {
@@ -101,35 +242,4 @@ footer {
   color: #fff;
   margin-top: 2rem;
   border-radius: 0 0 16px 16px;
-}
-
-.contador-global {
-  background: #fffbe6;
-  border: 2px solid #ffd700;
-  border-radius: 12px;
-  text-align: center;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  max-width: 500px;
-  box-shadow: 0 2px 8px #ffd70033;
-}
-.total-generado {
-  font-size: 2.5rem;
-  color: #1e3c72;
-  font-weight: bold;
-  margin-top: 0.5rem;
-}
-#monedero {
-  margin-top: 2rem;
-  background: #e0ffe6;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px #00b30033;
-  text-align: center;
-}
-#total-monedero {
-  font-size: 1.5rem;
-  color: #008000;
-  font-weight: bold;
-  margin-top: 0.5rem;
 }

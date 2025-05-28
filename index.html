@@ -1,81 +1,99 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guita Fácil</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ezmoney</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
-    <h1>Guita Fácil</h1>
+    <h1>ezmoney</h1>
     <nav>
-      <a href="#cursos" class="nav-link">Cursos</a>
-      <a href="#agenda" class="nav-link">Agendar Turno</a>
-      <a href="#turnos-agendados" class="nav-link">Turnos</a>
+      <a class="nav-link" href="cripto.html">Cripto</a>
+      <a class="nav-link" href="trading.html">Trading</a>
+      <a class="nav-link" href="diseno.html">Diseño</a>
+      <a class="nav-link" href="marketing.html">Marketing Digital</a>
     </nav>
   </header>
 
   <main>
-    <section id="cursos">
-      <h2 class="subtitulo">Nuestros Cursos</h2>
-      <div class="curso">
-        <h3>Trading</h3>
-        <button class="agendar-btn" data-curso="Trading">Agendar turno</button>
-      </div>
-      <div class="curso">
-        <h3>Cripto</h3>
-        <button class="agendar-btn" data-curso="Cripto">Agendar turno</button>
+    <section class="cursos-intro">
+      <h2>Explorá nuestras temáticas</h2>
+      <div class="cursos-lista">
+        <article class="curso">
+          <h3>Cripto</h3>
+          <p>Descubrí todo sobre criptomonedas y blockchain.</p>
+          <a href="cripto.html" class="btn-vermas">Ver más</a>
+        </article>
+        <article class="curso">
+          <h3>Trading</h3>
+          <p>Aprendé a operar en los mercados financieros.</p>
+          <a href="trading.html" class="btn-vermas">Ver más</a>
+        </article>
+        <article class="curso">
+          <h3>Diseño</h3>
+          <p>Desarrollá habilidades en diseño gráfico y web.</p>
+          <a href="diseno.html" class="btn-vermas">Ver más</a>
+        </article>
+        <article class="curso">
+          <h3>Marketing Digital</h3>
+          <p>Conocé estrategias para potenciar negocios online.</p>
+          <a href="marketing.html" class="btn-vermas">Ver más</a>
+        </article>
       </div>
     </section>
 
     <section id="agenda" class="agenda-section">
-      <h2>Agendá tu turno</h2>
+      <h2>Agendar turno</h2>
       <form id="form-turno">
-        <label>Nombre:
-          <input type="text" id="nombre" required>
-        </label>
-        <label>Email:
-          <input type="email" id="email" required>
-        </label>
-        <label>Curso:
-          <select id="curso" required>
-            <option value="">Seleccioná</option>
-            <option value="Trading">Trading</option>
-            <option value="Cripto">Cripto</option>
-          </select>
-        </label>
-        <label>Fecha:
-          <input type="date" id="fecha" required>
-        </label>
-        <label>Monto generado:
-          <input type="number" id="dinero" min="0" step="0.01">
-        </label>
-        <button type="submit">Agendar</button>
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" required />
+
+        <label for="curso">Curso / Temática</label>
+        <select id="curso" required>
+          <option value="">Seleccioná una opción</option>
+          <option value="Cripto">Cripto</option>
+          <option value="Trading">Trading</option>
+          <option value="Diseño">Diseño</option>
+          <option value="Marketing Digital">Marketing Digital</option>
+        </select>
+
+        <label for="fecha">Fecha</label>
+        <input type="date" id="fecha" required />
+
+        <label for="dinero">Monto a invertir (USD)</label>
+        <input type="number" id="dinero" min="0" step="0.01" value="0" />
+
+        <button type="submit">Agendar turno</button>
       </form>
-    </section>
 
-    <div class="contador-global">
-      <h3>Total generado (global)</h3>
-      <div id="total-generado" class="total-generado">$0</div>
-    </div>
+      <div id="monedero">
+        <h3>Monedero usuario</h3>
+        <div id="total-monedero">$0</div>
+      </div>
 
-    <section id="monedero">
-      <h3>Tu monedero</h3>
-      <div id="total-monedero">$0</div>
-    </section>
+      <div class="contador-global">
+        <h3>Total generado</h3>
+        <div id="total-generado" class="total-generado">$0</div>
+      </div>
 
-    <section id="turnos-agendados">
-      <h3>Turnos agendados</h3>
-      <ul id="lista-turnos"></ul>
+      <div id="turnos-agendados">
+        <h3>Turnos agendados</h3>
+        <ul id="lista-turnos">
+          <li>No hay turnos agendados.</li>
+        </ul>
+      </div>
     </section>
   </main>
 
   <footer>
-    &copy; 2025 Guita Fácil
+    <p>© 2025 ezmoney</p>
   </footer>
 
   <script src="script.js"></script>
 </body>
 </html>
-
