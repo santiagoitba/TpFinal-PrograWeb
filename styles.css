@@ -9,12 +9,14 @@ body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #000;
   color: #faff00;
+  line-height: 1.6;
 }
 
 /* ENCABEZADO */
 header {
   text-align: center;
   padding: 2rem 1rem;
+  background-color: #000;
 }
 
 h1 {
@@ -25,7 +27,7 @@ h1 {
 
 .intro {
   font-size: 1.2rem;
-  color: #e6e600;
+  color: #faff00;
   margin-bottom: 2rem;
   padding: 0 1rem;
   max-width: 700px;
@@ -46,6 +48,7 @@ h1 {
   justify-content: center;
   gap: 2rem;
   padding: 2rem;
+  background-color: #000;
 }
 
 .tematica-card {
@@ -76,7 +79,6 @@ h1 {
   font-weight: bold;
   font-size: 1.1rem;
   display: block;
-  margin-top: 0.5rem;
 }
 
 /* SECCIÓN AGENDADOR */
@@ -85,6 +87,7 @@ h1 {
   margin-top: 4rem;
   padding: 2rem;
   border-top: 1px solid #333;
+  background-color: #000;
 }
 
 .agendador h2 {
@@ -94,7 +97,7 @@ h1 {
 
 .agendador p {
   font-size: 1rem;
-  color: #e6e600;
+  color: #faff00;
   margin-bottom: 1rem;
 }
 
