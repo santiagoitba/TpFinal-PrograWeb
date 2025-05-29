@@ -20,12 +20,23 @@ header {
 h1 {
   font-size: 3rem;
   color: #faff00;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
-p {
+.intro {
   font-size: 1.2rem;
   color: #e6e600;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.subtitulo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
 }
 
 /* SECCIÓN TEMÁTICAS */
@@ -78,6 +89,12 @@ p {
 
 .agendador h2 {
   font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.agendador p {
+  font-size: 1rem;
+  color: #e6e600;
   margin-bottom: 1rem;
 }
 

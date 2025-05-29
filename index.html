@@ -4,128 +4,45 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ezMoney</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #000;
-      color: #faff00;
-    }
-
-    header {
-      text-align: center;
-      padding: 2rem 1rem;
-    }
-
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-    }
-
-    p {
-      font-size: 1.2rem;
-      color: #e6e600;
-    }
-
-    .tematicas {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      padding: 2rem;
-    }
-
-    .tematica-card {
-      background-color: #111;
-      border: 2px solid #faff00;
-      border-radius: 15px;
-      width: 250px;
-      padding: 1rem;
-      text-align: center;
-      transition: transform 0.3s;
-    }
-
-    .tematica-card:hover {
-      transform: scale(1.05);
-    }
-
-    .tematica-card img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 1rem;
-    }
-
-    .tematica-card a {
-      text-decoration: none;
-      color: #faff00;
-      font-weight: bold;
-      font-size: 1.1rem;
-      display: block;
-      margin-top: 0.5rem;
-    }
-
-    .agendador {
-      text-align: center;
-      margin-top: 4rem;
-      padding: 2rem;
-      border-top: 1px solid #333;
-    }
-
-    .agendador h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-
-    .agendador button {
-      background-color: #faff00;
-      color: #000;
-      border: none;
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .agendador button:hover {
-      background-color: #e6e600;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
   <header>
     <h1>ezMoney</h1>
-    <p>Explorá nuestras temáticas</p>
+    <p class="intro">
+      ¿Querés ganar plata fácil desde casa? Explorá una de nuestras 4 opciones de cursos simples y empezá hoy mismo a generar ingresos de forma rápida y sin vueltas.
+    </p>
+    <p class="subtitulo">Explorá nuestras temáticas</p>
   </header>
 
-  <section class="tematicas">
-    <div class="tematica-card">
-      <img src="img/cripto.jpg" alt="Cripto">
-      <a href="cripto.html">Cripto</a>
-    </div>
-    <div class="tematica-card">
-      <img src="img/trading.jpg" alt="Trading">
-      <a href="trading.html">Trading</a>
-    </div>
-    <div class="tematica-card">
-      <img src="img/marketing.jpg" alt="Marketing Digital">
-      <a href="marketing.html">Marketing Digital</a>
-    </div>
-    <div class="tematica-card">
-      <img src="img/diseno.jpg" alt="Diseño">
-      <a href="diseno.html">Diseño</a>
-    </div>
-  </section>
+  <main>
+    <!-- Sección de tarjetas con links a las otras páginas -->
+    <section class="tematicas">
+      <div class="tematica-card">
+        <img src="img/cripto.jpg" alt="Criptomonedas" />
+        <a href="cripto.html">Criptomonedas</a>
+      </div>
+      <div class="tematica-card">
+        <img src="img/trading.jpg" alt="Trading" />
+        <a href="trading.html">Trading</a>
+      </div>
+      <div class="tematica-card">
+        <img src="img/marketing.jpg" alt="Marketing Digital" />
+        <a href="marketing.html">Marketing Digital</a>
+      </div>
+      <div class="tematica-card">
+        <img src="img/diseno.jpg" alt="Diseño" />
+        <a href="diseno.html">Diseño</a>
+      </div>
+    </section>
 
-  <section class="agendador">
-    <h2>Agendá tu turno</h2>
-    <button>Reservar</button>
-  </section>
-
+    <!-- Agendador de turnos -->
+    <section class="agendador">
+      <h2>Agendá tu turno</h2>
+      <p>Elegí día y horario para una asesoría personalizada sin costo.</p>
+      <button>Agendar ahora</button>
+    </section>
+  </main>
 </body>
 </html>
 
