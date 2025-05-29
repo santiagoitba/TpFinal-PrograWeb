@@ -2,98 +2,130 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ezmoney</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ezMoney</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      color: #faff00;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #e6e600;
+    }
+
+    .tematicas {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .tematica-card {
+      background-color: #111;
+      border: 2px solid #faff00;
+      border-radius: 15px;
+      width: 250px;
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .tematica-card:hover {
+      transform: scale(1.05);
+    }
+
+    .tematica-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .tematica-card a {
+      text-decoration: none;
+      color: #faff00;
+      font-weight: bold;
+      font-size: 1.1rem;
+      display: block;
+      margin-top: 0.5rem;
+    }
+
+    .agendador {
+      text-align: center;
+      margin-top: 4rem;
+      padding: 2rem;
+      border-top: 1px solid #333;
+    }
+
+    .agendador h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .agendador button {
+      background-color: #faff00;
+      color: #000;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .agendador button:hover {
+      background-color: #e6e600;
+    }
+  </style>
 </head>
 <body>
+
   <header>
-    <h1>ezmoney</h1>
-    <nav>
-      <a class="nav-link" href="cripto.html">Cripto</a>
-      <a class="nav-link" href="trading.html">Trading</a>
-      <a class="nav-link" href="diseno.html">Diseño</a>
-      <a class="nav-link" href="marketing.html">Marketing Digital</a>
-    </nav>
+    <h1>ezMoney</h1>
+    <p>Explorá nuestras temáticas</p>
   </header>
 
-  <main>
-    <section class="cursos-intro">
-      <h2>Explorá nuestras temáticas</h2>
-      <div class="cursos-lista">
-        <article class="curso">
-          <h3>Cripto</h3>
-          <p>Descubrí todo sobre criptomonedas y blockchain.</p>
-          <a href="cripto.html" class="btn-vermas">Ver más</a>
-        </article>
-        <article class="curso">
-          <h3>Trading</h3>
-          <p>Aprendé a operar en los mercados financieros.</p>
-          <a href="trading.html" class="btn-vermas">Ver más</a>
-        </article>
-        <article class="curso">
-          <h3>Diseño</h3>
-          <p>Desarrollá habilidades en diseño gráfico y web.</p>
-          <a href="diseno.html" class="btn-vermas">Ver más</a>
-        </article>
-        <article class="curso">
-          <h3>Marketing Digital</h3>
-          <p>Conocé estrategias para potenciar negocios online.</p>
-          <a href="marketing.html" class="btn-vermas">Ver más</a>
-        </article>
-      </div>
-    </section>
+  <section class="tematicas">
+    <div class="tematica-card">
+      <img src="img/cripto.jpg" alt="Cripto">
+      <a href="cripto.html">Cripto</a>
+    </div>
+    <div class="tematica-card">
+      <img src="img/trading.jpg" alt="Trading">
+      <a href="trading.html">Trading</a>
+    </div>
+    <div class="tematica-card">
+      <img src="img/marketing.jpg" alt="Marketing Digital">
+      <a href="marketing.html">Marketing Digital</a>
+    </div>
+    <div class="tematica-card">
+      <img src="img/diseno.jpg" alt="Diseño">
+      <a href="diseno.html">Diseño</a>
+    </div>
+  </section>
 
-    <section id="agenda" class="agenda-section">
-      <h2>Agendar turno</h2>
-      <form id="form-turno">
-        <label for="nombre">Nombre completo</label>
-        <input type="text" id="nombre" required />
+  <section class="agendador">
+    <h2>Agendá tu turno</h2>
+    <button>Reservar</button>
+  </section>
 
-        <label for="email">Email</label>
-        <input type="email" id="email" required />
-
-        <label for="curso">Curso / Temática</label>
-        <select id="curso" required>
-          <option value="">Seleccioná una opción</option>
-          <option value="Cripto">Cripto</option>
-          <option value="Trading">Trading</option>
-          <option value="Diseño">Diseño</option>
-          <option value="Marketing Digital">Marketing Digital</option>
-        </select>
-
-        <label for="fecha">Fecha</label>
-        <input type="date" id="fecha" required />
-
-        <label for="dinero">Monto a invertir (USD)</label>
-        <input type="number" id="dinero" min="0" step="0.01" value="0" />
-
-        <button type="submit">Agendar turno</button>
-      </form>
-
-      <div id="monedero">
-        <h3>Monedero usuario</h3>
-        <div id="total-monedero">$0</div>
-      </div>
-
-      <div class="contador-global">
-        <h3>Total generado</h3>
-        <div id="total-generado" class="total-generado">$0</div>
-      </div>
-
-      <div id="turnos-agendados">
-        <h3>Turnos agendados</h3>
-        <ul id="lista-turnos">
-          <li>No hay turnos agendados.</li>
-        </ul>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>© 2025 ezmoney</p>
-  </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
+

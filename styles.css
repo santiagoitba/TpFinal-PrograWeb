@@ -1,245 +1,97 @@
-body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+/* Reset básico */
+* {
   margin: 0;
-  color: #222;
-}
-
-header {
-  background: #1e3c72;
-  color: #fff;
-  padding: 2rem 0 1rem 0;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-header h1 {
-  margin: 0 0 0.5rem 0;
-  font-weight: 900;
-  font-size: 2.5rem;
-  letter-spacing: 0.05em;
-  text-transform: lowercase;
-}
-
-nav a {
-  color: #fff;
-  margin: 0 1rem;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.2s ease-in-out;
-}
-
-nav a:hover {
-  color: #ffd700;
-}
-
-main {
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
-}
-
-/* Cursos Intro */
-.cursos-intro {
-  margin-bottom: 3rem;
-  text-align: center;
-}
-
-.cursos-intro h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  color: #1e3c72;
-  font-weight: 700;
-}
-
-.cursos-lista {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem;
-}
-
-.curso {
-  background: #f0f4ff;
-  border-left: 6px solid #1e3c72;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(30, 60, 114, 0.14);
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.curso h3 {
-  margin-top: 0;
-  margin-bottom: 0.75rem;
-  color: #1e3c72;
-  font-weight: 700;
-  font-size: 1.5rem;
-}
-
-.curso p {
-  flex-grow: 1;
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  color: #555;
-}
-
-.btn-vermas {
-  text-decoration: none;
-  background: #1e3c72;
-  color: #fff;
-  padding: 0.6rem 1rem;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: background 0.2s ease-in-out;
-  align-self: flex-start;
-}
-
-.btn-vermas:hover {
-  background: #ffd700;
-  color: #1e3c72;
-}
-
-/* Agenda sección */
-.agenda-section {
-  background: #e0e7ff;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(30, 60, 114, 0.14);
-}
-
-.agenda-section h2 {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  color: #1e3c72;
-  font-weight: 700;
-}
-
-form label {
-  display: block;
-  margin-bottom: 0.4rem;
-  font-weight: 600;
-  color: #1e3c72;
-}
-
-input,
-select,
-button {
-  display: block;
-  width: 100%;
-  margin-bottom: 1rem;
-  padding: 0.7rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
+  padding: 0;
   box-sizing: border-box;
 }
 
-button {
-  background: #1e3c72;
-  color: #fff;
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #000;
+  color: #faff00;
+}
+
+/* ENCABEZADO */
+header {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+h1 {
+  font-size: 3rem;
+  color: #faff00;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  font-size: 1.2rem;
+  color: #e6e600;
+}
+
+/* SECCIÓN TEMÁTICAS */
+.tematicas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.tematica-card {
+  background-color: #111;
+  border: 2px solid #faff00;
+  border-radius: 15px;
+  width: 250px;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.tematica-card:hover {
+  transform: scale(1.05);
+}
+
+.tematica-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.tematica-card a {
+  text-decoration: none;
+  color: #faff00;
+  font-weight: bold;
+  font-size: 1.1rem;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+/* SECCIÓN AGENDADOR */
+.agendador {
+  text-align: center;
+  margin-top: 4rem;
+  padding: 2rem;
+  border-top: 1px solid #333;
+}
+
+.agendador h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.agendador button {
+  background-color: #faff00;
+  color: #000;
   border: none;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 0.5rem;
-  transition: background 0.2s ease-in-out;
-}
-
-button:hover {
-  background: #ffd700;
-  color: #1e3c72;
-}
-
-/* Monedero */
-#monedero {
-  background: #e0ffe6;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 179, 0, 0.2);
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-#total-monedero {
-  font-size: 1.5rem;
-  color: #008000;
-  font-weight: bold;
-  margin-top: 0.5rem;
-}
-
-/* Contador global */
-.contador-global {
-  background: #fffbe6;
-  border: 2px solid #ffd700;
-  border-radius: 12px;
-  text-align: center;
-  margin: 2rem auto 2rem auto;
-  padding: 1.5rem;
-  max-width: 500px;
-  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.2);
-}
-
-.total-generado {
-  font-size: 2.5rem;
-  color: #1e3c72;
-  font-weight: bold;
-  margin-top: 0.5rem;
-}
-
-/* Turnos agendados */
-#turnos-agendados {
-  margin-top: 2rem;
-  background: #fffbe6;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.2);
-}
-
-#turnos-agendados h3 {
-  margin-top: 0;
-  color: #1e3c72;
-  font-weight: 700;
-}
-
-#turnos-agendados ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-#turnos-agendados li {
-  margin-bottom: 0.8rem;
-  padding-bottom: 0.3rem;
-  border-bottom: 1px solid rgba(255, 215, 0, 0.33);
+  padding: 0.8rem 1.5rem;
   font-size: 1rem;
-  color: #333;
-}
-
-#turnos-agendados button.borrar-turno {
-  background: #ffd700;
-  border: none;
-  border-radius: 6px;
-  padding: 0.3rem 0.6rem;
-  color: #1e3c72;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: 600;
-  margin-left: 1rem;
-  transition: background 0.2s ease-in-out;
+  transition: background 0.3s;
 }
 
-#turnos-agendados button.borrar-turno:hover {
-  background: #1e3c72;
-  color: #ffd700;
-}
-
-footer {
-  text-align: center;
-  padding: 1.5rem 0;
-  background: #1e3c72;
-  color: #fff;
-  margin-top: 2rem;
-  border-radius: 0 0 16px 16px;
+.agendador button:hover {
+  background-color: #e6e600;
 }
