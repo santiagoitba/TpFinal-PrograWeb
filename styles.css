@@ -6,112 +6,179 @@
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #000;
-  color: #faff00;
-  line-height: 1.6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #000; /* Fondo negro */
+  color: #f0f0f0;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* ENCABEZADO */
 header {
-  text-align: center;
-  padding: 2rem 1rem;
   background-color: #000;
+  padding: 2rem 1rem;
+  text-align: center;
+  border-bottom: 3px solid #dfff00; /* Amarillo flúo */
 }
 
-h1 {
+header h1 {
+  color: #dfff00;
   font-size: 3rem;
-  color: #faff00;
-  margin-bottom: 1rem;
+  font-weight: 900;
+}
+
+main {
+  flex: 1;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
 }
 
 .intro {
-  font-size: 1.2rem;
-  color: #faff00;
   margin-bottom: 2rem;
-  padding: 0 1rem;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+  font-size: 1.3rem;
+  color: #dfff00;
+  font-weight: 600;
+  text-align: center;
 }
 
-.subtitulo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
+.tematicas h2 {
+  color: #dfff00;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 2rem;
 }
 
-/* SECCIÓN TEMÁTICAS */
-.tematicas {
+.tematicas-grid {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
-  padding: 2rem;
-  background-color: #000;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
 }
 
-.tematica-card {
-  background-color: #111;
-  border: 2px solid #faff00;
-  border-radius: 15px;
-  width: 250px;
-  padding: 1rem;
-  text-align: center;
-  transition: transform 0.3s;
-}
-
-.tematica-card:hover {
-  transform: scale(1.05);
-}
-
-.tematica-card img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-}
-
-.tematica-card a {
+.tema-btn {
+  background-color: #222;
+  border: 2px solid #dfff00;
+  color: #dfff00;
   text-decoration: none;
-  color: #faff00;
-  font-weight: bold;
-  font-size: 1.1rem;
-  display: block;
-}
-
-/* SECCIÓN AGENDADOR */
-.agendador {
+  padding: 1.2rem 2rem;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  flex: 1 1 150px;
   text-align: center;
-  margin-top: 4rem;
-  padding: 2rem;
-  border-top: 1px solid #333;
-  background-color: #000;
 }
 
-.agendador h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
-.agendador p {
-  font-size: 1rem;
-  color: #faff00;
-  margin-bottom: 1rem;
-}
-
-.agendador button {
-  background-color: #faff00;
+.tema-btn:hover {
+  background-color: #dfff00;
   color: #000;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
 }
 
-.agendador button:hover {
-  background-color: #e6e600;
+.agenda-section {
+  background-color: #111;
+  border: 2px solid #dfff00;
+  border-radius: 15px;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto 4rem auto;
+  color: #f0f0f0;
+}
+
+.agenda-section h2 {
+  color: #dfff00;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #dfff00;
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1.2rem;
+  border-radius: 8px;
+  border: 2px solid #dfff00;
+  background-color: #222;
+  color: #f0f0f0;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+form input:focus,
+form select:focus {
+  outline: none;
+  border-color: #ffff33;
+  background-color: #333;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.2rem;
+  background-color: #dfff00;
+  color: #000;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #c1d800;
+}
+
+#lista-turnos {
+  list-style: none;
+  margin-top: 2rem;
+  max-height: 250px;
+  overflow-y: auto;
+  padding-right: 1rem;
+  color: #dfff00;
+  font-weight: 600;
+}
+
+#lista-turnos li {
+  background-color: #222;
+  margin-bottom: 0.6rem;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#lista-turnos button.borrar-turno {
+  background-color: #ff4d4d;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+}
+
+#lista-turnos button.borrar-turno:hover {
+  background-color: #ff0000;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #000;
+  border-top: 3px solid #dfff00;
+  color: #dfff00;
+  font-weight: 600;
+  font-size: 0.9rem;
 }
