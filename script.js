@@ -1,67 +1,84 @@
-const formulario = document.getElementById('turnoForm');
-const lista = document.getElementById('lista-turnos');
-const mensaje = document.getElementById('mensaje');
-const totalGenerado = document.getElementById('total-generado');
-const totalMonedero = document.getElementById('total-monedero');
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.agendar-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      document.getElementById('curso').value = this.dataset.curso;
+      document.getElementById('agenda').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
 
-let turnos = [];
-let total = 0;
+  const form = document.getElementById('form-turno');
+  const listaTurnos = document.getElementById('lista-turnos');
+  const totalMonedero = document.getElementById('total-monedero');
+  const totalGenerado = document.getElementById('total-generado');
 
-formulario.addEventListener('submit', (e) => {
-  e.preventDefault();
+  let turnos = JSON.parse(localStorage.getItem('turnos')) || [];
+  let totalGlobal = parseFloat(localStorage.getItem('totalGlobal')) || 0;
 
-  const nombre = document.getElementById('nombre').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const fecha = document.getElementById('fecha').value;
+  function renderTurnos() {
+    listaTurnos.innerHTML = '';
+    let totalUsuario = 0;
 
-  if (!nombre || !email || !fecha) {
-    mostrarMensaje('Por favor completá todos los campos.');
-    return;
+    if (turnos.length === 0) {
+      listaTurnos.innerHTML = '<li>No hay turnos agendados.</li>';
+      totalMonedero.textContent = '$0';
+      return;
+    }
+
+    turnos.forEach((t, i) => {
+      totalUsuario += Number(t.dinero || 0);
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>${t.nombre}</strong> (${t.email}) - <em>${t.curso}</em> el <span>${t.fecha}</span>
+        <span style="margin-left:10px;">$${t.dinero}</span>
+        <button class="borrar-turno" data-index="${i}">Borrar</button>`;
+      listaTurnos.appendChild(li);
+    });
+
+    totalMonedero.textContent = `$${totalUsuario.toFixed(2)}`;
   }
 
-  const monto = 1000; // Valor fijo del turno
+  function renderTotalGlobal() {
+    totalGenerado.textContent = `$${totalGlobal.toFixed(2)}`;
+  }
 
-  const nuevoTurno = { nombre, email, fecha, monto };
-  turnos.push(nuevoTurno);
-  total += monto;
+  renderTurnos();
+  renderTotalGlobal();
 
-  mostrarTurnos();
-  actualizarTotales();
-  formulario.reset();
-  mostrarMensaje('Turno agendado con éxito.');
-});
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const nombre = document.getElementById('nombre').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const curso = document.getElementById('curso').value;
+    const fecha = document.getElementById('fecha').value;
+    const dinero = parseFloat(document.getElementById('dinero').value) || 0;
 
-function mostrarTurnos() {
-  lista.innerHTML = '';
+    if (dinero < 0) {
+      alert('El monto no puede ser negativo.');
+      return;
+    }
 
-  turnos.forEach((t, index) => {
-    const li = document.createElement('li');
-    li.textContent = `${t.nombre} - ${t.email} - ${t.fecha} - $${t.monto}`;
-
-    const btn = document.createElement('button');
-    btn.textContent = 'Eliminar';
-    btn.classList.add('borrar-turno');
-    btn.onclick = () => eliminarTurno(index);
-
-    li.appendChild(btn);
-    lista.appendChild(li);
+    if (nombre && email && curso && fecha) {
+      turnos.push({ nombre, email, curso, fecha, dinero });
+      localStorage.setItem('turnos', JSON.stringify(turnos));
+      totalGlobal += dinero;
+      localStorage.setItem('totalGlobal', totalGlobal);
+      renderTurnos();
+      renderTotalGlobal();
+      form.reset();
+      alert('¡Turno agendado con éxito!');
+    }
   });
-}
 
-function eliminarTurno(index) {
-  total -= turnos[index].monto;
-  turnos.splice(index, 1);
-  mostrarTurnos();
-  actualizarTotales();
-  mostrarMensaje('Turno eliminado.');
-}
-
-function actualizarTotales() {
-  totalGenerado.textContent = `Total generado: $${total}`;
-  totalMonedero.textContent = `Total en monedero: $${total}`;
-}
-
-function mostrarMensaje(texto) {
-  mensaje.textContent = texto;
-  setTimeout(() => mensaje.textContent = '', 3000);
-}
+  listaTurnos.addEventListener('click', function (e) {
+    if (e.target.classList.contains('borrar-turno')) {
+      const idx = e.target.dataset.index;
+      if (confirm('¿Seguro que querés borrar este turno?')) {
+        totalGlobal -= Number(turnos[idx].dinero || 0);
+        turnos.splice(idx, 1);
+        localStorage.setItem('turnos', JSON.stringify(turnos));
+        localStorage.setItem('totalGlobal', totalGlobal);
+        renderTurnos();
+        renderTotalGlobal();
+      }
+    }
+  });
+});
