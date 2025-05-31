@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Botón de Cripto - NUEVO CÓDIGO
+  document.querySelector('.tema-btn[data-curso="Cripto"]').addEventListener('click', function() {
+    window.location = 'cripto.html';
+  });
+  
+  // Código original que ya tenías
   document.querySelectorAll('.agendar-btn').forEach(btn => {
     btn.addEventListener('click', function () {
       document.getElementById('curso').value = this.dataset.curso;
