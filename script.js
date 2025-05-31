@@ -1,14 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Botón de Cripto - NUEVO CÓDIGO
-  document.querySelector('.tema-btn[data-curso="Cripto"]').addEventListener('click', function() {
-    window.location = 'cripto.html';
-  });
-  
-  // Código original que ya tenías
-  document.querySelectorAll('.agendar-btn').forEach(btn => {
+  // Manejador para los botones de temáticas
+  document.querySelectorAll('.tema-btn').forEach(btn => {
     btn.addEventListener('click', function () {
-      document.getElementById('curso').value = this.dataset.curso;
-      document.getElementById('agenda').scrollIntoView({ behavior: 'smooth' });
+      const curso = this.dataset.curso;
+      
+      // Si tiene la clase agendar-btn, hace scroll al formulario
+      if (this.classList.contains('agendar-btn')) {
+        document.getElementById('curso').value = curso;
+        document.getElementById('agenda').scrollIntoView({ behavior: 'smooth' });
+      } 
+      // Si es el botón de Cripto, navega a cripto.html
+      else if (curso === 'Cripto') {
+        window.location = 'cripto.html';
+      }
+      // Aquí puedes agregar más condiciones para los otros botones cuando crees las páginas
     });
   });
 
