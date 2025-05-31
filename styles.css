@@ -70,6 +70,7 @@ main {
   transition: background-color 0.3s ease, color 0.3s ease;
   flex: 1 1 150px;
   text-align: center;
+  cursor: pointer;
 }
 
 .tema-btn:hover {
@@ -197,4 +198,63 @@ footer {
   color: #dfff00;
   font-weight: 600;
   font-size: 0.9rem;
+}
+
+/* Estilos para el enlace de volver en cripto.html */
+header a {
+  color: #dfff00;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+header a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive para tablets y móviles */
+@media screen and (max-width: 768px) {
+  .tematicas-grid {
+    gap: 1rem;
+  }
+  
+  .tema-btn {
+    flex: 1 1 calc(50% - 1rem);
+  }
+  
+  .agenda-section {
+    margin: 0 1rem 3rem 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .tematicas-grid {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .tema-btn {
+    width: 100%;
+    flex: none;
+  }
+  
+  .agenda-section {
+    margin: 0 0.5rem 2rem 0.5rem;
+    padding: 1.5rem;
+  }
+  
+  #lista-turnos li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  #lista-turnos button.borrar-turno {
+    align-self: flex-end;
+    margin-top: 0.5rem;
+  }
 }
