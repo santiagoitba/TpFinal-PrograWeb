@@ -305,3 +305,38 @@ header a:hover {
   text-align: center;
   margin-top: 3rem;
 }
+
+/* CSS para controlar el tamaño de las imágenes */
+.curso-imagen img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  display: block;
+  margin: 0 auto 2rem auto;
+}
+
+.profesor-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+/* CSS para hacer el texto más grande */
+.curso-descripcion p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.curso-descripcion ul {
+  font-size: 1.1rem;
+}
+
+.curso-descripcion ul li {
+  margin-bottom: 0.5rem;
+}
+
+.profesor-card p {
+  font-size: 1rem;
+}
