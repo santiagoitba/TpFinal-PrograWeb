@@ -1,290 +1,461 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EZMoney | Cripto</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EZMoney | Cripto</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <header>
-    <h1>Criptomonedas</h1>
-    <a href="index.html">← Volver a EZMoney</a>
-  </header>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Crypto<span>Tracker</span></h1>
+            </div>
+            <nav>
+                <button class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="cripto.html" class="active">Criptomonedas</a></li>
+                    <li><a href="portfolio.html">Mi Portfolio</a></li>
+                    <li><a href="noticias.html">Noticias</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+        <h1>Criptomonedas</h1>
+        <a href="index.html">← Volver a EZMoney</a>
+    </header>
 
-  <main>
-    <p>En esta sección vas a aprender todo sobre wallets, exchanges, y cómo empezar en el mundo cripto.</p>
-    
-    <section class="curso-info">
-      <div class="curso-imagen">
-        <img src="fotos/inicialcripto.jpeg" alt="Curso de Criptomonedas">
-      </div>
-      
-      <div class="curso-descripcion">
-        <h2>¿Qué vas a aprender?</h2>
-        <p>Aprende desde cero el mundo de las criptomonedas. Te enseñamos a crear wallets seguras, usar exchanges, invertir de forma inteligente y generar ingresos pasivos con DeFi y staking.</p>
-        
-        <ul>
-          <li>Creación y manejo de wallets</li>
-          <li>Compra y venta en exchanges</li>
-          <li>Análisis de proyectos crypto</li>
-          <li>Estrategias de inversión</li>
-          <li>DeFi y staking</li>
-        </ul>
-      </div>
+    <section class="page-header">
+        <div class="container">
+            <h1>Criptomonedas</h1>
+            <p>Explora y gestiona tus criptomonedas favoritas</p>
+        </div>
     </section>
 
-    <section class="profesionales">
-      <h2>Nuestros instructores</h2>
-      <div class="profesionales-grid">
-        <div class="profesor-card">
-          <img src="fotos/cripto1.jpg" alt="Juan Pérez">
-          <h3>Juan Pérez</h3>
-          <p>Trader profesional con 5 años de experiencia en crypto. Especialista en análisis técnico.</p>
+    <section class="crypto-manager">
+        <div class="container">
+            <div class="crypto-controls">
+                <div class="search-filter">
+                    <input type="text" id="crypto-search" placeholder="Buscar criptomoneda...">
+                    <select id="crypto-sort">
+                        <option value="name">Nombre</option>
+                        <option value="price">Precio</option>
+                        <option value="change">Cambio 24h</option>
+                        <option value="marketcap">Capitalización</option>
+                    </select>
+                </div>
+                <button id="add-crypto-btn" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Añadir Criptomoneda
+                </button>
+            </div>
+
+            <div class="crypto-table-container">
+                <table class="crypto-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Símbolo</th>
+                            <th>Precio</th>
+                            <th>Cambio 24h</th>
+                            <th>Capitalización</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="crypto-table-body">
+                        <!-- Las filas de criptomonedas se cargarán dinámicamente con JavaScript -->
+                        <tr>
+                            <td colspan="6" class="loading-cell">Cargando datos...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        
-        <div class="profesor-card">
-          <img src="fotos/cripto2.jpeg" alt="María González">
-          <h3>María González</h3>
-          <p>Experta en DeFi y blockchain. Fundadora de 3 proyectos crypto exitosos.</p>
-        </div>
-      </div>
     </section>
 
-    <!-- NUEVA SECCIÓN: Cursos de la comunidad -->
-    <section class="cursos-comunidad">
-      <h2>Cursos de la comunidad</h2>
-      <p>Estos son cursos creados por nuestra comunidad de expertos en criptomonedas.</p>
-      
-      <div id="cursos-comunidad-lista" class="profesionales-grid">
-        <!-- Aquí se mostrarán los cursos creados por usuarios -->
-        <p id="no-cursos-msg">Aún no hay cursos creados por la comunidad. ¡Sé el primero en crear uno!</p>
-      </div>
-      
-      <div class="crear-curso-btn">
-        <button class="tema-btn" id="mostrar-form-curso">Crear tu propio curso</button>
-      </div>
-    </section>
+    <main>
+        <p>En esta sección vas a aprender todo sobre wallets, exchanges, y cómo empezar en el mundo cripto.</p>
+        
+        <section class="curso-info">
+            <div class="curso-imagen">
+                <img src="fotos/inicialcripto.jpeg" alt="Curso de Criptomonedas">
+            </div>
+            
+            <div class="curso-descripcion">
+                <h2>¿Qué vas a aprender?</h2>
+                <p>Aprende desde cero el mundo de las criptomonedas. Te enseñamos a crear wallets seguras, usar exchanges, invertir de forma inteligente y generar ingresos pasivos con DeFi y staking.</p>
+                
+                <ul>
+                    <li>Creación y manejo de wallets</li>
+                    <li>Compra y venta en exchanges</li>
+                    <li>Análisis de proyectos crypto</li>
+                    <li>Estrategias de inversión</li>
+                    <li>DeFi y staking</li>
+                </ul>
+            </div>
+        </section>
 
-    <!-- Formulario para crear curso (oculto por defecto) -->
-    <section id="form-crear-curso" class="form-crear-curso" style="display: none;">
-      <h2>Crear un nuevo curso</h2>
-      <form id="nuevo-curso-form">
-        <div class="form-group">
-          <label for="curso-titulo">Título del curso:</label>
-          <input type="text" id="curso-titulo" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="curso-descripcion">Descripción:</label>
-          <textarea id="curso-descripcion" rows="4" required></textarea>
-        </div>
-        
-        <div class="form-group">
-          <label for="curso-instructor">Tu nombre (instructor):</label>
-          <input type="text" id="curso-instructor" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="curso-email">Email de contacto:</label>
-          <input type="email" id="curso-email" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="curso-imagen">URL de tu foto (instructor):</label>
-          <input type="url" id="curso-imagen" placeholder="https://ejemplo.com/tu-foto.jpg" required>
-          <small>Ingresa la URL de una imagen tuya (recomendado: 150x150 píxeles)</small>
-        </div>
-        
-        <div class="form-group">
-          <label for="curso-imagen-curso">URL de imagen del curso:</label>
-          <input type="url" id="curso-imagen-curso" placeholder="https://ejemplo.com/imagen-curso.jpg" required>
-          <small>Ingresa la URL de una imagen para tu curso (recomendado: 600x300 píxeles)</small>
-        </div>
-        
-        <div class="form-group">
-          <label for="curso-precio">Precio ($):</label>
-          <input type="number" id="curso-precio" min="0" step="0.01" required>
-        </div>
-        
-        <div class="form-buttons">
-          <button type="button" id="cancelar-curso" class="btn-secundario">Cancelar</button>
-          <button type="submit" class="btn-primario">Publicar curso</button>
-        </div>
-      </form>
-    </section>
+        <section class="profesionales">
+            <h2 class="instructores-titulo">Nuestros instructores</h2>
+            <div class="profesionales-grid">
+                <div class="profesor-card">
+                    <img src="fotos/cripto1.jpg" alt="Juan Pérez">
+                    <h3>Juan Pérez</h3>
+                    <p>Trader profesional con 5 años de experiencia en crypto. Especialista en análisis técnico.</p>
+                </div>
+                
+                <div class="profesor-card">
+                    <img src="fotos/cripto2.jpeg" alt="María González">
+                    <h3>María González</h3>
+                    <p>Experta en DeFi y blockchain. Fundadora de 3 proyectos crypto exitosos.</p>
+                </div>
+            </div>
+        </section>
 
-    <div class="agendar-turno-btn">
-      <button class="tema-btn" onclick="window.location='index.html#agenda'">Agendar turno</button>
+        <!-- NUEVA SECCIÓN: Cursos de la comunidad -->
+        <section class="cursos-comunidad">
+            <h2>Cursos de la comunidad</h2>
+            <p>Estos son cursos creados por nuestra comunidad de expertos en criptomonedas.</p>
+            
+            <div id="cursos-comunidad-lista" class="profesionales-grid">
+                <!-- Aquí se mostrarán los cursos creados por usuarios -->
+            </div>
+            
+            <p id="no-cursos-msg" style="display: none;">Aún no hay cursos creados por la comunidad. ¡Sé el primero en crear uno!</p>
+            
+            <div class="crear-curso-btn">
+                <button class="tema-btn" id="mostrar-form-curso">Crear tu propio curso</button>
+            </div>
+        </section>
+
+        <!-- Formulario para crear curso (oculto por defecto) -->
+        <section id="form-crear-curso" class="form-crear-curso" style="display: none;">
+            <h2>Crear un nuevo curso</h2>
+            <form id="nuevo-curso-form">
+                <div class="form-group">
+                    <label for="curso-titulo">Título del curso:</label>
+                    <input type="text" id="curso-titulo" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="curso-descripcion">Descripción:</label>
+                    <textarea id="curso-descripcion" rows="4" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="curso-instructor">Tu nombre (instructor):</label>
+                    <input type="text" id="curso-instructor" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="curso-email">Email de contacto:</label>
+                    <input type="email" id="curso-email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="curso-imagen">URL de tu foto (instructor):</label>
+                    <input type="url" id="curso-imagen" placeholder="https://ejemplo.com/tu-foto.jpg" required>
+                    <small>Ingresa la URL de una imagen tuya (recomendado: 150x150 píxeles)</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="curso-imagen-curso">URL de imagen del curso:</label>
+                    <input type="url" id="curso-imagen-curso" placeholder="https://ejemplo.com/imagen-curso.jpg" required>
+                    <small>Ingresa la URL de una imagen para tu curso (recomendado: 600x300 píxeles)</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="curso-precio">Precio ($):</label>
+                    <input type="number" id="curso-precio" min="0" step="0.01" required>
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="button" id="cancelar-curso" class="btn-secundario">Cancelar</button>
+                    <button type="submit" class="btn-primario">Publicar curso</button>
+                </div>
+            </form>
+        </section>
+
+        <div class="agendar-turno-btn">
+            <button class="tema-btn" onclick="window.location='index.html#agenda'">Agendar turno</button>
+        </div>
+    </main>
+
+    <!-- Modal para añadir/editar criptomoneda -->
+    <div id="crypto-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-title">Añadir Criptomoneda</h2>
+            <form id="crypto-form">
+                <input type="hidden" id="crypto-id">
+                <div class="form-group">
+                    <label for="crypto-name">Nombre</label>
+                    <input type="text" id="crypto-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="crypto-symbol">Símbolo</label>
+                    <input type="text" id="crypto-symbol" required>
+                </div>
+                <div class="form-group">
+                    <label for="crypto-price">Precio (USD)</label>
+                    <input type="number" id="crypto-price" step="0.00001" required>
+                </div>
+                <div class="form-group">
+                    <label for="crypto-change">Cambio 24h (%)</label>
+                    <input type="number" id="crypto-change" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="crypto-marketcap">Capitalización (USD)</label>
+                    <input type="number" id="crypto-marketcap" required>
+                </div>
+                <div class="form-buttons">
+                    <button type="button" id="cancel-crypto" class="btn btn-secondary">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
     </div>
-  </main>
 
-  <footer>
-    <p>&copy; 2025 EZMoney</p>
-  </footer>
+    <!-- Modal de confirmación para eliminar -->
+    <div id="confirm-modal" class="modal">
+        <div class="modal-content">
+            <h2>Confirmar eliminación</h2>
+            <p>¿Estás seguro de que deseas eliminar esta criptomoneda?</p>
+            <div class="form-buttons">
+                <button id="cancel-delete" class="btn btn-secondary">Cancelar</button>
+                <button id="confirm-delete" class="btn btn-danger">Eliminar</button>
+            </div>
+        </div>
+    </div>
 
-  <!-- Script para manejar los cursos de la comunidad -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Referencias a elementos del DOM
-      const mostrarFormBtn = document.getElementById('mostrar-form-curso');
-      const formCrearCurso = document.getElementById('form-crear-curso');
-      const cancelarCursoBtn = document.getElementById('cancelar-curso');
-      const nuevoCursoForm = document.getElementById('nuevo-curso-form');
-      const cursosComunidadLista = document.getElementById('cursos-comunidad-lista');
-      const noCursosMsg = document.getElementById('no-cursos-msg');
-      
-      // Cargar cursos guardados
-      let cursosCripto = JSON.parse(localStorage.getItem('cursosCripto')) || [];
-      
-      // Mostrar formulario
-      mostrarFormBtn.addEventListener('click', function() {
-        formCrearCurso.style.display = 'block';
-        mostrarFormBtn.style.display = 'none';
-      });
-      
-      // Ocultar formulario
-      cancelarCursoBtn.addEventListener('click', function() {
-        formCrearCurso.style.display = 'none';
-        mostrarFormBtn.style.display = 'block';
-        nuevoCursoForm.reset();
-      });
-      
-      // Guardar nuevo curso
-      nuevoCursoForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const nuevoCurso = {
-          id: Date.now(),
-          titulo: document.getElementById('curso-titulo').value,
-          descripcion: document.getElementById('curso-descripcion').value,
-          instructor: document.getElementById('curso-instructor').value,
-          email: document.getElementById('curso-email').value,
-          imagen: document.getElementById('curso-imagen').value,
-          imagenCurso: document.getElementById('curso-imagen-curso').value,
-          precio: parseFloat(document.getElementById('curso-precio').value),
-          categoria: 'cripto',
-          fecha: new Date().toLocaleDateString()
-        };
-        
-        // Agregar a la lista y guardar
-        cursosCripto.push(nuevoCurso);
-        localStorage.setItem('cursosCripto', JSON.stringify(cursosCripto));
-        
-        // Resetear formulario y ocultarlo
-        nuevoCursoForm.reset();
-        formCrearCurso.style.display = 'none';
-        mostrarFormBtn.style.display = 'block';
-        
-        // Actualizar lista de cursos
-        mostrarCursos();
-        
-        alert('¡Tu curso ha sido publicado con éxito!');
-      });
-      
-      // Función para mostrar cursos
-      function mostrarCursos() {
-        if (cursosCripto.length === 0) {
-          noCursosMsg.style.display = 'block';
-          return;
-        }
-        
-        noCursosMsg.style.display = 'none';
-        cursosComunidadLista.innerHTML = '';
-        
-        cursosCripto.forEach(curso => {
-          const cursoElement = document.createElement('div');
-          cursoElement.className = 'profesor-card curso-comunidad-card';
-          cursoElement.innerHTML = `
-            <img src="${curso.imagen}" alt="${curso.instructor}" onerror="this.src='fotos/cripto1.jpg'">
-            <h3>${curso.instructor}</h3>
-            <p>${curso.titulo}</p>
-            <p class="curso-precio">$${curso.precio.toFixed(2)}</p>
-            <div class="curso-botones">
-              <button class="btn-ver-mas" data-id="${curso.id}">Ver detalles</button>
-              <button class="btn-eliminar" data-id="${curso.id}">Eliminar</button>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Crypto<span>Tracker</span></h2>
+                    <p>Tu portal de confianza para el mundo de las criptomonedas.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Enlaces rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="cripto.html">Criptomonedas</a></li>
+                        <li><a href="portfolio.html">Mi Portfolio</a></li>
+                        <li><a href="noticias.html">Noticias</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Síguenos</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
             </div>
-          `;
-          
-          cursosComunidadLista.appendChild(cursoElement);
-        });
-        
-        // Agregar eventos a botones
-        document.querySelectorAll('.btn-ver-mas').forEach(btn => {
-          btn.addEventListener('click', function() {
-            const id = parseInt(this.getAttribute('data-id'));
-            const curso = cursosCripto.find(c => c.id === id);
-            if (curso) {
-              mostrarDetallesCurso(curso);
+            <div class="footer-bottom">
+                <p>&copy; 2025 EZMoney</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Referencias a elementos del DOM
+            const mostrarFormBtn = document.getElementById('mostrar-form-curso');
+            const formCrearCurso = document.getElementById('form-crear-curso');
+            const cancelarCursoBtn = document.getElementById('cancelar-curso');
+            const nuevoCursoForm = document.getElementById('nuevo-curso-form');
+            const cursosComunidadLista = document.getElementById('cursos-comunidad-lista');
+            const noCursosMsg = document.getElementById('no-cursos-msg');
+            
+            // Cargar cursos guardados
+            let cursosCripto = JSON.parse(localStorage.getItem('cursosCripto')) || [];
+            
+            // Mostrar formulario
+            mostrarFormBtn.addEventListener('click', function() {
+                formCrearCurso.style.display = 'block';
+                mostrarFormBtn.style.display = 'none';
+            });
+            
+            // Ocultar formulario
+            cancelarCursoBtn.addEventListener('click', function() {
+                formCrearCurso.style.display = 'none';
+                mostrarFormBtn.style.display = 'block';
+                nuevoCursoForm.reset();
+            });
+            
+            // Guardar nuevo curso
+            nuevoCursoForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const nuevoCurso = {
+                    id: Date.now(), // Usar timestamp como ID único
+                    titulo: document.getElementById('curso-titulo').value,
+                    descripcion: document.getElementById('curso-descripcion').value,
+                    instructor: document.getElementById('curso-instructor').value,
+                    email: document.getElementById('curso-email').value,
+                    imagen: document.getElementById('curso-imagen').value,
+                    imagenCurso: document.getElementById('curso-imagen-curso').value,
+                    precio: parseFloat(document.getElementById('curso-precio').value),
+                    categoria: 'cripto',
+                    fecha: new Date().toLocaleDateString()
+                };
+                
+                // Agregar a la lista y guardar
+                cursosCripto.push(nuevoCurso);
+                localStorage.setItem('cursosCripto', JSON.stringify(cursosCripto));
+                
+                // Resetear formulario y ocultarlo
+                nuevoCursoForm.reset();
+                formCrearCurso.style.display = 'none';
+                mostrarFormBtn.style.display = 'block';
+                
+                // Actualizar lista de cursos
+                mostrarCursos();
+                
+                alert('¡Tu curso ha sido publicado con éxito!');
+            });
+            
+            // Función para eliminar curso
+            function eliminarCurso(id) {
+                // Filtrar el array para eliminar el curso con el ID específico
+                cursosCripto = cursosCripto.filter(curso => curso.id !== id);
+                
+                // Guardar el array actualizado en localStorage
+                localStorage.setItem('cursosCripto', JSON.stringify(cursosCripto));
+                
+                // Actualizar la visualización
+                mostrarCursos();
+                
+                alert('Curso eliminado correctamente');
             }
-          });
-        });
-        
-        document.querySelectorAll('.btn-eliminar').forEach(btn => {
-          btn.addEventListener('click', function() {
-            const id = parseInt(this.getAttribute('data-id'));
-            if (confirm('¿Estás seguro de que quieres eliminar este curso?')) {
-              eliminarCurso(id);
+            
+            // Función para mostrar cursos
+            function mostrarCursos() {
+                // Limpiar el contenedor
+                cursosComunidadLista.innerHTML = '';
+                
+                // Verificar si hay cursos
+                if (cursosCripto.length === 0) {
+                    noCursosMsg.style.display = 'block';
+                    return;
+                }
+                
+                // Ocultar mensaje de no cursos
+                noCursosMsg.style.display = 'none';
+                
+                // Mostrar cada curso
+                cursosCripto.forEach(curso => {
+                    const cursoElement = document.createElement('div');
+                    cursoElement.className = 'profesor-card curso-comunidad-card';
+                    cursoElement.innerHTML = `
+                        <img src="${curso.imagen}" alt="${curso.instructor}" onerror="this.src='fotos/cripto1.jpg'">
+                        <h3>${curso.instructor}</h3>
+                        <p>${curso.titulo}</p>
+                        <p class="curso-precio">$${curso.precio.toFixed(2)}</p>
+                        <div class="curso-botones">
+                            <button class="btn-ver-mas" data-id="${curso.id}">Ver detalles</button>
+                            <button class="btn-eliminar" data-id="${curso.id}">Eliminar</button>
+                        </div>
+                    `;
+                    
+                    cursosComunidadLista.appendChild(cursoElement);
+                });
+                
+                // Agregar eventos a los botones de ver detalles
+                document.querySelectorAll('.btn-ver-mas').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const id = parseInt(this.getAttribute('data-id'));
+                        const curso = cursosCripto.find(c => c.id === id);
+                        if (curso) {
+                            mostrarDetallesCurso(curso);
+                        }
+                    });
+                });
+                
+                // Agregar eventos a los botones de eliminar
+                document.querySelectorAll('.btn-eliminar').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const id = parseInt(this.getAttribute('data-id'));
+                        if (confirm('¿Estás seguro de que quieres eliminar este curso?')) {
+                            eliminarCurso(id);
+                        }
+                    });
+                });
             }
-          });
+            
+            // Función para mostrar detalles del curso
+            function mostrarDetallesCurso(curso) {
+                // Crear modal para mostrar detalles
+                const modal = document.createElement('div');
+                modal.className = 'curso-modal';
+                modal.innerHTML = `
+                    <div class="curso-modal-contenido">
+                        <span class="cerrar-modal">&times;</span>
+                        <div class="curso-modal-imagen">
+                            <img src="${curso.imagenCurso}" alt="${curso.titulo}" onerror="this.src='fotos/inicialcripto.jpeg'">
+                        </div>
+                        <h2>${curso.titulo}</h2>
+                        <div class="curso-modal-instructor">
+                            <img src="${curso.imagen}" alt="${curso.instructor}" onerror="this.src='fotos/cripto1.jpg'">
+                            <h3>Instructor: ${curso.instructor}</h3>
+                        </div>
+                        <p class="curso-modal-descripcion">${curso.descripcion}</p>
+                        <p class="curso-modal-precio">Precio: $${curso.precio.toFixed(2)}</p>
+                        <p class="curso-modal-fecha">Publicado: ${curso.fecha}</p>
+                        <div class="curso-modal-botones">
+                            <button class="btn-contactar" data-email="${curso.email}">Contactar al instructor</button>
+                            <button class="btn-eliminar-modal" data-id="${curso.id}">Eliminar curso</button>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+                
+                // Mostrar modal con animación
+                setTimeout(() => {
+                    modal.style.opacity = '1';
+                }, 10);
+                
+                // Cerrar modal
+                modal.querySelector('.cerrar-modal').addEventListener('click', function() {
+                    modal.style.opacity = '0';
+                    setTimeout(() => {
+                        document.body.removeChild(modal);
+                    }, 300);
+                });
+                
+                // Contactar al instructor
+                modal.querySelector('.btn-contactar').addEventListener('click', function() {
+                    const email = this.getAttribute('data-email');
+                    window.location.href = `mailto:${email}?subject=Interesado en tu curso: ${curso.titulo}`;
+                });
+                
+                // Eliminar curso desde el modal
+                modal.querySelector('.btn-eliminar-modal').addEventListener('click', function() {
+                    const id = parseInt(this.getAttribute('data-id'));
+                    if (confirm('¿Estás seguro de que quieres eliminar este curso?')) {
+                        eliminarCurso(id);
+                        // Cerrar el modal después de eliminar
+                        modal.style.opacity = '0';
+                        setTimeout(() => {
+                            document.body.removeChild(modal);
+                        }, 300);
+                    }
+                });
+            }
+            
+            // Mostrar cursos al cargar la página
+            mostrarCursos();
         });
-      }
-      
-      // Función para eliminar curso
-      function eliminarCurso(id) {
-        cursosCripto = cursosCripto.filter(curso => curso.id !== id);
-        localStorage.setItem('cursosCripto', JSON.stringify(cursosCripto));
-        mostrarCursos();
-      }
-      
-      // Función para mostrar detalles del curso
-      function mostrarDetallesCurso(curso) {
-        // Crear modal para mostrar detalles
-        const modal = document.createElement('div');
-        modal.className = 'curso-modal';
-        modal.innerHTML = `
-          <div class="curso-modal-contenido">
-            <span class="cerrar-modal">&times;</span>
-            <div class="curso-modal-imagen">
-              <img src="${curso.imagenCurso}" alt="${curso.titulo}" onerror="this.src='fotos/inicialcripto.jpeg'">
-            </div>
-            <h2>${curso.titulo}</h2>
-            <div class="curso-modal-instructor">
-              <img src="${curso.imagen}" alt="${curso.instructor}" onerror="this.src='fotos/cripto1.jpg'">
-              <h3>Instructor: ${curso.instructor}</h3>
-            </div>
-            <p class="curso-modal-descripcion">${curso.descripcion}</p>
-            <p class="curso-modal-precio">Precio: $${curso.precio.toFixed(2)}</p>
-            <p class="curso-modal-fecha">Publicado: ${curso.fecha}</p>
-            <button class="btn-contactar" data-email="${curso.email}">Contactar al instructor</button>
-          </div>
-        `;
-        
-        document.body.appendChild(modal);
-        
-        // Mostrar modal
-        setTimeout(() => {
-          modal.style.opacity = '1';
-        }, 10);
-        
-        // Cerrar modal
-        modal.querySelector('.cerrar-modal').addEventListener('click', function() {
-          modal.style.opacity = '0';
-          setTimeout(() => {
-            document.body.removeChild(modal);
-          }, 300);
-        });
-        
-        // Contactar al instructor
-        modal.querySelector('.btn-contactar').addEventListener('click', function() {
-          const email = this.getAttribute('data-email');
-          window.location.href = `mailto:${email}?subject=Interesado en tu curso: ${curso.titulo}`;
-        });
-      }
-      
-      // Mostrar cursos al cargar la página
-      mostrarCursos();
-    });
-  </script>
+    </script>
 </body>
 </html>

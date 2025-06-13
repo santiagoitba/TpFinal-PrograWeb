@@ -407,8 +407,44 @@ ul li {
   border: 2px solid #dfff00;
 }
 
+.instructores-titulo {
+  color: #dfff00;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
 .curso-comunidad-card {
   position: relative;
+  background-color: #222;
+  border: 2px solid #dfff00;
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.curso-comunidad-card:hover {
+  transform: translateY(-5px);
+}
+
+.curso-comunidad-card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1rem auto;
+  display: block;
+  border: 2px solid #dfff00;
+}
+
+.curso-comunidad-card h3 {
+  text-align: center;
+  color: #dfff00;
+  margin-bottom: 0.5rem;
+}
+
+.curso-comunidad-card p {
+  text-align: center;
+  margin-bottom: 0.5rem;
 }
 
 .curso-precio {
@@ -416,6 +452,7 @@ ul li {
   font-size: 1.2rem;
   color: #dfff00;
   margin: 0.5rem 0;
+  text-align: center;
 }
 
 .curso-botones {
@@ -424,13 +461,15 @@ ul li {
   margin-top: 1rem;
 }
 
-.btn-ver-mas, 
+.btn-ver-mas,
 .btn-eliminar {
   padding: 0.5rem 1rem;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
   border: none;
+  flex: 1;
+  margin: 0 0.5rem;
 }
 
 .btn-ver-mas {
@@ -578,10 +617,11 @@ ul li {
 
 .curso-modal-imagen img {
   width: 100%;
-  max-height: 300px;
+  height: 250px;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 1.5rem;
+  border: 1px solid #dfff00;
 }
 
 .curso-modal-instructor {
@@ -595,6 +635,7 @@ ul li {
   height: 60px;
   border-radius: 50%;
   margin-right: 1rem;
+  border: 1px solid #dfff00;
 }
 
 .curso-modal-descripcion {
@@ -614,20 +655,38 @@ ul li {
   margin-bottom: 1.5rem;
 }
 
-.btn-contactar {
-  background-color: #dfff00;
-  color: #000;
-  border: none;
+.curso-modal-botones {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.btn-contactar,
+.btn-eliminar-modal {
   padding: 0.8rem 1.5rem;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
-  display: block;
-  width: 100%;
+  border: none;
+  flex: 1;
+}
+
+.btn-contactar {
+  background-color: #dfff00;
+  color: #000;
+}
+
+.btn-eliminar-modal {
+  background-color: #ff4d4d;
+  color: white;
 }
 
 .btn-contactar:hover {
   background-color: #c1d800;
+}
+
+.btn-eliminar-modal:hover {
+  background-color: #ff0000;
 }
 
 /* Responsive para el modal */
@@ -635,5 +694,19 @@ ul li {
   .curso-modal-contenido {
     width: 95%;
     padding: 1.5rem;
+  }
+
+  .curso-modal-botones {
+    flex-direction: column;
+  }
+
+  .curso-botones {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .btn-ver-mas,
+  .btn-eliminar {
+    margin: 0.25rem 0;
   }
 }
