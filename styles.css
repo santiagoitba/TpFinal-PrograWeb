@@ -323,3 +323,152 @@ h2 {
 ul li {
   font-size: 1.2rem !important;
 }
+
+/* Estilos para la sección de cursos de la comunidad */
+.cursos-comunidad {
+  margin-top: 4rem;
+  padding: 2rem;
+  background-color: #111;
+  border-radius: 10px;
+  border: 2px solid #dfff00;
+}
+
+.cursos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.curso-card {
+  background-color: #222;
+  border: 1px solid #dfff00;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.curso-card:hover {
+  transform: translateY(-5px);
+}
+
+.curso-card h3 {
+  color: #dfff00;
+  margin-bottom: 0.5rem;
+}
+
+.curso-instructor {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.curso-descripcion-corta {
+  margin-bottom: 1rem;
+}
+
+.curso-precio {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #dfff00;
+  margin-bottom: 0.5rem;
+}
+
+.curso-fecha {
+  font-size: 0.9rem;
+  color: #999;
+  margin-bottom: 1rem;
+}
+
+.btn-contactar {
+  background-color: #dfff00;
+  color: #000;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-contactar:hover {
+  background-color: #c1d800;
+}
+
+.crear-curso-btn {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* Estilos para el formulario de crear curso */
+.form-crear-curso {
+  background-color: #111;
+  border: 2px solid #dfff00;
+  border-radius: 10px;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.form-crear-curso h2 {
+  color: #dfff00;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #dfff00;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #222;
+  border: 1px solid #dfff00;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.btn-primario {
+  background-color: #dfff00;
+  color: #000;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-secundario {
+  background-color: transparent;
+  color: #dfff00;
+  border: 1px solid #dfff00;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-primario:hover {
+  background-color: #c1d800;
+}
+
+.btn-secundario:hover {
+  background-color: rgba(223, 255, 0, 0.1);
+}
+
+#no-cursos-msg {
+  text-align: center;
+  color: #999;
+  padding: 2rem;
+}

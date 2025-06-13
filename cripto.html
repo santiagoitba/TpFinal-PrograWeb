@@ -51,6 +51,57 @@
       </div>
     </section>
 
+    <!-- NUEVA SECCIÓN: Cursos de la comunidad -->
+    <section class="cursos-comunidad">
+      <h2>Cursos de la comunidad</h2>
+      <p>Estos son cursos creados por nuestra comunidad de expertos en criptomonedas.</p>
+      
+      <div id="cursos-comunidad-lista" class="cursos-grid">
+        <!-- Aquí se mostrarán los cursos creados por usuarios -->
+        <p id="no-cursos-msg">Aún no hay cursos creados por la comunidad. ¡Sé el primero en crear uno!</p>
+      </div>
+      
+      <div class="crear-curso-btn">
+        <button class="tema-btn" id="mostrar-form-curso">Crear tu propio curso</button>
+      </div>
+    </section>
+
+    <!-- Formulario para crear curso (oculto por defecto) -->
+    <section id="form-crear-curso" class="form-crear-curso" style="display: none;">
+      <h2>Crear un nuevo curso</h2>
+      <form id="nuevo-curso-form">
+        <div class="form-group">
+          <label for="curso-titulo">Título del curso:</label>
+          <input type="text" id="curso-titulo" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="curso-descripcion">Descripción:</label>
+          <textarea id="curso-descripcion" rows="4" required></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="curso-instructor">Tu nombre (instructor):</label>
+          <input type="text" id="curso-instructor" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="curso-email">Email de contacto:</label>
+          <input type="email" id="curso-email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="curso-precio">Precio ($):</label>
+          <input type="number" id="curso-precio" min="0" step="0.01" required>
+        </div>
+        
+        <div class="form-buttons">
+          <button type="button" id="cancelar-curso" class="btn-secundario">Cancelar</button>
+          <button type="submit" class="btn-primario">Publicar curso</button>
+        </div>
+      </form>
+    </section>
+
     <div class="agendar-turno-btn">
       <button class="tema-btn" onclick="window.location='index.html#agenda'">Agendar turno</button>
     </div>
@@ -59,5 +110,101 @@
   <footer>
     <p>&copy; 2025 EZMoney</p>
   </footer>
+
+  <!-- Script para manejar los cursos de la comunidad -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Referencias a elementos del DOM
+      const mostrarFormBtn = document.getElementById('mostrar-form-curso');
+      const formCrearCurso = document.getElementById('form-crear-curso');
+      const cancelarCursoBtn = document.getElementById('cancelar-curso');
+      const nuevoCursoForm = document.getElementById('nuevo-curso-form');
+      const cursosComunidadLista = document.getElementById('cursos-comunidad-lista');
+      const noCursosMsg = document.getElementById('no-cursos-msg');
+      
+      // Cargar cursos guardados
+      let cursosCripto = JSON.parse(localStorage.getItem('cursosCripto')) || [];
+      
+      // Mostrar formulario
+      mostrarFormBtn.addEventListener('click', function() {
+        formCrearCurso.style.display = 'block';
+        mostrarFormBtn.style.display = 'none';
+      });
+      
+      // Ocultar formulario
+      cancelarCursoBtn.addEventListener('click', function() {
+        formCrearCurso.style.display = 'none';
+        mostrarFormBtn.style.display = 'block';
+        nuevoCursoForm.reset();
+      });
+      
+      // Guardar nuevo curso
+      nuevoCursoForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const nuevoCurso = {
+          id: Date.now(),
+          titulo: document.getElementById('curso-titulo').value,
+          descripcion: document.getElementById('curso-descripcion').value,
+          instructor: document.getElementById('curso-instructor').value,
+          email: document.getElementById('curso-email').value,
+          precio: parseFloat(document.getElementById('curso-precio').value),
+          categoria: 'cripto',
+          fecha: new Date().toLocaleDateString()
+        };
+        
+        // Agregar a la lista y guardar
+        cursosCripto.push(nuevoCurso);
+        localStorage.setItem('cursosCripto', JSON.stringify(cursosCripto));
+        
+        // Resetear formulario y ocultarlo
+        nuevoCursoForm.reset();
+        formCrearCurso.style.display = 'none';
+        mostrarFormBtn.style.display = 'block';
+        
+        // Actualizar lista de cursos
+        mostrarCursos();
+        
+        alert('¡Tu curso ha sido publicado con éxito!');
+      });
+      
+      // Función para mostrar cursos
+      function mostrarCursos() {
+        if (cursosCripto.length === 0) {
+          noCursosMsg.style.display = 'block';
+          return;
+        }
+        
+        noCursosMsg.style.display = 'none';
+        cursosComunidadLista.innerHTML = '';
+        
+        cursosCripto.forEach(curso => {
+          const cursoElement = document.createElement('div');
+          cursoElement.className = 'curso-card';
+          cursoElement.innerHTML = `
+            <h3>${curso.titulo}</h3>
+            <p class="curso-instructor">Por: ${curso.instructor}</p>
+            <p class="curso-descripcion-corta">${curso.descripcion.substring(0, 100)}${curso.descripcion.length > 100 ? '...' : ''}</p>
+            <p class="curso-precio">$${curso.precio.toFixed(2)}</p>
+            <p class="curso-fecha">Publicado: ${curso.fecha}</p>
+            <button class="btn-contactar" data-email="${curso.email}">Contactar</button>
+          `;
+          
+          cursosComunidadLista.appendChild(cursoElement);
+        });
+        
+        // Agregar evento a botones de contacto
+        document.querySelectorAll('.btn-contactar').forEach(btn => {
+          btn.addEventListener('click', function() {
+            const email = this.getAttribute('data-email');
+            window.location.href = `mailto:${email}?subject=Interesado en tu curso de ${this.closest('.curso-card').querySelector('h3').textContent}`;
+          });
+        });
+      }
+      
+      // Mostrar cursos al cargar la página
+      mostrarCursos();
+    });
+  </script>
 </body>
 </html>
