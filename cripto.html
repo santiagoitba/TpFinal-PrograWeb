@@ -56,7 +56,7 @@
       <h2>Cursos de la comunidad</h2>
       <p>Estos son cursos creados por nuestra comunidad de expertos en criptomonedas.</p>
       
-      <div id="cursos-comunidad-lista" class="cursos-grid">
+      <div id="cursos-comunidad-lista" class="profesionales-grid">
         <!-- Aquí se mostrarán los cursos creados por usuarios -->
         <p id="no-cursos-msg">Aún no hay cursos creados por la comunidad. ¡Sé el primero en crear uno!</p>
       </div>
@@ -88,6 +88,18 @@
         <div class="form-group">
           <label for="curso-email">Email de contacto:</label>
           <input type="email" id="curso-email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="curso-imagen">URL de tu foto (instructor):</label>
+          <input type="url" id="curso-imagen" placeholder="https://ejemplo.com/tu-foto.jpg" required>
+          <small>Ingresa la URL de una imagen tuya (recomendado: 150x150 píxeles)</small>
+        </div>
+        
+        <div class="form-group">
+          <label for="curso-imagen-curso">URL de imagen del curso:</label>
+          <input type="url" id="curso-imagen-curso" placeholder="https://ejemplo.com/imagen-curso.jpg" required>
+          <small>Ingresa la URL de una imagen para tu curso (recomendado: 600x300 píxeles)</small>
         </div>
         
         <div class="form-group">
@@ -148,6 +160,8 @@
           descripcion: document.getElementById('curso-descripcion').value,
           instructor: document.getElementById('curso-instructor').value,
           email: document.getElementById('curso-email').value,
+          imagen: document.getElementById('curso-imagen').value,
+          imagenCurso: document.getElementById('curso-imagen-curso').value,
           precio: parseFloat(document.getElementById('curso-precio').value),
           categoria: 'cripto',
           fecha: new Date().toLocaleDateString()
@@ -180,25 +194,91 @@
         
         cursosCripto.forEach(curso => {
           const cursoElement = document.createElement('div');
-          cursoElement.className = 'curso-card';
+          cursoElement.className = 'profesor-card curso-comunidad-card';
           cursoElement.innerHTML = `
-            <h3>${curso.titulo}</h3>
-            <p class="curso-instructor">Por: ${curso.instructor}</p>
-            <p class="curso-descripcion-corta">${curso.descripcion.substring(0, 100)}${curso.descripcion.length > 100 ? '...' : ''}</p>
+            <img src="${curso.imagen}" alt="${curso.instructor}" onerror="this.src='fotos/cripto1.jpg'">
+            <h3>${curso.instructor}</h3>
+            <p>${curso.titulo}</p>
             <p class="curso-precio">$${curso.precio.toFixed(2)}</p>
-            <p class="curso-fecha">Publicado: ${curso.fecha}</p>
-            <button class="btn-contactar" data-email="${curso.email}">Contactar</button>
+            <div class="curso-botones">
+              <button class="btn-ver-mas" data-id="${curso.id}">Ver detalles</button>
+              <button class="btn-eliminar" data-id="${curso.id}">Eliminar</button>
+            </div>
           `;
           
           cursosComunidadLista.appendChild(cursoElement);
         });
         
-        // Agregar evento a botones de contacto
-        document.querySelectorAll('.btn-contactar').forEach(btn => {
+        // Agregar eventos a botones
+        document.querySelectorAll('.btn-ver-mas').forEach(btn => {
           btn.addEventListener('click', function() {
-            const email = this.getAttribute('data-email');
-            window.location.href = `mailto:${email}?subject=Interesado en tu curso de ${this.closest('.curso-card').querySelector('h3').textContent}`;
+            const id = parseInt(this.getAttribute('data-id'));
+            const curso = cursosCripto.find(c => c.id === id);
+            if (curso) {
+              mostrarDetallesCurso(curso);
+            }
           });
+        });
+        
+        document.querySelectorAll('.btn-eliminar').forEach(btn => {
+          btn.addEventListener('click', function() {
+            const id = parseInt(this.getAttribute('data-id'));
+            if (confirm('¿Estás seguro de que quieres eliminar este curso?')) {
+              eliminarCurso(id);
+            }
+          });
+        });
+      }
+      
+      // Función para eliminar curso
+      function eliminarCurso(id) {
+        cursosCripto = cursosCripto.filter(curso => curso.id !== id);
+        localStorage.setItem('cursosCripto', JSON.stringify(cursosCripto));
+        mostrarCursos();
+      }
+      
+      // Función para mostrar detalles del curso
+      function mostrarDetallesCurso(curso) {
+        // Crear modal para mostrar detalles
+        const modal = document.createElement('div');
+        modal.className = 'curso-modal';
+        modal.innerHTML = `
+          <div class="curso-modal-contenido">
+            <span class="cerrar-modal">&times;</span>
+            <div class="curso-modal-imagen">
+              <img src="${curso.imagenCurso}" alt="${curso.titulo}" onerror="this.src='fotos/inicialcripto.jpeg'">
+            </div>
+            <h2>${curso.titulo}</h2>
+            <div class="curso-modal-instructor">
+              <img src="${curso.imagen}" alt="${curso.instructor}" onerror="this.src='fotos/cripto1.jpg'">
+              <h3>Instructor: ${curso.instructor}</h3>
+            </div>
+            <p class="curso-modal-descripcion">${curso.descripcion}</p>
+            <p class="curso-modal-precio">Precio: $${curso.precio.toFixed(2)}</p>
+            <p class="curso-modal-fecha">Publicado: ${curso.fecha}</p>
+            <button class="btn-contactar" data-email="${curso.email}">Contactar al instructor</button>
+          </div>
+        `;
+        
+        document.body.appendChild(modal);
+        
+        // Mostrar modal
+        setTimeout(() => {
+          modal.style.opacity = '1';
+        }, 10);
+        
+        // Cerrar modal
+        modal.querySelector('.cerrar-modal').addEventListener('click', function() {
+          modal.style.opacity = '0';
+          setTimeout(() => {
+            document.body.removeChild(modal);
+          }, 300);
+        });
+        
+        // Contactar al instructor
+        modal.querySelector('.btn-contactar').addEventListener('click', function() {
+          const email = this.getAttribute('data-email');
+          window.location.href = `mailto:${email}?subject=Interesado en tu curso: ${curso.titulo}`;
         });
       }
       
