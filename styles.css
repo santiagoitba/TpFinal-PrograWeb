@@ -495,6 +495,108 @@ ul li {
   margin-top: 2rem;
 }
 
+/* Estilos para la sección de cursos de la comunidad */
+.cursos-comunidad {
+  margin-top: 4rem;
+  padding: 2rem;
+  background-color: #111;
+  border-radius: 10px;
+  border: 2px solid #dfff00;
+}
+
+.instructores-titulo {
+  color: #dfff00;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.curso-comunidad-card {
+  position: relative;
+  background-color: #222;
+  border: 2px solid #dfff00;
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.curso-comunidad-card:hover {
+  transform: translateY(-5px);
+}
+
+.curso-comunidad-card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1rem auto;
+  display: block;
+  border: 2px solid #dfff00;
+}
+
+.curso-comunidad-card h3 {
+  text-align: center;
+  color: #dfff00;
+  margin-bottom: 0.5rem;
+}
+
+.curso-comunidad-card p {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.curso-precio {
+  font-weight: bold;
+  color: #dfff00;
+  margin: 0.5rem 0;
+}
+
+.curso-botones {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.btn-ver-mas,
+.btn-eliminar {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
+  flex: 1;
+  margin: 0 0.5rem;
+}
+
+.btn-ver-mas {
+  background-color: #dfff00;
+  color: #000;
+}
+
+.btn-eliminar {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.btn-ver-mas:hover {
+  background-color: #c1d800;
+}
+
+.btn-eliminar:hover {
+  background-color: #ff0000;
+}
+
+.crear-curso-btn {
+  text-align: center;
+  margin-top: 2rem;
+}
+
 /* Estilos para el formulario de crear curso */
 .form-crear-curso {
   background-color: #111;

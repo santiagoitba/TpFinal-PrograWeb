@@ -174,8 +174,8 @@
                 </div>
                 
                 <div class="form-buttons">
-                    <button type="button" id="cancelar-curso" class="btn-secundario">Cancelar</button>
-                    <button type="submit" class="btn-primario">Publicar curso</button>
+                    <button type="button" id="cancelar-curso" class="btn btn-secondary">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
             </form>
         </section>
@@ -334,8 +334,6 @@
                 
                 // Actualizar la visualización
                 mostrarCursos();
-                
-                alert('Curso eliminado correctamente');
             }
             
             // Función para mostrar cursos
@@ -355,30 +353,16 @@
                 // Mostrar cada curso
                 cursosCripto.forEach(curso => {
                     const cursoElement = document.createElement('div');
-                    cursoElement.className = 'profesor-card curso-comunidad-card';
+                    cursoElement.className = 'profesor-card';
                     cursoElement.innerHTML = `
                         <img src="${curso.imagen}" alt="${curso.instructor}" onerror="this.src='fotos/cripto1.jpg'">
                         <h3>${curso.instructor}</h3>
                         <p>${curso.titulo}</p>
                         <p class="curso-precio">$${curso.precio.toFixed(2)}</p>
-                        <div class="curso-botones">
-                            <button class="btn-ver-mas" data-id="${curso.id}">Ver detalles</button>
-                            <button class="btn-eliminar" data-id="${curso.id}">Eliminar</button>
-                        </div>
+                        <button class="btn-eliminar" data-id="${curso.id}">Eliminar curso</button>
                     `;
                     
                     cursosComunidadLista.appendChild(cursoElement);
-                });
-                
-                // Agregar eventos a los botones de ver detalles
-                document.querySelectorAll('.btn-ver-mas').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const id = parseInt(this.getAttribute('data-id'));
-                        const curso = cursosCripto.find(c => c.id === id);
-                        if (curso) {
-                            mostrarDetallesCurso(curso);
-                        }
-                    });
                 });
                 
                 // Agregar eventos a los botones de eliminar
@@ -392,70 +376,10 @@
                 });
             }
             
-            // Función para mostrar detalles del curso
-            function mostrarDetallesCurso(curso) {
-                // Crear modal para mostrar detalles
-                const modal = document.createElement('div');
-                modal.className = 'curso-modal';
-                modal.innerHTML = `
-                    <div class="curso-modal-contenido">
-                        <span class="cerrar-modal">&times;</span>
-                        <div class="curso-modal-imagen">
-                            <img src="${curso.imagenCurso}" alt="${curso.titulo}" onerror="this.src='fotos/inicialcripto.jpeg'">
-                        </div>
-                        <h2>${curso.titulo}</h2>
-                        <div class="curso-modal-instructor">
-                            <img src="${curso.imagen}" alt="${curso.instructor}" onerror="this.src='fotos/cripto1.jpg'">
-                            <h3>Instructor: ${curso.instructor}</h3>
-                        </div>
-                        <p class="curso-modal-descripcion">${curso.descripcion}</p>
-                        <p class="curso-modal-precio">Precio: $${curso.precio.toFixed(2)}</p>
-                        <p class="curso-modal-fecha">Publicado: ${curso.fecha}</p>
-                        <div class="curso-modal-botones">
-                            <button class="btn-contactar" data-email="${curso.email}">Contactar al instructor</button>
-                            <button class="btn-eliminar-modal" data-id="${curso.id}">Eliminar curso</button>
-                        </div>
-                    </div>
-                `;
-                
-                document.body.appendChild(modal);
-                
-                // Mostrar modal con animación
-                setTimeout(() => {
-                    modal.style.opacity = '1';
-                }, 10);
-                
-                // Cerrar modal
-                modal.querySelector('.cerrar-modal').addEventListener('click', function() {
-                    modal.style.opacity = '0';
-                    setTimeout(() => {
-                        document.body.removeChild(modal);
-                    }, 300);
-                });
-                
-                // Contactar al instructor
-                modal.querySelector('.btn-contactar').addEventListener('click', function() {
-                    const email = this.getAttribute('data-email');
-                    window.location.href = `mailto:${email}?subject=Interesado en tu curso: ${curso.titulo}`;
-                });
-                
-                // Eliminar curso desde el modal
-                modal.querySelector('.btn-eliminar-modal').addEventListener('click', function() {
-                    const id = parseInt(this.getAttribute('data-id'));
-                    if (confirm('¿Estás seguro de que quieres eliminar este curso?')) {
-                        eliminarCurso(id);
-                        // Cerrar el modal después de eliminar
-                        modal.style.opacity = '0';
-                        setTimeout(() => {
-                            document.body.removeChild(modal);
-                        }, 300);
-                    }
-                });
-            }
-            
             // Mostrar cursos al cargar la página
             mostrarCursos();
         });
     </script>
 </body>
 </html>
+
