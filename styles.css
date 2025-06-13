@@ -497,11 +497,16 @@ ul li {
 
 /* Estilos para la sección de cursos de la comunidad */
 .cursos-comunidad {
-  margin-top: 4rem;
+  margin-top: 2rem; /* Updated from 4rem to 2rem */
   padding: 2rem;
   background-color: #111;
   border-radius: 10px;
   border: 2px solid #dfff00;
+}
+
+.agregar-curso {
+  text-align: center;
+  margin: 1.5rem 0;
 }
 
 .instructores-titulo {
@@ -598,86 +603,85 @@ ul li {
 }
 
 /* Estilos para el formulario de crear curso */
-.form-crear-curso {
+#form-curso {
   background-color: #111;
   border: 2px solid #dfff00;
   border-radius: 10px;
-  padding: 2rem;
-  margin-top: 2rem;
+  padding: 1.5rem;
+  margin-top: 1rem;
 }
 
-.form-crear-curso h2 {
+#form-curso h3 {
   color: #dfff00;
+  margin-bottom: 1rem;
   text-align: center;
-  margin-bottom: 1.5rem;
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem; /* Updated from 1.5rem to 1rem */
 }
 
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
   color: #dfff00;
-  font-weight: bold;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 0.8rem;
+  padding: 0.5rem; /* Updated from 0.8rem to 0.5rem */
   background-color: #222;
   border: 1px solid #dfff00;
   border-radius: 5px;
   color: #fff;
 }
 
-.form-group small {
-  display: block;
-  margin-top: 0.5rem;
-  color: #999;
-  font-size: 0.8rem;
+.form-group textarea {
+  height: 100px;
+  resize: vertical;
 }
 
 .form-buttons {
   display: flex;
   justify-content: space-between;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
-.btn-primario {
-  background-color: #dfff00;
-  color: #000;
+.eliminar-curso {
+  background-color: #ff4d4d;
+  color: white;
   border: none;
-  padding: 0.8rem 1.5rem;
+  padding: 0.5rem 1rem;
   border-radius: 5px;
   cursor: pointer;
-  font-weight: bold;
+  margin-top: 0.5rem;
 }
 
-.btn-secundario {
-  background-color: transparent;
-  color: #dfff00;
-  border: 1px solid #dfff00;
-  padding: 0.8rem 1.5rem;
-  border-radius: 5px;
-  cursor: pointer;
+.eliminar-curso:hover {
+  background-color: #ff0000;
 }
 
-.btn-primario:hover {
-  background-color: #c1d800;
-}
+/* Responsive para el modal */
+@media (max-width: 768px) {
+  .curso-modal-contenido {
+    width: 95%;
+    padding: 1.5rem;
+  }
 
-.btn-secundario:hover {
-  background-color: rgba(223, 255, 0, 0.1);
-}
+  .curso-modal-botones {
+    flex-direction: column;
+  }
 
-#no-cursos-msg {
-  text-align: center;
-  color: #999;
-  padding: 2rem;
-  grid-column: 1 / -1;
+  .curso-botones {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .btn-ver-mas,
+  .btn-eliminar {
+    margin: 0.25rem 0;
+  }
 }
 
 /* Modal de detalles del curso */
@@ -791,24 +795,8 @@ ul li {
   background-color: #ff0000;
 }
 
-/* Responsive para el modal */
-@media (max-width: 768px) {
-  .curso-modal-contenido {
-    width: 95%;
-    padding: 1.5rem;
-  }
-
-  .curso-modal-botones {
-    flex-direction: column;
-  }
-
-  .curso-botones {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .btn-ver-mas,
-  .btn-eliminar {
-    margin: 0.25rem 0;
-  }
+/* Estilos para los botones de agendar instructor */
+.agendar-instructor {
+  margin-top: 1rem;
+  width: 100%;
 }
