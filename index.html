@@ -3,65 +3,83 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>EZMoney</title>
+  <title>EZMoney - Gana fácil desde casa</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
     <h1>EZMoney</h1>
+    <p class="subtitulo">¡Aprendé, invertí y generá ingresos desde casa!</p>
+    <nav>
+      <a href="cripto.html" class="nav-link">Cripto</a>
+      <a href="trading.html" class="nav-link">Trading</a>
+      <a href="marketing.html" class="nav-link">Marketing Digital</a>
+      <a href="diseno.html" class="nav-link">Diseño</a>
+    </nav>
   </header>
 
   <main>
-    <section class="intro">
-      <p>
-        ¿Querés ganar plata fácil desde casa? Explora alguna de nuestras 4 opciones de curso fácil y empieza a generar ingresos YA.
-      </p>
+    <section class="hero">
+      <h2>¿Querés ganar plata fácil desde casa?</h2>
+      <p>Explorá nuestros cursos y unite a la comunidad que ya está generando ingresos online. ¡No necesitás experiencia previa!</p>
+      <a href="#cursos" class="cta-btn">Ver cursos</a>
     </section>
 
-    <section class="tematicas">
-      <h2>Explora nuestras temáticas</h2>
+    <section id="cursos" class="tematicas">
+      <h2>Cursos destacados</h2>
       <div class="tematicas-grid">
-        <button class="tema-btn" onclick="window.location='cripto.html'">Cripto</button>
-        <button class="tema-btn" onclick="window.location='trading.html'">Trading</button>
-        <button class="tema-btn" onclick="window.location='marketing.html'">Marketing Digital</button>
-        <button class="tema-btn" onclick="window.location='diseno.html'">Diseño</button>
+        <div class="curso-card">
+          <img src="img/cripto.jpg" alt="Cripto" class="curso-img" />
+          <h3>Cripto</h3>
+          <p>Aprendé sobre criptomonedas, blockchain y estrategias de inversión.</p>
+          <a href="cripto.html" class="ver-mas-btn">Ver más</a>
+        </div>
+        <div class="curso-card">
+          <img src="img/trading.jpg" alt="Trading" class="curso-img" />
+          <h3>Trading</h3>
+          <p>Dominá el análisis técnico y hacé crecer tu capital en los mercados.</p>
+          <a href="trading.html" class="ver-mas-btn">Ver más</a>
+        </div>
+        <div class="curso-card">
+          <img src="img/marketing.jpg" alt="Marketing Digital" class="curso-img" />
+          <h3>Marketing Digital</h3>
+          <p>Impulsá marcas y productos en redes sociales y plataformas digitales.</p>
+          <a href="marketing.html" class="ver-mas-btn">Ver más</a>
+        </div>
+        <div class="curso-card">
+          <img src="img/diseno.jpg" alt="Diseño" class="curso-img" />
+          <h3>Diseño</h3>
+          <p>Aprendé diseño gráfico y digital para potenciar tu creatividad.</p>
+          <a href="diseno.html" class="ver-mas-btn">Ver más</a>
+        </div>
       </div>
     </section>
 
-    <section class="agenda-section" id="agenda">
-      <h2>Agendar turno</h2>
-      <form id="form-turno">
-        <label for="nombre">Nombre completo:</label>
-        <input type="text" id="nombre" required />
+    <section class="beneficios">
+      <h2>¿Por qué elegir EZMoney?</h2>
+      <ul>
+        <li>✔️ Cursos prácticos y actualizados</li>
+        <li>✔️ Comunidad activa y soporte</li>
+        <li>✔️ Instructores expertos</li>
+        <li>✔️ Resultados reales</li>
+      </ul>
+    </section>
 
-        <label for="email">Correo electrónico:</label>
-        <input type="email" id="email" required />
-
-        <label for="fecha">Fecha del turno:</label>
-        <input type="date" id="fecha" required />
-
-        <label for="horario">Horario:</label>
-        <select id="horario" required>
-          <option value="">Elegí un horario</option>
-          <option value="09:00">09:00</option>
-          <option value="11:00">11:00</option>
-          <option value="14:00">14:00</option>
-          <option value="16:00">16:00</option>
-          <option value="18:00">18:00</option>
-        </select>
-
-        <button type="submit">Agendar</button>
-      </form>
-
-      <h3>Turnos agendados:</h3>
-      <ul id="lista-turnos"></ul>
+    <section class="testimonios">
+      <h2>Testimonios</h2>
+      <blockquote>
+        “Gracias a EZMoney aprendí a invertir en cripto y hoy tengo ingresos extra todos los meses.”<br>
+        <span>- Florencia, 27 años</span>
+      </blockquote>
+      <blockquote>
+        “El curso de marketing digital me permitió conseguir mis primeros clientes freelance.”<br>
+        <span>- Lucas, 22 años</span>
+      </blockquote>
     </section>
   </main>
 
   <footer>
     &copy; 2025 EZMoney - Todos los derechos reservados
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
