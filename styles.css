@@ -122,12 +122,14 @@ nav a:hover {
 }
 
 .beneficios {
-  background: #181818;
-  color: #fff;
-  border-radius: 12px;
+  background: #f8fafc;
+  color: #1e3c72;
+  border-radius: 14px;
   padding: 2rem;
   margin: 2rem 0;
   text-align: center;
+  border: 1.5px solid #e0e7ef;
+  box-shadow: 0 2px 12px #0001;
 }
 .beneficios ul {
   list-style: none;
@@ -137,6 +139,7 @@ nav a:hover {
 .beneficios li {
   font-size: 1.1rem;
   margin-bottom: 0.7rem;
+  color: #222;
 }
 
 .testimonios {
