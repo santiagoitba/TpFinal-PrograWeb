@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
   // Bloquear fechas pasadas y el mismo día
   const fechaInput = document.getElementById('fecha');
@@ -8,21 +7,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const form = document.getElementById('form-turno');
   const listaTurnos = document.getElementById('lista-turnos');
-  const cursoSelect = document.getElementById('curso');
   const horarioSelect = document.getElementById('horario');
-  const instructorInfo = document.getElementById('instructor-info');
+
+  // Si tu página principal es para un curso específico, cambia este valor:
+  const curso = "Cripto"; // O "Trading", "Marketing Digital", "Diseño", según corresponda
+
+  function getInstructorName(curso) {
+    switch (curso) {
+      case 'Cripto': return 'Juan Pérez';
+      case 'Trading': return 'Ana Gómez';
+      case 'Marketing Digital': return 'Sofía López';
+      case 'Diseño': return 'Carlos Ruiz';
+      default: return 'Instructor/a';
+    }
+  }
 
   let turnos = JSON.parse(localStorage.getItem('turnos')) || [];
-
-  // Mostrar instructor si es Cripto
-  cursoSelect.addEventListener('change', function() {
-    if (this.value === 'Cripto') {
-      instructorInfo.textContent = 'Instructor: Juan Pérez';
-      instructorInfo.style.display = 'block';
-    } else {
-      instructorInfo.style.display = 'none';
-    }
-  });
 
   function renderTurnos() {
     listaTurnos.innerHTML = '';
@@ -31,9 +31,18 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
     turnos.forEach((t, i) => {
+      const instructor = t.instructor || getInstructorName(t.curso);
       const li = document.createElement('li');
-      li.innerHTML = `<strong>${t.nombre}</strong> (${t.email}) - <em>${t.curso}</em> el <span>${t.fecha}</span> a las <span>${t.horario}</span>
-        <button class="borrar-turno" data-index="${i}">Borrar</button>`;
+      li.className = 'turno-card';
+      li.innerHTML = `
+        <div class="turno-info">
+          <span class="turno-curso">${t.curso}</span>
+          <span class="turno-fecha">${t.fecha} - ${t.horario} hs</span>
+          <span class="turno-nombre">${t.nombre} (${t.email})</span>
+          <span class="turno-instructor">Instructor: <b>${instructor}</b></span>
+        </div>
+        <button class="borrar-turno" data-index="${i}">Borrar</button>
+      `;
       listaTurnos.appendChild(li);
     });
   }
@@ -44,9 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
     const nombre = document.getElementById('nombre').value.trim();
     const email = document.getElementById('email').value.trim();
-    const curso = cursoSelect.value;
     const fecha = fechaInput.value;
     const horario = horarioSelect.value;
+    const instructor = getInstructorName(curso);
 
     // Validar que no haya turno en el mismo curso, fecha y horario
     const existe = turnos.some(t => t.curso === curso && t.fecha === fecha && t.horario === horario);
@@ -55,11 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    turnos.push({ nombre, email, curso, fecha, horario });
+    turnos.push({ nombre, email, curso, fecha, horario, instructor });
     localStorage.setItem('turnos', JSON.stringify(turnos));
     renderTurnos();
     form.reset();
-    instructorInfo.style.display = 'none';
     alert('¡Turno agendado con éxito!');
   });
 

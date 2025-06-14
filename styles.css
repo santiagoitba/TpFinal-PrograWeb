@@ -806,3 +806,55 @@ ul li {
   color: #dfff00;
   margin-bottom: 1rem;
 }
+
+.turno-card {
+  background: #222;
+  border: 2px solid #dfff00;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #f0f0f0;
+  box-shadow: 0 2px 8px #0002;
+  transition: box-shadow 0.2s;
+}
+.turno-card:hover {
+  box-shadow: 0 4px 16px #dfff0033;
+}
+.turno-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.turno-curso {
+  font-weight: bold;
+  color: #dfff00;
+  font-size: 1.1rem;
+}
+.turno-fecha {
+  font-size: 1rem;
+  color: #ffd700;
+}
+.turno-nombre {
+  font-size: 0.95rem;
+  color: #fff;
+}
+.turno-instructor {
+  font-size: 0.95rem;
+  color: #dfff00;
+}
+.borrar-turno {
+  background: #ff4d4d;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+.borrar-turno:hover {
+  background: #b30000;
+}
