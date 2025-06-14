@@ -34,13 +34,13 @@
           <p>Especialista en Cripto y Blockchain</p>
           <form class="form-turno-comunidad">
             <input type="hidden" class="instructor-nombre" value="Juan Pérez" />
-            <label for="nombre1">Tu nombre:</label>
+            <label>Tu nombre:</label>
             <input type="text" class="nombre" required />
-            <label for="email1">Tu email:</label>
+            <label>Tu email:</label>
             <input type="email" class="email" required />
-            <label for="fecha1">Fecha:</label>
+            <label>Fecha:</label>
             <input type="date" class="fecha" required />
-            <label for="horario1">Horario:</label>
+            <label>Horario:</label>
             <select class="horario" required>
               <option value="">Elegí un horario</option>
               <option value="09:00">09:00</option>
@@ -152,14 +152,6 @@
     });
 
     // Manejo de turnos
-    function getInstructorName(nombre) {
-      if (nombre === "Juan Pérez") return "Juan Pérez";
-      // Buscar en comunidad
-      const instructores = JSON.parse(localStorage.getItem('instructoresComunidad')) || [];
-      const found = instructores.find(i => i.nombre === nombre);
-      return found ? found.nombre : "Instructor/a";
-    }
-
     function renderTurnos() {
       const lista = document.getElementById('lista-turnos');
       const turnos = JSON.parse(localStorage.getItem('turnosCripto')) || [];
@@ -224,12 +216,6 @@
     });
 
     // Inicialización
-    document.addEventListener('DOMContentLoaded', () => {
-      renderComunidadInstructores();
-      renderTurnos();
-      setMinDate(Array.from(document.querySelectorAll('.fecha')));
-    });
-    // Para que funcione al cargar la página
     renderComunidadInstructores();
     renderTurnos();
     setMinDate(Array.from(document.querySelectorAll('.fecha')));

@@ -1,812 +1,201 @@
 /* Reset básico */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #000; /* Fondo negro */
-  color: #f0f0f0;
-  line-height: 1.5;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: #222;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 
 header {
-  background-color: #000;
-  padding: 2rem 1rem;
+  background: #1e3c72;
+  color: #fff;
+  padding: 2rem 0 1rem 0;
   text-align: center;
-  border-bottom: 3px solid #dfff00; /* Amarillo flúo */
+  box-shadow: 0 2px 8px #0002;
 }
 
-header h1 {
-  color: #dfff00;
-  font-size: 3rem;
-  font-weight: 900;
-}
-
-main {
-  flex: 1;
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 1rem;
-}
-
-.intro {
-  margin-bottom: 2rem;
-  font-size: 1.3rem;
-  color: #dfff00;
-  font-weight: 600;
-  text-align: center;
-}
-
-.tematicas h2 {
-  color: #dfff00;
+.subtitulo {
+  font-size: 1.2rem;
   margin-bottom: 1rem;
-  text-align: center;
-  font-size: 2rem;
+  color: #ffd700;
 }
 
-.tematicas-grid {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 3rem;
-}
-
-.tema-btn {
-  background-color: #222;
-  border: 2px solid #dfff00;
-  color: #dfff00;
-  text-decoration: none;
-  padding: 1.2rem 2rem;
-  border-radius: 10px;
-  font-weight: 700;
-  font-size: 1.2rem;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  flex: 1 1 150px;
-  text-align: center;
-  cursor: pointer;
-}
-
-.tema-btn:hover {
-  background-color: #dfff00;
-  color: #000;
-}
-
-/* Sección agenda */
-.agenda-section {
-  background-color: #111;
-  border: 2px solid #dfff00;
-  border-radius: 15px;
-  padding: 2rem;
-  max-width: 600px;
-  margin: 0 auto 4rem auto;
-  color: #f0f0f0;
-}
-
-.agenda-section h2 {
-  color: #dfff00;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 2rem;
-}
-
-/* Formulario agenda */
-form label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  color: #dfff00;
-}
-
-form input,
-form select {
-  width: 100%;
-  padding: 0.8rem;
-  margin-bottom: 1.2rem;
-  border-radius: 8px;
-  border: 2px solid #dfff00;
-  background-color: #222;
-  color: #f0f0f0;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
-}
-
-form input:focus,
-form select:focus {
-  outline: none;
-  border-color: #ffff33;
-  background-color: #333;
-}
-
-/* Botón submit */
-button[type="submit"] {
-  width: 100%;
-  padding: 1rem;
-  font-size: 1.2rem;
-  background-color: #dfff00;
-  color: #000;
-  font-weight: 700;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button[type="submit"]:hover {
-  background-color: #c1d800;
-}
-
-/* Lista de turnos */
-#lista-turnos {
-  list-style: none;
-  margin-top: 2rem;
-  max-height: 250px;
-  overflow-y: auto;
-  padding-right: 1rem;
-  color: #dfff00;
-  font-weight: 600;
-}
-
-#lista-turnos li {
-  background-color: #222;
-  margin-bottom: 0.6rem;
-  padding: 0.7rem 1rem;
-  border-radius: 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-}
-
-#lista-turnos button.borrar-turno {
-  background-color: #ff4d4d;
-  border: none;
-  padding: 0.3rem 0.6rem;
-  border-radius: 6px;
-  color: white;
-  cursor: pointer;
-  font-weight: 700;
-  transition: background-color 0.3s ease;
-}
-
-#lista-turnos button.borrar-turno:hover {
-  background-color: #ff0000;
-}
-
-/* Contadores de dinero */
-#total-monedero,
-#total-generado {
+nav {
   margin-top: 1rem;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #dfff00;
-  text-align: right;
+}
+nav a {
+  color: #fff;
+  margin: 0 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+nav a:hover {
+  color: #ffd700;
 }
 
-/* Footer */
+.hero {
+  background: linear-gradient(135deg, #1e3c72 60%, #dfff00 100%);
+  color: #fff;
+  text-align: center;
+  padding: 3rem 1rem 2rem 1rem;
+  border-radius: 0 0 24px 24px;
+  margin-bottom: 2rem;
+}
+.cta-btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  background: #dfff00;
+  color: #1e3c72;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: background 0.2s, color 0.2s;
+}
+.cta-btn:hover {
+  background: #1e3c72;
+  color: #dfff00;
+}
+
+.tematicas,
+.instructores {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+.tematicas-grid,
+.instructores-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.curso-card,
+.instructor-card {
+  background: #222;
+  border: 2px solid #dfff00;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 260px;
+  text-align: center;
+  box-shadow: 0 2px 8px #0002;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.curso-img,
+.instructor-img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ffd700;
+  margin-bottom: 1rem;
+}
+.ver-mas-btn,
+.form-turno-comunidad button,
+.comunidad button {
+  background: #dfff00;
+  color: #181818;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 0.7rem;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.ver-mas-btn:hover,
+.form-turno-comunidad button:hover,
+.comunidad button:hover {
+  background: #ffd700;
+}
+
+.beneficios {
+  background: #181818;
+  color: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+.beneficios ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+}
+.beneficios li {
+  font-size: 1.1rem;
+  margin-bottom: 0.7rem;
+}
+
+.testimonios {
+  background: #fffbe6;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+.testimonios blockquote {
+  font-style: italic;
+  margin: 1.5rem auto;
+  max-width: 500px;
+  color: #1e3c72;
+}
+.testimonios span {
+  display: block;
+  margin-top: 0.5rem;
+  color: #888;
+  font-size: 0.95rem;
+}
+
 footer {
   text-align: center;
-  padding: 1rem;
-  background-color: #000;
-  border-top: 3px solid #dfff00;
-  color: #dfff00;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-/* Estilos para el enlace de volver en cripto.html */
-header a {
-  color: #dfff00;
-  text-decoration: none;
-  font-weight: 600;
-  display: inline-block;
-  margin-top: 0.5rem;
-}
-
-header a:hover {
-  text-decoration: underline;
-}
-
-/* Responsive para tablets y móviles */
-@media screen and (max-width: 768px) {
-  .tematicas-grid {
-    gap: 1rem;
-  }
-  
-  .tema-btn {
-    flex: 1 1 calc(50% - 1rem);
-  }
-  
-  .agenda-section {
-    margin: 0 1rem 3rem 1rem;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  header h1 {
-    font-size: 2.2rem;
-  }
-  
-  .tematicas-grid {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .tema-btn {
-    width: 100%;
-    flex: none;
-  }
-  
-  .agenda-section {
-    margin: 0 0.5rem 2rem 0.5rem;
-    padding: 1.5rem;
-  }
-  
-  #lista-turnos li {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  #lista-turnos button.borrar-turno {
-    align-self: flex-end;
-    margin-top: 0.5rem;
-  }
-}
-
-
-
-.curso-info h2,
-.profesionales h2 {
-  color: #dfff00;
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
-
-.curso-descripcion {
-  margin-bottom: 3rem;
-}
-
-.profesionales-grid {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.profesor-card {
-  background-color: #111;
-  border: 2px solid #dfff00;
-  border-radius: 10px;
-  padding: 1.5rem;
-  text-align: center;
-  max-width: 250px;
-}
-
-.profesor-card img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-}
-
-.profesor-card h3 {
-  color: #dfff00;
-  margin-bottom: 1rem;
-}
-
-.agendar-turno-btn {
-  text-align: center;
-  margin-top: 3rem;
-}
-
-/* CSS más específico - agregar al final de styles.css */
-p {
-  font-size: 1.3rem !important;
-}
-
-img {
-  max-width: 500px !important;
-  height: auto !important;
-}
-
-h2 {
-  font-size: 2.2rem !important;
-}
-
-ul li {
-  font-size: 1.2rem !important;
-}
-
-/* Estilos para la sección de cursos de la comunidad */
-.cursos-comunidad {
-  margin-top: 4rem;
-  padding: 2rem;
-  background-color: #111;
-  border-radius: 10px;
-  border: 2px solid #dfff00;
-}
-
-.cursos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 2rem;
+  padding: 1.5rem 0;
+  background: #1e3c72;
+  color: #fff;
   margin-top: 2rem;
+  border-radius: 0 0 16px 16px;
 }
 
-.curso-card {
-  background-color: #222;
-  border: 1px solid #dfff00;
-  border-radius: 8px;
+/* Comunidad e instructores */
+.comunidad {
+  background: #222;
+  border: 2px solid #ffd700;
+  border-radius: 12px;
   padding: 1.5rem;
-  transition: transform 0.3s ease;
+  margin: 2rem auto;
+  max-width: 400px;
+  color: #fff;
+  text-align: center;
 }
-
-.curso-card:hover {
-  transform: translateY(-5px);
-}
-
-.curso-card h3 {
-  color: #dfff00;
-  margin-bottom: 0.5rem;
-}
-
-.curso-instructor {
-  font-style: italic;
-  margin-bottom: 1rem;
-}
-
-.curso-descripcion-corta {
-  margin-bottom: 1rem;
-}
-
-.curso-precio {
-  font-weight: bold;
-  font-size: 1.2rem;
-  color: #dfff00;
-  margin-bottom: 0.5rem;
-}
-
-.curso-fecha {
-  font-size: 0.9rem;
-  color: #999;
-  margin-bottom: 1rem;
-}
-
-.btn-contactar {
-  background-color: #dfff00;
-  color: #000;
+.comunidad input[type="file"] {
+  background: #fff;
+  color: #222;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
 }
-
-.btn-contactar:hover {
-  background-color: #c1d800;
-}
-
-.crear-curso-btn {
-  text-align: center;
-  margin-top: 2rem;
-}
-
-/* Estilos para la sección de cursos de la comunidad */
-.cursos-comunidad {
-  margin-top: 4rem;
-  padding: 2rem;
-  background-color: #111;
-  border-radius: 10px;
-  border: 2px solid #dfff00;
-}
-
-.instructores-titulo {
-  color: #dfff00;
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.curso-comunidad-card {
-  position: relative;
-  background-color: #222;
-  border: 2px solid #dfff00;
-  border-radius: 10px;
-  padding: 1.5rem;
-  transition: transform 0.3s ease;
-}
-
-.curso-comunidad-card:hover {
-  transform: translateY(-5px);
-}
-
-.curso-comunidad-card img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin: 0 auto 1rem auto;
-  display: block;
-  border: 2px solid #dfff00;
-}
-
-.curso-comunidad-card h3 {
-  text-align: center;
-  color: #dfff00;
-  margin-bottom: 0.5rem;
-}
-
-.curso-comunidad-card p {
-  text-align: center;
-  margin-bottom: 0.5rem;
-}
-
-.curso-precio {
-  font-weight: bold;
-  font-size: 1.2rem;
-  color: #dfff00;
-  margin: 0.5rem 0;
-  text-align: center;
-}
-
-.curso-botones {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-}
-
-.btn-ver-mas,
-.btn-eliminar {
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  border: none;
-  flex: 1;
-  margin: 0 0.5rem;
-}
-
-.btn-ver-mas {
-  background-color: #dfff00;
-  color: #000;
-}
-
-.btn-eliminar {
-  background-color: #ff4d4d;
-  color: white;
-}
-
-.btn-ver-mas:hover {
-  background-color: #c1d800;
-}
-
-.btn-eliminar:hover {
-  background-color: #ff0000;
-}
-
-.crear-curso-btn {
-  text-align: center;
-  margin-top: 2rem;
-}
-
-/* Estilos para la sección de cursos de la comunidad */
-.cursos-comunidad {
-  margin-top: 2rem; /* Updated from 4rem to 2rem */
-  padding: 2rem;
-  background-color: #111;
-  border-radius: 10px;
-  border: 2px solid #dfff00;
-}
-
-.agregar-curso {
-  text-align: center;
-  margin: 1.5rem 0;
-}
-
-.instructores-titulo {
-  color: #dfff00;
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.curso-comunidad-card {
-  position: relative;
-  background-color: #222;
-  border: 2px solid #dfff00;
-  border-radius: 10px;
-  padding: 1.5rem;
-  transition: transform 0.3s ease;
-}
-
-.curso-comunidad-card:hover {
-  transform: translateY(-5px);
-}
-
-.curso-comunidad-card img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin: 0 auto 1rem auto;
-  display: block;
-  border: 2px solid #dfff00;
-}
-
-.curso-comunidad-card h3 {
-  text-align: center;
-  color: #dfff00;
-  margin-bottom: 0.5rem;
-}
-
-.curso-comunidad-card p {
-  text-align: center;
-  margin-bottom: 0.5rem;
-}
-
-.curso-precio {
-  font-weight: bold;
-  color: #dfff00;
-  margin: 0.5rem 0;
-}
-
-.curso-botones {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-}
-
-.btn-ver-mas,
-.btn-eliminar {
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  border: none;
-  flex: 1;
-  margin: 0 0.5rem;
-}
-
-.btn-ver-mas {
-  background-color: #dfff00;
-  color: #000;
-}
-
-.btn-eliminar {
-  background-color: #ff4d4d;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 0.5rem;
+.form-turno-comunidad input,
+.form-turno-comunidad select {
   width: 100%;
-}
-
-.btn-ver-mas:hover {
-  background-color: #c1d800;
-}
-
-.btn-eliminar:hover {
-  background-color: #ff0000;
-}
-
-.crear-curso-btn {
-  text-align: center;
-  margin-top: 2rem;
-}
-
-/* Estilos para el formulario de crear curso */
-#form-curso {
-  background-color: #111;
-  border: 2px solid #dfff00;
-  border-radius: 10px;
-  padding: 1.5rem;
-  margin-top: 1rem;
-}
-
-#form-curso h3 {
-  color: #dfff00;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.form-group {
-  margin-bottom: 1rem; /* Updated from 1.5rem to 1rem */
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #dfff00;
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 0.5rem; /* Updated from 0.8rem to 0.5rem */
-  background-color: #222;
-  border: 1px solid #dfff00;
-  border-radius: 5px;
+  margin-bottom: 0.7rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ffd700;
+  background: #222;
   color: #fff;
 }
 
-.form-group textarea {
-  height: 100px;
-  resize: vertical;
-}
-
-.form-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-}
-
-.eliminar-curso {
-  background-color: #ff4d4d;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 0.5rem;
-}
-
-.eliminar-curso:hover {
-  background-color: #ff0000;
-}
-
-/* Responsive para el modal */
-@media (max-width: 768px) {
-  .curso-modal-contenido {
-    width: 95%;
-    padding: 1.5rem;
-  }
-
-  .curso-modal-botones {
-    flex-direction: column;
-  }
-
-  .curso-botones {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .btn-ver-mas,
-  .btn-eliminar {
-    margin: 0.25rem 0;
-  }
-}
-
-/* Modal de detalles del curso */
-.curso-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.curso-modal-contenido {
-  background-color: #111;
-  border: 2px solid #dfff00;
-  border-radius: 10px;
-  padding: 2rem;
-  max-width: 800px;
-  width: 90%;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-}
-
-.cerrar-modal {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 2rem;
-  color: #dfff00;
-  cursor: pointer;
-}
-
-.curso-modal-imagen img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-  border: 1px solid #dfff00;
-}
-
-.curso-modal-instructor {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-.curso-modal-instructor img {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin-right: 1rem;
-  border: 1px solid #dfff00;
-}
-
-.curso-modal-descripcion {
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-}
-
-.curso-modal-precio {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #dfff00;
-  margin-bottom: 0.5rem;
-}
-
-.curso-modal-fecha {
-  color: #999;
-  margin-bottom: 1.5rem;
-}
-
-.curso-modal-botones {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.btn-contactar,
-.btn-eliminar-modal {
-  padding: 0.8rem 1.5rem;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  border: none;
-  flex: 1;
-}
-
-.btn-contactar {
-  background-color: #dfff00;
-  color: #000;
-}
-
-.btn-eliminar-modal {
-  background-color: #ff4d4d;
-  color: white;
-}
-
-.btn-contactar:hover {
-  background-color: #c1d800;
-}
-
-.btn-eliminar-modal:hover {
-  background-color: #ff0000;
-}
-
-/* Estilos para los botones de agendar instructor */
-.agendar-instructor {
-  margin-top: 1rem;
-  width: 100%;
-}
-
-#instructor-info {
-  font-weight: bold;
-  color: #dfff00;
-  margin-bottom: 1rem;
-}
-
+/* Turnos */
 .turno-card {
   background: #222;
   border: 2px solid #dfff00;
@@ -827,11 +216,6 @@ ul li {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-}
-.turno-curso {
-  font-weight: bold;
-  color: #dfff00;
-  font-size: 1.1rem;
 }
 .turno-fecha {
   font-size: 1rem;
@@ -859,180 +243,34 @@ ul li {
   background: #b30000;
 }
 
-.instructores-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-  margin-bottom: 2rem;
+/* Responsive */
+@media (max-width: 900px) {
+  .tematicas-grid,
+  .instructores-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+  .curso-card,
+  .instructor-card {
+    width: 90vw;
+    max-width: 350px;
+  }
 }
-.instructor-card {
-  background: #181818;
-  border: 2px solid #dfff00;
-  border-radius: 12px;
-  padding: 1.5rem;
-  width: 260px;
-  text-align: center;
-  box-shadow: 0 2px 8px #0002;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.instructor-img {
-  width: 90px;
-  height: 90px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid #ffd700;
-  margin-bottom: 1rem;
-}
-.form-turno-comunidad input,
-.form-turno-comunidad select {
-  width: 100%;
-  margin-bottom: 0.7rem;
-  padding: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid #ffd700;
-  background: #222;
-  color: #fff;
-}
-.form-turno-comunidad button {
-  background: #dfff00;
-  color: #181818;
-  border: none;
-  border-radius: 6px;
-  padding: 0.5rem 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 0.5rem;
-  transition: background 0.2s;
-}
-.form-turno-comunidad button:hover {
-  background: #ffd700;
-}
-.comunidad {
-  background: #222;
-  border: 2px solid #ffd700;
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin: 2rem auto;
-  max-width: 400px;
-  color: #fff;
-  text-align: center;
-}
-.comunidad input[type="file"] {
-  background: #fff;
-  color: #222;
-  border: none;
-}
-.comunidad button {
-  background: #dfff00;
-  color: #181818;
-  border: none;
-  border-radius: 6px;
-  padding: 0.5rem 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 0.5rem;
-  transition: background 0.2s;
-}
-.comunidad button:hover {
-  background: #ffd700;
-}
-
-.hero {
-  background: linear-gradient(135deg, #1e3c72 60%, #dfff00 100%);
-  color: #fff;
-  text-align: center;
-  padding: 3rem 1rem 2rem 1rem;
-  border-radius: 0 0 24px 24px;
-  margin-bottom: 2rem;
-}
-.cta-btn {
-  display: inline-block;
-  margin-top: 1.5rem;
-  background: #dfff00;
-  color: #1e3c72;
-  padding: 0.8rem 2rem;
-  border-radius: 8px;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 1.1rem;
-  transition: background 0.2s, color 0.2s;
-}
-.cta-btn:hover {
-  background: #1e3c72;
-  color: #dfff00;
-}
-.curso-card {
-  background: #222;
-  border: 2px solid #dfff00;
-  border-radius: 12px;
-  padding: 1.5rem;
-  width: 260px;
-  text-align: center;
-  box-shadow: 0 2px 8px #0002;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-.curso-img {
-  width: 90px;
-  height: 90px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid #ffd700;
-  margin-bottom: 1rem;
-}
-.ver-mas-btn {
-  background: #dfff00;
-  color: #181818;
-  border: none;
-  border-radius: 6px;
-  padding: 0.5rem 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 0.7rem;
-  text-decoration: none;
-  transition: background 0.2s;
-}
-.ver-mas-btn:hover {
-  background: #ffd700;
-}
-.beneficios {
-  background: #181818;
-  color: #fff;
-  border-radius: 12px;
-  padding: 2rem;
-  margin: 2rem 0;
-  text-align: center;
-}
-.beneficios ul {
-  list-style: none;
-  padding: 0;
-  margin: 1rem 0 0 0;
-}
-.beneficios li {
-  font-size: 1.1rem;
-  margin-bottom: 0.7rem;
-}
-.testimonios {
-  background: #fffbe6;
-  border-radius: 12px;
-  padding: 2rem;
-  margin: 2rem 0;
-  text-align: center;
-}
-.testimonios blockquote {
-  font-style: italic;
-  margin: 1.5rem auto;
-  max-width: 500px;
-  color: #1e3c72;
-}
-.testimonios span {
-  display: block;
-  margin-top: 0.5rem;
-  color: #888;
-  font-size: 0.95rem;
+@media (max-width: 600px) {
+  .hero {
+    padding: 2rem 0.5rem 1.5rem 0.5rem;
+    border-radius: 0 0 12px 12px;
+  }
+  .comunidad {
+    padding: 1rem;
+    max-width: 95vw;
+  }
+  .curso-card,
+  .instructor-card {
+    padding: 1rem;
+  }
+  .beneficios, .testimonios {
+    padding: 1rem;
+  }
 }
