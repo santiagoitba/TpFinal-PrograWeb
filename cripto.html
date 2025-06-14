@@ -2,190 +2,237 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EZMoney | Cripto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cripto - EZMoney</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
-    <h1>Criptomonedas</h1>
-    <a href="index.html">← Volver a EZMoney</a>
+    <h1>Cripto - EZMoney</h1>
+    <nav>
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="trading.html" class="nav-link">Trading</a>
+      <a href="marketing.html" class="nav-link">Marketing Digital</a>
+      <a href="diseno.html" class="nav-link">Diseño</a>
+    </nav>
   </header>
 
   <main>
-    <p>En esta sección vas a aprender todo sobre wallets, exchanges, y cómo empezar en el mundo cripto.</p>
-    
-    <section class="curso-info">
-      <div class="curso-imagen">
-        <img src="fotos/inicialcripto.jpeg" alt="Curso de Criptomonedas">
-      </div>
-      
-      <div class="curso-descripcion">
-        <h2>¿Qué vas a aprender?</h2>
-        <p>Aprende desde cero el mundo de las criptomonedas. Te enseñamos a crear wallets seguras, usar exchanges, invertir de forma inteligente y generar ingresos pasivos con DeFi y staking.</p>
-        
-        <ul>
-          <li>Creación y manejo de wallets</li>
-          <li>Compra y venta en exchanges</li>
-          <li>Análisis de proyectos crypto</li>
-          <li>Estrategias de inversión</li>
-          <li>DeFi y staking</li>
-        </ul>
-      </div>
+    <section class="intro">
+      <h2>¡Bienvenido al mundo Cripto!</h2>
+      <p>
+        Aprendé sobre criptomonedas, blockchain y estrategias de inversión con nuestros instructores y la comunidad. Sumate a la revolución financiera.
+      </p>
     </section>
 
-    <section class="profesionales">
-      <h2>Nuestros instructores</h2>
-      <div class="profesionales-grid">
-        <div class="profesor-card">
-          <img src="fotos/cripto1.jpg" alt="Juan Pérez">
+    <section class="instructores">
+      <h2>Instructores principales</h2>
+      <div class="instructores-grid">
+        <div class="instructor-card">
+          <img src="juan-perez.jpg" alt="Juan Pérez" class="instructor-img" />
           <h3>Juan Pérez</h3>
-          <p>Trader profesional con 5 años de experiencia en crypto. Especialista en análisis técnico.</p>
-          <button class="tema-btn agendar-instructor" data-instructor="Juan Pérez">Agendar turno</button>
+          <p>Especialista en Cripto y Blockchain</p>
+          <form class="form-turno-comunidad">
+            <input type="hidden" class="instructor-nombre" value="Juan Pérez" />
+            <label for="nombre1">Tu nombre:</label>
+            <input type="text" class="nombre" required />
+            <label for="email1">Tu email:</label>
+            <input type="email" class="email" required />
+            <label for="fecha1">Fecha:</label>
+            <input type="date" class="fecha" required />
+            <label for="horario1">Horario:</label>
+            <select class="horario" required>
+              <option value="">Elegí un horario</option>
+              <option value="09:00">09:00</option>
+              <option value="11:00">11:00</option>
+              <option value="14:00">14:00</option>
+              <option value="16:00">16:00</option>
+              <option value="18:00">18:00</option>
+            </select>
+            <button type="submit">Agendar turno</button>
+          </form>
         </div>
-        
-        <div class="profesor-card">
-          <img src="fotos/cripto2.jpeg" alt="María González">
-          <h3>María González</h3>
-          <p>Experta en DeFi y blockchain. Fundadora de 3 proyectos crypto exitosos.</p>
-          <button class="tema-btn agendar-instructor" data-instructor="María González">Agendar turno</button>
-        </div>
+        <!-- Aquí se agregan los instructores de la comunidad dinámicamente -->
       </div>
     </section>
 
-    <!-- Sección de cursos de la comunidad -->
-    <section class="profesionales cursos-comunidad">
-      <h2>Cursos de la comunidad</h2>
-      <div id="cursos-comunidad-lista" class="profesionales-grid">
-        <!-- Aquí se mostrarán los cursos creados por usuarios -->
-      </div>
-      
-      <div class="agregar-curso">
-        <button id="mostrar-form-curso" class="tema-btn">Agregar curso</button>
-      </div>
-      
-      <!-- Formulario para agregar curso (oculto por defecto) -->
-      <div id="form-curso" style="display: none;">
-        <h3>Agregar nuevo curso</h3>
-        <form id="nuevo-curso-form">
-          <div class="form-group">
-            <label for="curso-nombre">Nombre del curso:</label>
-            <input type="text" id="curso-nombre" required>
-          </div>
-          <div class="form-group">
-            <label for="curso-descripcion">Descripción:</label>
-            <textarea id="curso-descripcion" required></textarea>
-          </div>
-          <div class="form-buttons">
-            <button type="button" id="cancelar-curso" class="tema-btn">Cancelar</button>
-            <button type="submit" class="tema-btn">Guardar</button>
-          </div>
-        </form>
-      </div>
+    <section class="comunidad">
+      <h2>¿Querés ser instructor de la comunidad?</h2>
+      <form id="form-comunidad">
+        <label for="nombre-comunidad">Tu nombre:</label>
+        <input type="text" id="nombre-comunidad" required />
+        <label for="especialidad-comunidad">Especialidad:</label>
+        <input type="text" id="especialidad-comunidad" required />
+        <label for="img-comunidad">Foto de perfil:</label>
+        <input type="file" id="img-comunidad" accept="image/*" required />
+        <button type="submit">Sumarme como instructor</button>
+      </form>
     </section>
 
-    <div class="agendar-turno-btn">
-      <button class="tema-btn" onclick="window.location='index.html#agenda'">Agendar turno</button>
-    </div>
+    <section>
+      <h2>Turnos agendados</h2>
+      <ul id="lista-turnos"></ul>
+    </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 EZMoney</p>
+    &copy; 2025 EZMoney - Todos los derechos reservados
   </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Referencias a elementos del DOM
-      const mostrarFormBtn = document.getElementById('mostrar-form-curso');
-      const formCurso = document.getElementById('form-curso');
-      const cancelarCursoBtn = document.getElementById('cancelar-curso');
-      const nuevoCursoForm = document.getElementById('nuevo-curso-form');
-      const cursosComunidadLista = document.getElementById('cursos-comunidad-lista');
-      
-      // Cargar cursos guardados
-      let cursosComunidad = JSON.parse(localStorage.getItem('cursosComunidad')) || [];
-      
-      // Mostrar formulario
-      mostrarFormBtn.addEventListener('click', function() {
-        formCurso.style.display = 'block';
-        mostrarFormBtn.style.display = 'none';
+    // Bloquear fechas pasadas y el mismo día en todos los formularios
+    function setMinDate(inputs) {
+      const hoy = new Date();
+      hoy.setDate(hoy.getDate() + 1);
+      const min = hoy.toISOString().split('T')[0];
+      inputs.forEach(input => input.min = min);
+    }
+
+    // Renderizar instructores de la comunidad
+    function renderComunidadInstructores() {
+      const instructores = JSON.parse(localStorage.getItem('instructoresComunidad')) || [];
+      const grid = document.querySelector('.instructores-grid');
+      // El primer hijo es el instructor principal, los demás son de la comunidad
+      grid.querySelectorAll('.comunidad-card').forEach(card => card.remove());
+
+      instructores.forEach((inst, idx) => {
+        const card = document.createElement('div');
+        card.className = 'instructor-card comunidad-card';
+        card.innerHTML = `
+          <img src="${inst.img}" alt="${inst.nombre}" class="instructor-img" />
+          <h3>${inst.nombre}</h3>
+          <p>${inst.especialidad}</p>
+          <form class="form-turno-comunidad">
+            <input type="hidden" class="instructor-nombre" value="${inst.nombre}" />
+            <label>Tu nombre:</label>
+            <input type="text" class="nombre" required />
+            <label>Tu email:</label>
+            <input type="email" class="email" required />
+            <label>Fecha:</label>
+            <input type="date" class="fecha" required />
+            <label>Horario:</label>
+            <select class="horario" required>
+              <option value="">Elegí un horario</option>
+              <option value="09:00">09:00</option>
+              <option value="11:00">11:00</option>
+              <option value="14:00">14:00</option>
+              <option value="16:00">16:00</option>
+              <option value="18:00">18:00</option>
+            </select>
+            <button type="submit">Agendar turno</button>
+          </form>
+        `;
+        grid.appendChild(card);
       });
-      
-      // Ocultar formulario
-      cancelarCursoBtn.addEventListener('click', function() {
-        formCurso.style.display = 'none';
-        mostrarFormBtn.style.display = 'block';
-        nuevoCursoForm.reset();
-      });
-      
-      // Guardar nuevo curso
-      nuevoCursoForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const nuevoCurso = {
-          id: Date.now(),
-          nombre: document.getElementById('curso-nombre').value,
-          descripcion: document.getElementById('curso-descripcion').value
-        };
-        
-        // Agregar a la lista y guardar
-        cursosComunidad.push(nuevoCurso);
-        localStorage.setItem('cursosComunidad', JSON.stringify(cursosComunidad));
-        
-        // Resetear formulario y ocultarlo
-        nuevoCursoForm.reset();
-        formCurso.style.display = 'none';
-        mostrarFormBtn.style.display = 'block';
-        
-        // Actualizar lista de cursos
-        mostrarCursos();
-      });
-      
-      // Función para eliminar curso
-      function eliminarCurso(id) {
-        cursosComunidad = cursosComunidad.filter(curso => curso.id !== id);
-        localStorage.setItem('cursosComunidad', JSON.stringify(cursosComunidad));
-        mostrarCursos();
-      }
-      
-      // Función para mostrar cursos
-      function mostrarCursos() {
-        cursosComunidadLista.innerHTML = '';
-        
-        cursosComunidad.forEach(curso => {
-          const cursoElement = document.createElement('div');
-          cursoElement.className = 'profesor-card';
-          cursoElement.innerHTML = `
-            <h3>${curso.nombre}</h3>
-            <p>${curso.descripcion}</p>
-            <button class="eliminar-curso" data-id="${curso.id}">Eliminar</button>
-          `;
-          
-          cursosComunidadLista.appendChild(cursoElement);
-        });
-        
-        // Agregar eventos a los botones de eliminar
-        document.querySelectorAll('.eliminar-curso').forEach(btn => {
-          btn.addEventListener('click', function() {
-            const id = parseInt(this.getAttribute('data-id'));
-            eliminarCurso(id);
-          });
-        });
-      }
-      
-      // Mostrar cursos al cargar la página
-      mostrarCursos();
-      
-      // Manejar los botones de agendar turno con instructor
-      document.querySelectorAll('.agendar-instructor').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const instructor = this.getAttribute('data-instructor');
-          localStorage.setItem('instructorSeleccionado', instructor);
-          window.location.href = 'index.html#agenda';
-        });
-      });
+
+      // Set min date para todos los inputs de fecha
+      setMinDate(Array.from(document.querySelectorAll('.fecha')));
+    }
+
+    // Guardar instructor de la comunidad
+    document.getElementById('form-comunidad').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre-comunidad').value.trim();
+      const especialidad = document.getElementById('especialidad-comunidad').value.trim();
+      const imgInput = document.getElementById('img-comunidad');
+      const file = imgInput.files[0];
+
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const img = evt.target.result;
+        const instructores = JSON.parse(localStorage.getItem('instructoresComunidad')) || [];
+        instructores.push({ nombre, especialidad, img });
+        localStorage.setItem('instructoresComunidad', JSON.stringify(instructores));
+        renderComunidadInstructores();
+        document.getElementById('form-comunidad').reset();
+      };
+      reader.readAsDataURL(file);
     });
+
+    // Manejo de turnos
+    function getInstructorName(nombre) {
+      if (nombre === "Juan Pérez") return "Juan Pérez";
+      // Buscar en comunidad
+      const instructores = JSON.parse(localStorage.getItem('instructoresComunidad')) || [];
+      const found = instructores.find(i => i.nombre === nombre);
+      return found ? found.nombre : "Instructor/a";
+    }
+
+    function renderTurnos() {
+      const lista = document.getElementById('lista-turnos');
+      const turnos = JSON.parse(localStorage.getItem('turnosCripto')) || [];
+      lista.innerHTML = '';
+      if (turnos.length === 0) {
+        lista.innerHTML = '<li>No hay turnos agendados.</li>';
+        return;
+      }
+      turnos.forEach((t, i) => {
+        const li = document.createElement('li');
+        li.className = 'turno-card';
+        li.innerHTML = `
+          <div class="turno-info">
+            <span class="turno-fecha">${t.fecha} - ${t.horario} hs</span>
+            <span class="turno-nombre">${t.nombre} (${t.email})</span>
+            <span class="turno-instructor">Instructor: <b>${t.instructor}</b></span>
+          </div>
+          <button class="borrar-turno" data-index="${i}">Borrar</button>
+        `;
+        lista.appendChild(li);
+      });
+    }
+
+    // Agendar turnos con cualquier instructor
+    document.body.addEventListener('submit', function(e) {
+      if (e.target.classList.contains('form-turno-comunidad')) {
+        e.preventDefault();
+        const form = e.target;
+        const nombre = form.querySelector('.nombre').value.trim();
+        const email = form.querySelector('.email').value.trim();
+        const fecha = form.querySelector('.fecha').value;
+        const horario = form.querySelector('.horario').value;
+        const instructor = form.querySelector('.instructor-nombre').value;
+
+        // Validar que no haya turno en el mismo horario con el mismo instructor
+        const turnos = JSON.parse(localStorage.getItem('turnosCripto')) || [];
+        const existe = turnos.some(t => t.instructor === instructor && t.fecha === fecha && t.horario === horario);
+        if (existe) {
+          alert('Ya hay un turno reservado para ese instructor, fecha y horario.');
+          return;
+        }
+
+        turnos.push({ nombre, email, fecha, horario, instructor });
+        localStorage.setItem('turnosCripto', JSON.stringify(turnos));
+        renderTurnos();
+        form.reset();
+        alert('¡Turno agendado con éxito!');
+      }
+    });
+
+    // Borrar turnos
+    document.getElementById('lista-turnos').addEventListener('click', function(e) {
+      if (e.target.classList.contains('borrar-turno')) {
+        const idx = e.target.dataset.index;
+        const turnos = JSON.parse(localStorage.getItem('turnosCripto')) || [];
+        if (confirm('¿Seguro que querés borrar este turno?')) {
+          turnos.splice(idx, 1);
+          localStorage.setItem('turnosCripto', JSON.stringify(turnos));
+          renderTurnos();
+        }
+      }
+    });
+
+    // Inicialización
+    document.addEventListener('DOMContentLoaded', () => {
+      renderComunidadInstructores();
+      renderTurnos();
+      setMinDate(Array.from(document.querySelectorAll('.fecha')));
+    });
+    // Para que funcione al cargar la página
+    renderComunidadInstructores();
+    renderTurnos();
+    setMinDate(Array.from(document.querySelectorAll('.fecha')));
   </script>
 </body>
 </html>
-
