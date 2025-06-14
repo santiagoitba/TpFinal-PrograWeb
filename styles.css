@@ -243,6 +243,37 @@ footer {
   background: #b30000;
 }
 
+/* Tarjetas de cursos destacados más organizadas y suaves */
+.curso-card {
+  background: #f8fafc;
+  border: 1.5px solid #e0e7ef;
+  border-radius: 14px;
+  padding: 1.5rem;
+  width: 260px;
+  text-align: center;
+  box-shadow: 0 2px 12px #0001;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  transition: box-shadow 0.2s, border 0.2s;
+}
+.curso-card:hover {
+  box-shadow: 0 4px 24px #dfff0033;
+  border-color: #ffd700;
+}
+.curso-img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ffd700;
+  margin-bottom: 1rem;
+  background: #fff;
+}
+
+
+
 /* Responsive */
 @media (max-width: 900px) {
   .tematicas-grid,
