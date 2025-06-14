@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ezMoney</title>
+  <title>EZMoney</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -46,20 +46,26 @@
           <option value="Diseño">Diseño</option>
         </select>
 
+        <div id="instructor-info" style="display:none; margin-bottom:1rem; color:#dfff00;"></div>
+
         <label for="fecha">Fecha del turno:</label>
         <input type="date" id="fecha" required />
 
-        <label for="dinero">¿Cuánto esperás ganar? ($):</label>
-        <input type="number" id="dinero" min="0" step="0.01" required />
+        <label for="horario">Horario:</label>
+        <select id="horario" required>
+          <option value="">Elegí un horario</option>
+          <option value="09:00">09:00</option>
+          <option value="11:00">11:00</option>
+          <option value="14:00">14:00</option>
+          <option value="16:00">16:00</option>
+          <option value="18:00">18:00</option>
+        </select>
 
         <button type="submit">Agendar</button>
       </form>
 
       <h3>Turnos agendados:</h3>
       <ul id="lista-turnos"></ul>
-
-      <p><strong>Tu monedero:</strong> <span id="total-monedero">$0</span></p>
-      <p><strong>Total generado global:</strong> <span id="total-generado">$0</span></p>
     </section>
   </main>
 

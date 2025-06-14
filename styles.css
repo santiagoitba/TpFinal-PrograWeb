@@ -800,3 +800,9 @@ ul li {
   margin-top: 1rem;
   width: 100%;
 }
+
+#instructor-info {
+  font-weight: bold;
+  color: #dfff00;
+  margin-bottom: 1rem;
+}

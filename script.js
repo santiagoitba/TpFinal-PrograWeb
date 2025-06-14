@@ -1,94 +1,75 @@
+
 document.addEventListener('DOMContentLoaded', () => {
-  // Manejador para los botones de temáticas
-  document.querySelectorAll('.tema-btn').forEach(btn => {
-    btn.addEventListener('click', function () {
-      const curso = this.dataset.curso;
-      
-      // Si tiene la clase agendar-btn, hace scroll al formulario
-      if (this.classList.contains('agendar-btn')) {
-        document.getElementById('curso').value = curso;
-        document.getElementById('agenda').scrollIntoView({ behavior: 'smooth' });
-      } 
-      // Si es el botón de Cripto, navega a cripto.html
-      else if (curso === 'Cripto') {
-        window.location = 'cripto.html';
-      }
-      // Aquí puedes agregar más condiciones para los otros botones cuando crees las páginas
-    });
-  });
+  // Bloquear fechas pasadas y el mismo día
+  const fechaInput = document.getElementById('fecha');
+  const hoy = new Date();
+  hoy.setDate(hoy.getDate() + 1); // mañana
+  fechaInput.min = hoy.toISOString().split('T')[0];
 
   const form = document.getElementById('form-turno');
   const listaTurnos = document.getElementById('lista-turnos');
-  const totalMonedero = document.getElementById('total-monedero');
-  const totalGenerado = document.getElementById('total-generado');
+  const cursoSelect = document.getElementById('curso');
+  const horarioSelect = document.getElementById('horario');
+  const instructorInfo = document.getElementById('instructor-info');
 
   let turnos = JSON.parse(localStorage.getItem('turnos')) || [];
-  let totalGlobal = parseFloat(localStorage.getItem('totalGlobal')) || 0;
 
-  function renderTurnos() {
-    listaTurnos.innerHTML = '';
-    let totalUsuario = 0;
-
-    if (turnos.length === 0) {
-      listaTurnos.innerHTML = '<li>No hay turnos agendados.</li>';
-      totalMonedero.textContent = '$0';
-      return;
-    }
-
-    turnos.forEach((t, i) => {
-      totalUsuario += Number(t.dinero || 0);
-      const li = document.createElement('li');
-      li.innerHTML = `<strong>${t.nombre}</strong> (${t.email}) - <em>${t.curso}</em> el <span>${t.fecha}</span>
-        <span style="margin-left:10px;">$${t.dinero}</span>
-        <button class="borrar-turno" data-index="${i}">Borrar</button>`;
-      listaTurnos.appendChild(li);
-    });
-
-    totalMonedero.textContent = `$${totalUsuario.toFixed(2)}`;
-  }
-
-  function renderTotalGlobal() {
-    totalGenerado.textContent = `$${totalGlobal.toFixed(2)}`;
-  }
-
-  renderTurnos();
-  renderTotalGlobal();
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const nombre = document.getElementById('nombre').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const curso = document.getElementById('curso').value;
-    const fecha = document.getElementById('fecha').value;
-    const dinero = parseFloat(document.getElementById('dinero').value) || 0;
-
-    if (dinero < 0) {
-      alert('El monto no puede ser negativo.');
-      return;
-    }
-
-    if (nombre && email && curso && fecha) {
-      turnos.push({ nombre, email, curso, fecha, dinero });
-      localStorage.setItem('turnos', JSON.stringify(turnos));
-      totalGlobal += dinero;
-      localStorage.setItem('totalGlobal', totalGlobal);
-      renderTurnos();
-      renderTotalGlobal();
-      form.reset();
-      alert('¡Turno agendado con éxito!');
+  // Mostrar instructor si es Cripto
+  cursoSelect.addEventListener('change', function() {
+    if (this.value === 'Cripto') {
+      instructorInfo.textContent = 'Instructor: Juan Pérez';
+      instructorInfo.style.display = 'block';
+    } else {
+      instructorInfo.style.display = 'none';
     }
   });
 
-  listaTurnos.addEventListener('click', function (e) {
+  function renderTurnos() {
+    listaTurnos.innerHTML = '';
+    if (turnos.length === 0) {
+      listaTurnos.innerHTML = '<li>No hay turnos agendados.</li>';
+      return;
+    }
+    turnos.forEach((t, i) => {
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>${t.nombre}</strong> (${t.email}) - <em>${t.curso}</em> el <span>${t.fecha}</span> a las <span>${t.horario}</span>
+        <button class="borrar-turno" data-index="${i}">Borrar</button>`;
+      listaTurnos.appendChild(li);
+    });
+  }
+
+  renderTurnos();
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const nombre = document.getElementById('nombre').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const curso = cursoSelect.value;
+    const fecha = fechaInput.value;
+    const horario = horarioSelect.value;
+
+    // Validar que no haya turno en el mismo curso, fecha y horario
+    const existe = turnos.some(t => t.curso === curso && t.fecha === fecha && t.horario === horario);
+    if (existe) {
+      alert('Ya hay un turno reservado para ese curso, fecha y horario con este instructor.');
+      return;
+    }
+
+    turnos.push({ nombre, email, curso, fecha, horario });
+    localStorage.setItem('turnos', JSON.stringify(turnos));
+    renderTurnos();
+    form.reset();
+    instructorInfo.style.display = 'none';
+    alert('¡Turno agendado con éxito!');
+  });
+
+  listaTurnos.addEventListener('click', function(e) {
     if (e.target.classList.contains('borrar-turno')) {
       const idx = e.target.dataset.index;
       if (confirm('¿Seguro que querés borrar este turno?')) {
-        totalGlobal -= Number(turnos[idx].dinero || 0);
         turnos.splice(idx, 1);
         localStorage.setItem('turnos', JSON.stringify(turnos));
-        localStorage.setItem('totalGlobal', totalGlobal);
         renderTurnos();
-        renderTotalGlobal();
       }
     }
   });
