@@ -2,24 +2,122 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EZMoney | Trading</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trading - EZMoney</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
-    <h1>Trading</h1>
-    <a href="index.html">← Volver a EZMoney</a>
+    <h1>Trading - EZMoney</h1>
+    <nav>
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="cripto.html" class="nav-link">Cripto</a>
+      <a href="marketing.html" class="nav-link">Marketing Digital</a>
+      <a href="diseno.html" class="nav-link">Diseño</a>
+    </nav>
   </header>
 
   <main>
-    <p>Aprende trading desde cero. Estrategias, análisis técnico y gestión de riesgo para operar en los mercados.</p>
-    
-    <button class="tema-btn" onclick="window.location='index.html#agenda'">Agendar turno</button>
+    <section class="intro">
+      <h2>¡Bienvenido al mundo del Trading!</h2>
+      <p>
+        Aprendé sobre análisis técnico, gestión de riesgo y estrategias de trading con nuestros instructores y la comunidad. ¡Potenciá tus inversiones!
+      </p>
+    </section>
+
+    <section class="instructores">
+      <h2>Instructores principales</h2>
+      <div class="instructores-grid">
+        <!-- Instructor 1 -->
+        <div class="instructor-card principal">
+          <img src="fotos/tradingprincipio.jpg" alt="Carlos Gómez" class="instructor-img" />
+          <h3>Carlos Gómez</h3>
+          <p class="instructor-desc">Trader profesional con más de 12 años de experiencia en mercados financieros internacionales.</p>
+          <div class="instructor-precio">Precio por turno: <b>$6000</b></div>
+          <form class="form-turno-comunidad" data-categoria="Trading">
+            <input type="hidden" class="instructor-nombre" value="Carlos Gómez" />
+            <input type="hidden" class="instructor-categoria" value="Trading" />
+            <input type="hidden" class="instructor-precio-input" value="6000" />
+            <label>Tu nombre:</label>
+            <input type="text" class="nombre" placeholder="Ej: Ana Gómez" required />
+            <label>Tu email:</label>
+            <input type="email" class="email" placeholder="Ej: ana@email.com" required />
+            <label>Fecha:</label>
+            <input type="date" class="fecha" required />
+            <label>Horario:</label>
+            <select class="horario" required>
+              <option value="">Elegí un horario</option>
+              <option value="09:00">09:00</option>
+              <option value="11:00">11:00</option>
+              <option value="14:00">14:00</option>
+              <option value="16:00">16:00</option>
+              <option value="18:00">18:00</option>
+            </select>
+            <button type="submit">Agendar turno</button>
+          </form>
+        </div>
+        <!-- Instructor 2 -->
+        <div class="instructor-card principal">
+          <img src="fotos/tradingmujer.jpg" alt="Lucía Fernández" class="instructor-img" />
+          <h3>Lucía Fernández</h3>
+          <p class="instructor-desc">Especialista en trading de futuros y docente universitaria. Te ayuda a operar con confianza.</p>
+          <div class="instructor-precio">Precio por turno: <b>$5500</b></div>
+          <form class="form-turno-comunidad" data-categoria="Trading">
+            <input type="hidden" class="instructor-nombre" value="Lucía Fernández" />
+            <input type="hidden" class="instructor-categoria" value="Trading" />
+            <input type="hidden" class="instructor-precio-input" value="5500" />
+            <label>Tu nombre:</label>
+            <input type="text" class="nombre" placeholder="Ej: Juan Pérez" required />
+            <label>Tu email:</label>
+            <input type="email" class="email" placeholder="Ej: juan@email.com" required />
+            <label>Fecha:</label>
+            <input type="date" class="fecha" required />
+            <label>Horario:</label>
+            <select class="horario" required>
+              <option value="">Elegí un horario</option>
+              <option value="09:00">09:00</option>
+              <option value="11:00">11:00</option>
+              <option value="14:00">14:00</option>
+              <option value="16:00">16:00</option>
+              <option value="18:00">18:00</option>
+            </select>
+            <button type="submit">Agendar turno</button>
+          </form>
+        </div>
+        <!-- Aquí se agregan los instructores de la comunidad dinámicamente -->
+      </div>
+    </section>
+
+    <section class="comunidad">
+      <h2>¿Querés ser instructor de la comunidad?</h2>
+      <form id="form-comunidad">
+        <label for="nombre-comunidad">Tu nombre:</label>
+        <input type="text" id="nombre-comunidad" placeholder="Ej: Sofía Díaz" required />
+        <label for="especialidad-comunidad">Descripción:</label>
+        <input type="text" id="especialidad-comunidad" placeholder="Breve descripción" required />
+        <label for="precio-comunidad">Precio por turno:</label>
+        <input type="number" id="precio-comunidad" placeholder="Ej: 3000" min="0" required />
+        <label for="img-comunidad">Foto de perfil:</label>
+        <input type="file" id="img-comunidad" accept="image/*" required />
+        <button type="submit">Sumarme como instructor</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Instructores de la comunidad</h2>
+      <div class="instructores-grid" id="comunidad-instructores"></div>
+    </section>
+
+    <section>
+      <h2>Turnos agendados</h2>
+      <ul id="lista-turnos"></ul>
+    </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 EZMoney</p>
+    &copy; 2025 EZMoney - Todos los derechos reservados
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
