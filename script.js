@@ -6,6 +6,24 @@ function setMinDate(inputs) {
   inputs.forEach(input => input.min = min);
 }
 
+// Actualiza instructores antiguos para que tengan el campo 'usuario'
+(function actualizarInstructoresAntiguos() {
+  let instructores = JSON.parse(localStorage.getItem('instructoresComunidad')) || [];
+  const usuario = localStorage.getItem('usuarioComunidad');
+  let actualizado = false;
+  instructores = instructores.map(i => {
+    if (!i.usuario && usuario) {
+      actualizado = true;
+      return {...i, usuario: usuario};
+    }
+    return i;
+  });
+  if (actualizado) {
+    localStorage.setItem('instructoresComunidad', JSON.stringify(instructores));
+  }
+})();
+
+
 // Renderizar instructores de la comunidad
 function renderComunidadInstructores() {
   const instructores = JSON.parse(localStorage.getItem('instructoresComunidad')) || [];
