@@ -1,84 +1,208 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // Bloquear fechas pasadas y el mismo día
-  const fechaInput = document.getElementById('fecha');
+// Bloquear fechas pasadas y el mismo día en todos los formularios
+function setMinDate(inputs) {
   const hoy = new Date();
-  hoy.setDate(hoy.getDate() + 1); // mañana
-  fechaInput.min = hoy.toISOString().split('T')[0];
+  hoy.setDate(hoy.getDate() + 1);
+  const min = hoy.toISOString().split('T')[0];
+  inputs.forEach(input => input.min = min);
+}
 
-  const form = document.getElementById('form-turno');
-  const listaTurnos = document.getElementById('lista-turnos');
-  const horarioSelect = document.getElementById('horario');
+// Renderizar instructores de la comunidad
+function renderComunidadInstructores() {
+  const instructores = JSON.parse(localStorage.getItem('instructoresComunidad')) || [];
+  const grid = document.getElementById('comunidad-instructores');
+  grid.innerHTML = '';
+  const usuarioActual = localStorage.getItem('usuarioComunidad');
+  instructores.forEach((inst, idx) => {
+    const puedeEliminar = inst.usuario === usuarioActual;
+    const card = document.createElement('div');
+    card.className = 'instructor-card comunidad-card';
+    card.innerHTML = `
+      <img src="${inst.img}" alt="${inst.nombre}" class="instructor-img" />
+      <h3>${inst.nombre}</h3>
+      <p class="instructor-desc">${inst.descripcion}</p>
+      <div class="instructor-precio">Precio por turno: <b>$${inst.precio}</b></div>
+      <form class="form-turno-comunidad">
+        <input type="hidden" class="instructor-nombre" value="${inst.nombre}" />
+        <input type="hidden" class="instructor-categoria" value="Cripto" />
+        <input type="hidden" class="instructor-precio-input" value="${inst.precio}" />
+        <label>Tu nombre:</label>
+        <input type="text" class="nombre" placeholder="Ej: Juan Pérez" required />
+        <label>Tu email:</label>
+        <input type="email" class="email" placeholder="Ej: juan@email.com" required />
+        <label>Fecha:</label>
+        <input type="date" class="fecha" required />
+        <label>Horario:</label>
+        <select class="horario" required>
+          <option value="">Elegí un horario</option>
+          <option value="09:00">09:00</option>
+          <option value="11:00">11:00</option>
+          <option value="14:00">14:00</option>
+          <option value="16:00">16:00</option>
+          <option value="18:00">18:00</option>
+        </select>
+        <button type="submit">Agendar turno</button>
+      </form>
+      ${puedeEliminar ? `<button class="eliminar-instructor" data-index="${idx}">Eliminar instructor</button>` : ''}
+    `;
+    grid.appendChild(card);
+  });
+  setMinDate(Array.from(document.querySelectorAll('.fecha')));
+}
 
-  // Si tu página principal es para un curso específico, cambia este valor:
-  const curso = "Cripto"; // O "Trading", "Marketing Digital", "Diseño", según corresponda
-
-  function getInstructorName(curso) {
-    switch (curso) {
-      case 'Cripto': return 'Juan Pérez';
-      case 'Trading': return 'Ana Gómez';
-      case 'Marketing Digital': return 'Sofía López';
-      case 'Diseño': return 'Carlos Ruiz';
-      default: return 'Instructor/a';
-    }
-  }
-
-  let turnos = JSON.parse(localStorage.getItem('turnos')) || [];
-
-  function renderTurnos() {
-    listaTurnos.innerHTML = '';
-    if (turnos.length === 0) {
-      listaTurnos.innerHTML = '<li>No hay turnos agendados.</li>';
-      return;
-    }
-    turnos.forEach((t, i) => {
-      const instructor = t.instructor || getInstructorName(t.curso);
-      const li = document.createElement('li');
-      li.className = 'turno-card';
-      li.innerHTML = `
-        <div class="turno-info">
-          <span class="turno-curso">${t.curso}</span>
-          <span class="turno-fecha">${t.fecha} - ${t.horario} hs</span>
-          <span class="turno-nombre">${t.nombre} (${t.email})</span>
-          <span class="turno-instructor">Instructor: <b>${instructor}</b></span>
-        </div>
-        <button class="borrar-turno" data-index="${i}">Borrar</button>
-      `;
-      listaTurnos.appendChild(li);
-    });
-  }
-
+// Guardar instructor de la comunidad
+document.addEventListener('DOMContentLoaded', function () {
+  renderComunidadInstructores();
   renderTurnos();
+  setMinDate(Array.from(document.querySelectorAll('.fecha')));
+});
 
-  form.addEventListener('submit', function(e) {
+document.getElementById('form-comunidad').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const nombre = document.getElementById('nombre-comunidad').value.trim();
+  const descripcion = document.getElementById('especialidad-comunidad').value.trim();
+  const precio = document.getElementById('precio-comunidad').value.trim();
+  const imgInput = document.getElementById('img-comunidad');
+  const file = imgInput.files[0];
+
+  if (!file) return;
+
+  // Guardar usuario para control de eliminación
+  localStorage.setItem('usuarioComunidad', nombre);
+
+  const reader = new FileReader();
+  reader.onload = function(evt) {
+    const img = evt.target.result;
+    const instructores = JSON.parse(localStorage.getItem('instructoresComunidad')) || [];
+    instructores.push({ nombre, descripcion, precio, img, usuario: nombre });
+    localStorage.setItem('instructoresComunidad', JSON.stringify(instructores));
+    renderComunidadInstructores();
+    document.getElementById('form-comunidad').reset();
+  };
+  reader.readAsDataURL(file);
+});
+
+// Eliminar instructor de la comunidad (solo el usuario que lo creó)
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('eliminar-instructor')) {
+    const idx = e.target.dataset.index;
+    const instructores = JSON.parse(localStorage.getItem('instructoresComunidad')) || [];
+    if (instructores[idx].usuario === localStorage.getItem('usuarioComunidad')) {
+      if (confirm('¿Seguro que querés eliminarte como instructor?')) {
+        instructores.splice(idx, 1);
+        localStorage.setItem('instructoresComunidad', JSON.stringify(instructores));
+        renderComunidadInstructores();
+      }
+    } else {
+      alert('Solo el usuario que creó este instructor puede eliminarlo.');
+    }
+  }
+});
+
+// Manejo de turnos CRUD
+let editIndex = null;
+
+function renderTurnos() {
+  const lista = document.getElementById('lista-turnos');
+  const turnos = JSON.parse(localStorage.getItem('turnosCripto')) || [];
+  lista.innerHTML = '';
+  if (turnos.length === 0) {
+    lista.innerHTML = '<li>No hay turnos agendados.</li>';
+    return;
+  }
+  turnos.forEach((t, i) => {
+    const li = document.createElement('li');
+    li.className = 'turno-card';
+    li.innerHTML = `
+      <div class="turno-info">
+        <span class="turno-categoria"><b>Categoría:</b> ${t.categoria}</span>
+        <span class="turno-instructor"><b>Instructor:</b> ${t.instructor}</span>
+        <span class="turno-nombre"><b>Nombre:</b> ${t.nombre}</span>
+        <span class="turno-mail"><b>Email:</b> ${t.email}</span>
+        <span class="turno-fecha"><b>Fecha:</b> ${t.fecha}</span>
+        <span class="turno-horario"><b>Horario:</b> ${t.horario} hs</span>
+        <span class="turno-precio"><b>Precio:</b> $${t.precio}</span>
+      </div>
+      <div class="turno-acciones">
+        <button class="editar-turno" data-index="${i}">Editar</button>
+        <button class="borrar-turno" data-index="${i}">Borrar</button>
+      </div>
+    `;
+    lista.appendChild(li);
+  });
+}
+
+// Agendar o editar turnos con cualquier instructor
+document.body.addEventListener('submit', function(e) {
+  if (e.target.classList.contains('form-turno-comunidad')) {
     e.preventDefault();
-    const nombre = document.getElementById('nombre').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const fecha = fechaInput.value;
-    const horario = horarioSelect.value;
-    const instructor = getInstructorName(curso);
+    const form = e.target;
+    const nombre = form.querySelector('.nombre').value.trim();
+    const email = form.querySelector('.email').value.trim();
+    const fecha = form.querySelector('.fecha').value;
+    const horario = form.querySelector('.horario').value;
+    const instructor = form.querySelector('.instructor-nombre').value;
+    const categoria = form.querySelector('.instructor-categoria').value;
+    const precio = form.querySelector('.instructor-precio-input').value;
 
-    // Validar que no haya turno en el mismo curso, fecha y horario
-    const existe = turnos.some(t => t.curso === curso && t.fecha === fecha && t.horario === horario);
+    let turnos = JSON.parse(localStorage.getItem('turnosCripto')) || [];
+
+    // Validar que no haya turno en el mismo horario con el mismo instructor (excepto si está editando el mismo)
+    const existe = turnos.some((t, idx) =>
+      t.instructor === instructor && t.fecha === fecha && t.horario === horario && idx !== editIndex
+    );
     if (existe) {
-      alert('Ya hay un turno reservado para ese curso, fecha y horario con este instructor.');
+      alert('Ya hay un turno reservado para ese instructor, fecha y horario.');
       return;
     }
 
-    turnos.push({ nombre, email, curso, fecha, horario, instructor });
-    localStorage.setItem('turnos', JSON.stringify(turnos));
+    if (editIndex !== null) {
+      // Editar turno
+      turnos[editIndex] = { nombre, email, fecha, horario, instructor, categoria, precio };
+      editIndex = null;
+    } else {
+      // Crear turno
+      turnos.push({ nombre, email, fecha, horario, instructor, categoria, precio });
+    }
+    localStorage.setItem('turnosCripto', JSON.stringify(turnos));
     renderTurnos();
     form.reset();
-    alert('¡Turno agendado con éxito!');
-  });
+    alert('¡Turno guardado con éxito!');
+  }
+});
 
-  listaTurnos.addEventListener('click', function(e) {
-    if (e.target.classList.contains('borrar-turno')) {
-      const idx = e.target.dataset.index;
-      if (confirm('¿Seguro que querés borrar este turno?')) {
-        turnos.splice(idx, 1);
-        localStorage.setItem('turnos', JSON.stringify(turnos));
-        renderTurnos();
-      }
+// Borrar y editar turnos
+document.getElementById('lista-turnos').addEventListener('click', function(e) {
+  let turnos = JSON.parse(localStorage.getItem('turnosCripto')) || [];
+  if (e.target.classList.contains('borrar-turno')) {
+    const idx = e.target.dataset.index;
+    if (confirm('¿Seguro que querés borrar este turno?')) {
+      turnos.splice(idx, 1);
+      localStorage.setItem('turnosCripto', JSON.stringify(turnos));
+      renderTurnos();
     }
-  });
+  }
+  if (e.target.classList.contains('editar-turno')) {
+    const idx = e.target.dataset.index;
+    const t = turnos[idx];
+    // Buscar el form del instructor correspondiente
+    let form = null;
+    document.querySelectorAll('.form-turno-comunidad').forEach(f => {
+      if (
+        f.querySelector('.instructor-nombre').value === t.instructor &&
+        f.querySelector('.instructor-categoria').value === t.categoria
+      ) {
+        form = f;
+      }
+    });
+    if (form) {
+      form.querySelector('.nombre').value = t.nombre;
+      form.querySelector('.email').value = t.email;
+      form.querySelector('.fecha').value = t.fecha;
+      form.querySelector('.horario').value = t.horario;
+      editIndex = parseInt(idx);
+      form.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      alert('No se encontró el formulario para editar este turno.');
+    }
+  }
 });
