@@ -1,15 +1,13 @@
-// Bloquear fechas pasadas y el mismo día en todos los formularios
-function setMinDate(inputs) {
-  const hoy = new Date();
-  hoy.setDate(hoy.getDate() + 1);
-  const min = hoy.toISOString().split('T')[0];
-  inputs.forEach(input => input.min = min);
-}
-
-// Actualiza instructores antiguos para que tengan el campo 'usuario'
-(function actualizarInstructoresAntiguos() {
+// Asegura que todos los instructores tengan el campo 'usuario' y que usuarioComunidad esté seteado
+(function () {
+  let usuario = localStorage.getItem('usuarioComunidad');
+  if (!usuario) {
+    usuario = prompt('Por favor, ingresá tu nombre de usuario para administrar tus instructores de comunidad:');
+    if (usuario) {
+      localStorage.setItem('usuarioComunidad', usuario);
+    }
+  }
   let instructores = JSON.parse(localStorage.getItem('instructoresComunidad')) || [];
-  const usuario = localStorage.getItem('usuarioComunidad');
   let actualizado = false;
   instructores = instructores.map(i => {
     if (!i.usuario && usuario) {
@@ -22,6 +20,16 @@ function setMinDate(inputs) {
     localStorage.setItem('instructoresComunidad', JSON.stringify(instructores));
   }
 })();
+
+
+// Bloquear fechas pasadas y el mismo día en todos los formularios
+function setMinDate(inputs) {
+  const hoy = new Date();
+  hoy.setDate(hoy.getDate() + 1);
+  const min = hoy.toISOString().split('T')[0];
+  inputs.forEach(input => input.min = min);
+}
+
 
 
 // Renderizar instructores de la comunidad
