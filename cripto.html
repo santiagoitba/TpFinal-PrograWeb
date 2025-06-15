@@ -28,16 +28,48 @@
     <section class="instructores">
       <h2>Instructores principales</h2>
       <div class="instructores-grid">
-        <div class="instructor-card">
-          <img src="juan-perez.jpg" alt="Juan Pérez" class="instructor-img" />
+        <!-- Instructor 1 -->
+        <div class="instructor-card principal">
+          <img src="fotos/cripto1.jpg" alt="Juan Pérez" class="instructor-img" />
           <h3>Juan Pérez</h3>
-          <p>Especialista en Cripto y Blockchain</p>
+          <p class="instructor-desc">Especialista en Cripto y Blockchain. Más de 10 años de experiencia en inversiones digitales.</p>
+          <div class="instructor-precio">Precio por turno: <b>$5000</b></div>
           <form class="form-turno-comunidad">
             <input type="hidden" class="instructor-nombre" value="Juan Pérez" />
+            <input type="hidden" class="instructor-categoria" value="Cripto" />
+            <input type="hidden" class="instructor-precio-input" value="5000" />
             <label>Tu nombre:</label>
-            <input type="text" class="nombre" required />
+            <input type="text" class="nombre" placeholder="Ej: Ana Gómez" required />
             <label>Tu email:</label>
-            <input type="email" class="email" required />
+            <input type="email" class="email" placeholder="Ej: ana@email.com" required />
+            <label>Fecha:</label>
+            <input type="date" class="fecha" required />
+            <label>Horario:</label>
+            <select class="horario" required>
+              <option value="">Elegí un horario</option>
+              <option value="09:00">09:00</option>
+              <option value="11:00">11:00</option>
+              <option value="14:00">14:00</option>
+              <option value="16:00">16:00</option>
+              <option value="18:00">18:00</option>
+            </select>
+            <button type="submit">Agendar turno</button>
+          </form>
+        </div>
+        <!-- Instructor 2 -->
+        <div class="instructor-card principal">
+          <img src="fotos/cripto2.jpeg" alt="María López" class="instructor-img" />
+          <h3>María López</h3>
+          <p class="instructor-desc">Trader profesional y docente. Te ayuda a dar tus primeros pasos en el mundo cripto.</p>
+          <div class="instructor-precio">Precio por turno: <b>$4500</b></div>
+          <form class="form-turno-comunidad">
+            <input type="hidden" class="instructor-nombre" value="María López" />
+            <input type="hidden" class="instructor-categoria" value="Cripto" />
+            <input type="hidden" class="instructor-precio-input" value="4500" />
+            <label>Tu nombre:</label>
+            <input type="text" class="nombre" placeholder="Ej: Juan Pérez" required />
+            <label>Tu email:</label>
+            <input type="email" class="email" placeholder="Ej: juan@email.com" required />
             <label>Fecha:</label>
             <input type="date" class="fecha" required />
             <label>Horario:</label>
@@ -60,13 +92,20 @@
       <h2>¿Querés ser instructor de la comunidad?</h2>
       <form id="form-comunidad">
         <label for="nombre-comunidad">Tu nombre:</label>
-        <input type="text" id="nombre-comunidad" required />
-        <label for="especialidad-comunidad">Especialidad:</label>
-        <input type="text" id="especialidad-comunidad" required />
+        <input type="text" id="nombre-comunidad" placeholder="Ej: Sofía Díaz" required />
+        <label for="especialidad-comunidad">Descripción:</label>
+        <input type="text" id="especialidad-comunidad" placeholder="Breve descripción" required />
+        <label for="precio-comunidad">Precio por turno:</label>
+        <input type="number" id="precio-comunidad" placeholder="Ej: 3000" min="0" required />
         <label for="img-comunidad">Foto de perfil:</label>
         <input type="file" id="img-comunidad" accept="image/*" required />
         <button type="submit">Sumarme como instructor</button>
       </form>
+    </section>
+
+    <section>
+      <h2>Instructores de la comunidad</h2>
+      <div class="instructores-grid" id="comunidad-instructores"></div>
     </section>
 
     <section>
@@ -91,23 +130,24 @@
     // Renderizar instructores de la comunidad
     function renderComunidadInstructores() {
       const instructores = JSON.parse(localStorage.getItem('instructoresComunidad')) || [];
-      const grid = document.querySelector('.instructores-grid');
-      // El primer hijo es el instructor principal, los demás son de la comunidad
-      grid.querySelectorAll('.comunidad-card').forEach(card => card.remove());
-
+      const grid = document.getElementById('comunidad-instructores');
+      grid.innerHTML = '';
       instructores.forEach((inst, idx) => {
         const card = document.createElement('div');
         card.className = 'instructor-card comunidad-card';
         card.innerHTML = `
           <img src="${inst.img}" alt="${inst.nombre}" class="instructor-img" />
           <h3>${inst.nombre}</h3>
-          <p>${inst.especialidad}</p>
+          <p class="instructor-desc">${inst.descripcion}</p>
+          <div class="instructor-precio">Precio por turno: <b>$${inst.precio}</b></div>
           <form class="form-turno-comunidad">
             <input type="hidden" class="instructor-nombre" value="${inst.nombre}" />
+            <input type="hidden" class="instructor-categoria" value="Cripto" />
+            <input type="hidden" class="instructor-precio-input" value="${inst.precio}" />
             <label>Tu nombre:</label>
-            <input type="text" class="nombre" required />
+            <input type="text" class="nombre" placeholder="Ej: Juan Pérez" required />
             <label>Tu email:</label>
-            <input type="email" class="email" required />
+            <input type="email" class="email" placeholder="Ej: juan@email.com" required />
             <label>Fecha:</label>
             <input type="date" class="fecha" required />
             <label>Horario:</label>
@@ -121,11 +161,10 @@
             </select>
             <button type="submit">Agendar turno</button>
           </form>
+          ${inst.usuario === localStorage.getItem('usuarioComunidad') ? `<button class="eliminar-instructor" data-index="${idx}">Eliminar instructor</button>` : ''}
         `;
         grid.appendChild(card);
       });
-
-      // Set min date para todos los inputs de fecha
       setMinDate(Array.from(document.querySelectorAll('.fecha')));
     }
 
@@ -133,17 +172,21 @@
     document.getElementById('form-comunidad').addEventListener('submit', function(e) {
       e.preventDefault();
       const nombre = document.getElementById('nombre-comunidad').value.trim();
-      const especialidad = document.getElementById('especialidad-comunidad').value.trim();
+      const descripcion = document.getElementById('especialidad-comunidad').value.trim();
+      const precio = document.getElementById('precio-comunidad').value.trim();
       const imgInput = document.getElementById('img-comunidad');
       const file = imgInput.files[0];
 
       if (!file) return;
 
+      // Guardar usuario para control de eliminación
+      localStorage.setItem('usuarioComunidad', nombre);
+
       const reader = new FileReader();
       reader.onload = function(evt) {
         const img = evt.target.result;
         const instructores = JSON.parse(localStorage.getItem('instructoresComunidad')) || [];
-        instructores.push({ nombre, especialidad, img });
+        instructores.push({ nombre, descripcion, precio, img, usuario: nombre });
         localStorage.setItem('instructoresComunidad', JSON.stringify(instructores));
         renderComunidadInstructores();
         document.getElementById('form-comunidad').reset();
@@ -151,7 +194,26 @@
       reader.readAsDataURL(file);
     });
 
-    // Manejo de turnos
+    // Eliminar instructor de la comunidad (solo el usuario que lo creó)
+    document.getElementById('comunidad-instructores').addEventListener('click', function(e) {
+      if (e.target.classList.contains('eliminar-instructor')) {
+        const idx = e.target.dataset.index;
+        const instructores = JSON.parse(localStorage.getItem('instructoresComunidad')) || [];
+        if (instructores[idx].usuario === localStorage.getItem('usuarioComunidad')) {
+          if (confirm('¿Seguro que querés eliminarte como instructor?')) {
+            instructores.splice(idx, 1);
+            localStorage.setItem('instructoresComunidad', JSON.stringify(instructores));
+            renderComunidadInstructores();
+          }
+        } else {
+          alert('Solo el usuario que creó este instructor puede eliminarlo.');
+        }
+      }
+    });
+
+    // Manejo de turnos CRUD
+    let editIndex = null;
+
     function renderTurnos() {
       const lista = document.getElementById('lista-turnos');
       const turnos = JSON.parse(localStorage.getItem('turnosCripto')) || [];
@@ -165,17 +227,24 @@
         li.className = 'turno-card';
         li.innerHTML = `
           <div class="turno-info">
-            <span class="turno-fecha">${t.fecha} - ${t.horario} hs</span>
-            <span class="turno-nombre">${t.nombre} (${t.email})</span>
-            <span class="turno-instructor">Instructor: <b>${t.instructor}</b></span>
+            <span class="turno-categoria"><b>Categoría:</b> ${t.categoria}</span>
+            <span class="turno-instructor"><b>Instructor:</b> ${t.instructor}</span>
+            <span class="turno-nombre"><b>Nombre:</b> ${t.nombre}</span>
+            <span class="turno-mail"><b>Email:</b> ${t.email}</span>
+            <span class="turno-fecha"><b>Fecha:</b> ${t.fecha}</span>
+            <span class="turno-horario"><b>Horario:</b> ${t.horario} hs</span>
+            <span class="turno-precio"><b>Precio:</b> $${t.precio}</span>
           </div>
-          <button class="borrar-turno" data-index="${i}">Borrar</button>
+          <div class="turno-acciones">
+            <button class="editar-turno" data-index="${i}">Editar</button>
+            <button class="borrar-turno" data-index="${i}">Borrar</button>
+          </div>
         `;
         lista.appendChild(li);
       });
     }
 
-    // Agendar turnos con cualquier instructor
+    // Agendar o editar turnos con cualquier instructor
     document.body.addEventListener('submit', function(e) {
       if (e.target.classList.contains('form-turno-comunidad')) {
         e.preventDefault();
@@ -185,32 +254,68 @@
         const fecha = form.querySelector('.fecha').value;
         const horario = form.querySelector('.horario').value;
         const instructor = form.querySelector('.instructor-nombre').value;
+        const categoria = form.querySelector('.instructor-categoria').value;
+        const precio = form.querySelector('.instructor-precio-input').value;
 
-        // Validar que no haya turno en el mismo horario con el mismo instructor
-        const turnos = JSON.parse(localStorage.getItem('turnosCripto')) || [];
-        const existe = turnos.some(t => t.instructor === instructor && t.fecha === fecha && t.horario === horario);
+        let turnos = JSON.parse(localStorage.getItem('turnosCripto')) || [];
+
+        // Validar que no haya turno en el mismo horario con el mismo instructor (excepto si está editando el mismo)
+        const existe = turnos.some((t, idx) =>
+          t.instructor === instructor && t.fecha === fecha && t.horario === horario && idx !== editIndex
+        );
         if (existe) {
           alert('Ya hay un turno reservado para ese instructor, fecha y horario.');
           return;
         }
 
-        turnos.push({ nombre, email, fecha, horario, instructor });
+        if (editIndex !== null) {
+          // Editar turno
+          turnos[editIndex] = { nombre, email, fecha, horario, instructor, categoria, precio };
+          editIndex = null;
+        } else {
+          // Crear turno
+          turnos.push({ nombre, email, fecha, horario, instructor, categoria, precio });
+        }
         localStorage.setItem('turnosCripto', JSON.stringify(turnos));
         renderTurnos();
         form.reset();
-        alert('¡Turno agendado con éxito!');
+        alert('¡Turno guardado con éxito!');
       }
     });
 
-    // Borrar turnos
+    // Borrar y editar turnos
     document.getElementById('lista-turnos').addEventListener('click', function(e) {
+      let turnos = JSON.parse(localStorage.getItem('turnosCripto')) || [];
       if (e.target.classList.contains('borrar-turno')) {
         const idx = e.target.dataset.index;
-        const turnos = JSON.parse(localStorage.getItem('turnosCripto')) || [];
         if (confirm('¿Seguro que querés borrar este turno?')) {
           turnos.splice(idx, 1);
           localStorage.setItem('turnosCripto', JSON.stringify(turnos));
           renderTurnos();
+        }
+      }
+      if (e.target.classList.contains('editar-turno')) {
+        const idx = e.target.dataset.index;
+        const t = turnos[idx];
+        // Buscar el form del instructor correspondiente
+        let form = null;
+        document.querySelectorAll('.form-turno-comunidad').forEach(f => {
+          if (
+            f.querySelector('.instructor-nombre').value === t.instructor &&
+            f.querySelector('.instructor-categoria').value === t.categoria
+          ) {
+            form = f;
+          }
+        });
+        if (form) {
+          form.querySelector('.nombre').value = t.nombre;
+          form.querySelector('.email').value = t.email;
+          form.querySelector('.fecha').value = t.fecha;
+          form.querySelector('.horario').value = t.horario;
+          editIndex = parseInt(idx);
+          form.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          alert('No se encontró el formulario para editar este turno.');
         }
       }
     });
