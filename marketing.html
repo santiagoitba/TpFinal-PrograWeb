@@ -2,24 +2,121 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EZMoney | Marketing Digital</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Marketing Digital - EZMoney</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
-    <h1>Marketing Digital</h1>
-    <a href="index.html">← Volver a EZMoney</a>
+    <h1>Marketing Digital - EZMoney</h1>
+    <nav>
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="cripto.html" class="nav-link">Cripto</a>
+      <a href="trading.html" class="nav-link">Trading</a>
+      <a href="diseno.html" class="nav-link">Diseño</a>
+    </nav>
   </header>
 
   <main>
-    <p>Domina el marketing digital. Redes sociales, publicidad online, SEO y estrategias para hacer crecer tu negocio.</p>
-    
-    <button class="tema-btn" onclick="window.location='index.html#agenda'">Agendar turno</button>
+    <section class="intro">
+      <h2>¡Bienvenido al mundo del Marketing Digital!</h2>
+      <p>
+        Descubrí cómo potenciar tu marca, crear campañas efectivas y dominar las redes sociales con nuestros instructores y la comunidad.
+      </p>
+    </section>
+
+    <section class="instructores">
+      <h2>Instructores principales</h2>
+      <div class="instructores-grid">
+        <!-- Instructor 1 -->
+        <div class="instructor-card principal">
+          <img src="fotos/marketingprincipio.jpg" alt="Santiago Ruiz" class="instructor-img" />
+          <h3>Santiago Ruiz</h3>
+          <p class="instructor-desc">Especialista en marketing digital y estrategias de contenido. Más de 8 años ayudando a marcas a crecer online.</p>
+          <div class="instructor-precio">Precio por turno: <b>$5000</b></div>
+          <form class="form-turno-comunidad" data-categoria="Marketing Digital">
+            <input type="hidden" class="instructor-nombre" value="Santiago Ruiz" />
+            <input type="hidden" class="instructor-categoria" value="Marketing Digital" />
+            <input type="hidden" class="instructor-precio-input" value="5000" />
+            <label>Tu nombre:</label>
+            <input type="text" class="nombre" placeholder="Ej: Ana Gómez" required />
+            <label>Tu email:</label>
+            <input type="email" class="email" placeholder="Ej: ana@email.com" required />
+            <label>Fecha:</label>
+            <input type="date" class="fecha" required />
+            <label>Horario:</label>
+            <select class="horario" required>
+              <option value="">Elegí un horario</option>
+              <option value="09:00">09:00</option>
+              <option value="11:00">11:00</option>
+              <option value="14:00">14:00</option>
+              <option value="16:00">16:00</option>
+              <option value="18:00">18:00</option>
+            </select>
+            <button type="submit">Agendar turno</button>
+          </form>
+        </div>
+        <!-- Instructor 2 -->
+        <div class="instructor-card principal">
+          <img src="fotos/marketingmujer.jpg" alt="Valentina Castro" class="instructor-img" />
+          <h3>Valentina Castro</h3>
+          <p class="instructor-desc">Consultora en marketing digital y social media. Te ayuda a crear campañas exitosas desde cero.</p>
+          <div class="instructor-precio">Precio por turno: <b>$4800</b></div>
+          <form class="form-turno-comunidad" data-categoria="Marketing Digital">
+            <input type="hidden" class="instructor-nombre" value="Valentina Castro" />
+            <input type="hidden" class="instructor-categoria" value="Marketing Digital" />
+            <input type="hidden" class="instructor-precio-input" value="4800" />
+            <label>Tu nombre:</label>
+            <input type="text" class="nombre" placeholder="Ej: Juan Pérez" required />
+            <label>Tu email:</label>
+            <input type="email" class="email" placeholder="Ej: juan@email.com" required />
+            <label>Fecha:</label>
+            <input type="date" class="fecha" required />
+            <label>Horario:</label>
+            <select class="horario" required>
+              <option value="">Elegí un horario</option>
+              <option value="09:00">09:00</option>
+              <option value="11:00">11:00</option>
+              <option value="14:00">14:00</option>
+              <option value="16:00">16:00</option>
+              <option value="18:00">18:00</option>
+            </select>
+            <button type="submit">Agendar turno</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="comunidad">
+      <h2>¿Querés ser instructor de la comunidad?</h2>
+      <form id="form-comunidad">
+        <label for="nombre-comunidad">Tu nombre:</label>
+        <input type="text" id="nombre-comunidad" placeholder="Ej: Sofía Díaz" required />
+        <label for="especialidad-comunidad">Descripción:</label>
+        <input type="text" id="especialidad-comunidad" placeholder="Breve descripción" required />
+        <label for="precio-comunidad">Precio por turno:</label>
+        <input type="number" id="precio-comunidad" placeholder="Ej: 3000" min="0" required />
+        <label for="img-comunidad">Foto de perfil:</label>
+        <input type="file" id="img-comunidad" accept="image/*" required />
+        <button type="submit">Sumarme como instructor</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Instructores de la comunidad</h2>
+      <div class="instructores-grid" id="comunidad-instructores"></div>
+    </section>
+
+    <section>
+      <h2>Turnos agendados</h2>
+      <ul id="lista-turnos"></ul>
+    </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 EZMoney</p>
+    &copy; 2025 EZMoney - Todos los derechos reservados
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
