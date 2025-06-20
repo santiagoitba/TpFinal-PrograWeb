@@ -335,3 +335,40 @@ footer {
     padding: 1rem;
   }
 }
+
+.intro.mejorada {
+  background: linear-gradient(90deg, #eaf4ff 60%, #fffbe6 100%);
+  border-radius: 18px;
+  padding: 2.5rem 1.5rem 2rem 1.5rem;
+  margin: 2rem auto 2.5rem auto;
+  max-width: 700px;
+  text-align: center;
+  box-shadow: 0 4px 24px #0001;
+  position: relative;
+}
+.intro-icono {
+  font-size: 2.5rem;
+  margin-bottom: 0.7rem;
+}
+.intro-subtitulo {
+  color: #1e3c72;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+.intro-destacado {
+  display: inline-block;
+  margin-top: 1.2rem;
+  background: #ffd700;
+  color: #1e3c72;
+  padding: 0.4rem 1.2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1.08rem;
+}
+@media (max-width: 700px) {
+  .intro.mejorada {
+    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+    max-width: 98vw;
+  }
+}
