@@ -202,22 +202,25 @@ document.addEventListener('click', function(e) {
     const idx = e.target.dataset.index;
     const instructores = JSON.parse(localStorage.getItem(cat.storageInstructores)) || [];
     const instructorEliminado = instructores[idx];
-    if (instructorEliminado.usuario === localStorage.getItem('usuarioEZMoney')) {
-      if (confirm('¿Seguro que querés eliminarte como instructor?')) {
-        instructores.splice(idx, 1);
-        localStorage.setItem(cat.storageInstructores, JSON.stringify(instructores));
-        // Eliminar turnos asociados a ese instructor
-        let turnos = JSON.parse(localStorage.getItem(cat.storageTurnos)) || [];
-        turnos = turnos.filter(t => t.instructor !== instructorEliminado.nombre);
-        localStorage.setItem(cat.storageTurnos, JSON.stringify(turnos));
-        renderComunidadInstructores();
-        renderTurnos();
+    if (e.target.classList.contains('eliminar-instructor')) {
+      const idx = e.target.dataset.index;
+      const instructores = JSON.parse(localStorage.getItem(cat.storageInstructores)) || [];
+      const instructorEliminado = instructores[idx];
+      if (instructorEliminado.usuario === localStorage.getItem('usuarioEZMoney')) {
+        if (confirm('¿Seguro que querés eliminarte como instructor?')) {
+          instructores.splice(idx, 1);
+          localStorage.setItem(cat.storageInstructores, JSON.stringify(instructores));
+          // Eliminar turnos asociados a ese instructor
+          let turnos = JSON.parse(localStorage.getItem(cat.storageTurnos)) || [];
+          turnos = turnos.filter(t => t.instructor !== instructorEliminado.nombre);
+          localStorage.setItem(cat.storageTurnos, JSON.stringify(turnos));
+          renderComunidadInstructores();
+          renderTurnos();
+        }
+      } else {
+        alert('Solo el usuario que creó este instructor puede eliminarlo.');
       }
-    } else {
-      alert('Solo el usuario que creó este instructor puede eliminarlo.');
-    {  
     }
-  }
   }
   // Borrar y editar turnos
   if (e.target.classList.contains('borrar-turno') || e.target.classList.contains('editar-turno')) {
