@@ -33,14 +33,15 @@ function getCategoriaActual() {
 
 // --- ACTUALIZAR INSTRUCTORES ANTIGUOS ---
 (function () {
-  const cat = getCategoriaActual();
-  let usuario = localStorage.getItem(cat.storageUsuario);
+  // Usar una sola clave para el usuario en todo el sitio
+  let usuario = localStorage.getItem('usuarioEZMoney');
   if (!usuario && document.getElementById('form-comunidad')) {
     usuario = prompt('Por favor, ingresá tu nombre de usuario para administrar tus instructores de comunidad:');
     if (usuario) {
-      localStorage.setItem(cat.storageUsuario, usuario);
+      localStorage.setItem('usuarioEZMoney', usuario);
     }
   }
+  const cat = getCategoriaActual();
   let instructores = JSON.parse(localStorage.getItem(cat.storageInstructores)) || [];
   let actualizado = false;
   instructores = instructores.map(i => {
@@ -67,9 +68,16 @@ function renderComunidadInstructores() {
   const cat = getCategoriaActual();
   const instructores = JSON.parse(localStorage.getItem(cat.storageInstructores)) || [];
   const grid = document.getElementById('comunidad-instructores');
-  if (!grid) return;
+  const seccion = document.getElementById('seccion-comunidad-instructores');
+  if (!grid || !seccion) return;
   grid.innerHTML = '';
-  const usuarioActual = localStorage.getItem(cat.storageUsuario);
+  if (instructores.length === 0) {
+    seccion.style.display = 'none';
+    return;
+  } else {
+    seccion.style.display = '';
+  }
+  const usuarioActual = localStorage.getItem('usuarioEZMoney');
   instructores.forEach((inst, idx) => {
     const puedeEliminar = inst.usuario === usuarioActual;
     const card = document.createElement('div');
@@ -194,7 +202,7 @@ document.addEventListener('click', function(e) {
     const idx = e.target.dataset.index;
     const instructores = JSON.parse(localStorage.getItem(cat.storageInstructores)) || [];
     const instructorEliminado = instructores[idx];
-    if (instructorEliminado.usuario === localStorage.getItem(cat.storageUsuario)) {
+    if (instructorEliminado.usuario === localStorage.getItem('usuarioEZMoney')) {
       if (confirm('¿Seguro que querés eliminarte como instructor?')) {
         instructores.splice(idx, 1);
         localStorage.setItem(cat.storageInstructores, JSON.stringify(instructores));
@@ -263,7 +271,7 @@ document.addEventListener('submit', function(e) {
     if (!file) return;
 
     // Guardar usuario para control de eliminación
-    localStorage.setItem(cat.storageUsuario, nombre);
+    localStorage.setItem('usuarioEZMoney', nombre);
 
     const reader = new FileReader();
     reader.onload = function(evt) {
