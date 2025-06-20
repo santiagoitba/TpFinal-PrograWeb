@@ -199,16 +199,18 @@ document.addEventListener('click', function(e) {
   const cat = getCategoriaActual();
   // Eliminar instructor de comunidad
   if (e.target.classList.contains('eliminar-instructor')) {
-    const idx = e.target.dataset.index;
-    const instructores = JSON.parse(localStorage.getItem(cat.storageInstructores)) || [];
-    const instructorEliminado = instructores[idx];
-    if (instructorEliminado.usuario === localStorage.getItem('usuarioEZMoney')) {
+    const nombreInstructor = e.target.closest('.instructor-card').querySelector('h3').textContent;
+    const cat = getCategoriaActual();
+    let instructores = JSON.parse(localStorage.getItem(cat.storageInstructores)) || [];
+    const usuarioActual = localStorage.getItem('usuarioEZMoney');
+    const instructorEliminado = instructores.find(i => i.nombre === nombreInstructor && i.usuario === usuarioActual);
+    if (instructorEliminado) {
       if (confirm('¿Seguro que querés eliminarte como instructor?')) {
-        instructores.splice(idx, 1);
+        instructores = instructores.filter(i => !(i.nombre === nombreInstructor && i.usuario === usuarioActual));
         localStorage.setItem(cat.storageInstructores, JSON.stringify(instructores));
         // Eliminar turnos asociados a ese instructor
         let turnos = JSON.parse(localStorage.getItem(cat.storageTurnos)) || [];
-        turnos = turnos.filter(t => t.instructor !== instructorEliminado.nombre);
+        turnos = turnos.filter(t => t.instructor !== nombreInstructor);
         localStorage.setItem(cat.storageTurnos, JSON.stringify(turnos));
         renderComunidadInstructores();
         renderTurnos();
