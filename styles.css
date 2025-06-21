@@ -1,17 +1,17 @@
-/* Reset básico */
+/* Reset básico para que todo se vea igual en todos los navegadores */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-
+/* Estilos generales del body y fondo */
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   color: #222;
   min-height: 100vh;
 }
-
+/* Header y navegación principal */
 header {
   background: #1e3c72;
   color: #fff;
@@ -20,12 +20,14 @@ header {
   box-shadow: 0 2px 8px #0002;
 }
 
+/* Subtítulo destacado */
 .subtitulo {
   font-size: 1.2rem;
   margin-bottom: 1rem;
   color: #ffd700;
 }
 
+/* Menú de navegación */
 nav {
   margin-top: 1rem;
 }
@@ -39,7 +41,7 @@ nav a {
 nav a:hover {
   color: #ffd700;
 }
-
+/* Sección principal de bienvenida (hero) */
 .hero {
   background: linear-gradient(135deg, #1e3c72 60%, #dfff00 100%);
   color: #fff;
@@ -48,6 +50,8 @@ nav a:hover {
   border-radius: 0 0 24px 24px;
   margin-bottom: 2rem;
 }
+
+/* Botón principal de llamada a la acción */
 .cta-btn {
   display: inline-block;
   margin-top: 1.5rem;
@@ -65,7 +69,7 @@ nav a:hover {
   color: #dfff00;
 }
 
-/* Tarjetas de cursos */
+/* Tarjetas de cursos e instructores (grilla principal) */
 .tematicas,
 .instructores {
   max-width: 1200px;
@@ -111,7 +115,7 @@ nav a:hover {
   background: #fff;
 }
 
-/* Instructores principales y comunidad */
+/* Diferenciación visual para instructores principales y de comunidad */
 .instructor-card.principal {
   border: 2px solid #1e3c72;
   background: #eaf4ff;
@@ -120,6 +124,7 @@ nav a:hover {
   border: 2px solid #b3e6b3;
   background: #f6fff6;
 }
+/* Descripción y precio de instructores */
 .instructor-desc {
   font-size: 0.98rem;
   color: #444;
@@ -132,7 +137,7 @@ nav a:hover {
   font-weight: bold;
 }
 
-/* Formularios */
+/* Formularios para turnos e instructores de comunidad */
 .form-turno-comunidad input,
 .form-turno-comunidad select,
 .comunidad input,
@@ -179,6 +184,8 @@ nav a:hover {
   color: #222;
   border: none;
 }
+
+/* Botón para eliminar instructores de comunidad */
 .eliminar-instructor {
   background: #ff4d4d;
   color: #fff;
@@ -194,7 +201,7 @@ nav a:hover {
   background: #b30000;
 }
 
-/* Turnos */
+/* Tarjetas y acciones de turnos agendados */
 .turno-card {
   background: #f8fafc;
   border: 2px solid #ffd700;
@@ -254,7 +261,7 @@ nav a:hover {
   background: #b30000;
 }
 
-/* Beneficios y testimonios */
+/* Beneficios y testimonios de la pagina*/
 .beneficios {
   background: #f8fafc;
   color: #1e3c72;
@@ -304,7 +311,7 @@ footer {
   border-radius: 0 0 16px 16px;
 }
 
-/* Responsive */
+/* Responsive: tablets y celulares */
 @media (max-width: 900px) {
   .tematicas-grid,
   .instructores-grid {
@@ -336,6 +343,7 @@ footer {
   }
 }
 
+/* Sección de bienvenida mejorada (intro) */
 .intro.mejorada {
   background: linear-gradient(90deg, #eaf4ff 60%, #fffbe6 100%);
   border-radius: 18px;
