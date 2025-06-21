@@ -272,13 +272,15 @@ document.addEventListener('submit', function(e) {
     if (!file) return;
 
     // Guardar usuario para control de eliminación
-    localStorage.setItem('usuarioEZMoney', nombre);
+    
+
+    const usuario = localStorage.getItem('usuarioEZMoney');
 
     const reader = new FileReader();
     reader.onload = function(evt) {
       const img = evt.target.result;
       const instructores = JSON.parse(localStorage.getItem(cat.storageInstructores)) || [];
-      instructores.push({ nombre, descripcion, precio, img, usuario: nombre });
+      instructores.push({ nombre, descripcion, precio, img, usuario });
       localStorage.setItem(cat.storageInstructores, JSON.stringify(instructores));
       renderComunidadInstructores();
       document.getElementById('form-comunidad').reset();
