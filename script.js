@@ -273,12 +273,9 @@ document.addEventListener('submit', function(e) {
       alert('El nombre solo puede contener letras y espacios.');
       return;
     }
-    //valido que la descripción solo tenga letras y espacios
+    
     const descripcion = document.getElementById('especialidad-comunidad').value.trim();
-    if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(descripcion)) {
-      alert('La descripción solo puede contener letras y espacios.');
-      return;
-    }
+
     const precio = document.getElementById('precio-comunidad').value.trim();
     const imgInput = document.getElementById('img-comunidad');
     const file = imgInput.files[0];
