@@ -162,6 +162,10 @@ document.body.addEventListener('submit', function(e) {
     const cat = getCategoriaActual();
     const form = e.target;
     const nombre = form.querySelector('.nombre').value.trim();
+    if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(nombre)) {
+      alert('El nombre solo puede contener letras y espacios.');
+      return;
+    }
     const email = form.querySelector('.email').value.trim();
     const fecha = form.querySelector('.fecha').value;
     const horario = form.querySelector('.horario').value;
@@ -264,6 +268,11 @@ document.addEventListener('submit', function(e) {
     e.preventDefault();
     const cat = getCategoriaActual();
     const nombre = document.getElementById('nombre-comunidad').value.trim();
+    //valido nombre ingresado
+    if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(nombre)) {
+      alert('El nombre solo puede contener letras y espacios.');
+      return;
+    }
     const descripcion = document.getElementById('especialidad-comunidad').value.trim();
     const precio = document.getElementById('precio-comunidad').value.trim();
     const imgInput = document.getElementById('img-comunidad');
