@@ -140,7 +140,7 @@ function renderTurnos() {
       </div>
       <div class="turno-acciones">
         <button class="editar-turno" data-index="${i}">Editar</button>
-        <button class="borrar-turno" data-index="${i}">Borrar</button>
+        <button class="borrar-turno" data-index="${i}">Cancelar turno</button>
       </div>
     `;
     lista.appendChild(li);
