@@ -229,7 +229,7 @@ document.addEventListener('click', function(e) {
     let turnos = JSON.parse(localStorage.getItem(cat.storageTurnos)) || [];
     if (e.target.classList.contains('borrar-turno')) {
       const idx = e.target.dataset.index;
-      if (confirm('¿Seguro que querés borrar este turno?')) {
+      if (confirm('¿Seguro que querés cancelar este turno?')) {
         turnos.splice(idx, 1);
         localStorage.setItem(cat.storageTurnos, JSON.stringify(turnos));
         renderTurnos();
