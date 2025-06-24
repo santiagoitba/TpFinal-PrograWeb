@@ -30,6 +30,10 @@ header {
 /* Menú de navegación */
 nav {
   margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Así, si no entran, bajan a otra línea pero siempre en fila */
+  gap: 0.7rem;
 }
 nav a {
   color: #fff;
@@ -90,7 +94,7 @@ nav a:hover {
   border: 2px solid #ffd700;
   border-radius: 14px;
   padding: 1.5rem;
-  width: 270px;
+  width: 240px;
   text-align: center;
   box-shadow: 0 2px 12px #0001;
   display: flex;
